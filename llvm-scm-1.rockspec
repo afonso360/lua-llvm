@@ -20,5 +20,7 @@ external_dependencies = {
 }
 build = {
    type = "builtin",
-   modules = {}
+   modules = {
+     ["llvm"] = "src/llvm.lua"
+   }
 }
