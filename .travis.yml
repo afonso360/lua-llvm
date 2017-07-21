@@ -28,7 +28,7 @@ install:
   - luarocks install --local busted
 
 script:
-  - luarocks make
+  - luarocks make --server=http://luarocks.org/dev
 
 test:
   - busted spec
