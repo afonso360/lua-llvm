@@ -3,7 +3,6 @@ sudo: required
 dist: trusty
 
 compiler:
-  - gcc
   - clang
 
 os:
@@ -12,16 +11,16 @@ os:
 
 env:
   global:
-    - LLVM_VERSION="4.0"
-  matrix:
-    - LUA_VERSION=LUA51
-    - LUA_VERSION=LUA52
     - LUA_VERSION=LUA53
+  matrix:
+    - LLVM_VERSION="4.0"
 
 before_install:
   - export PATH="$TRAVIS_BUILD_DIR/install/bin:$TRAVIS_BUILD_DIR/install/latest-llvm-symlinks:$PATH"
-  - PLAT="${TRAVIS_OS_NAME/osx/macosx}" TMPSRC="$TRAVIS_BUILD_DIR/.src" PREFIX="$TRAVIS_BUILD_DIR/install" .travis/install_lua.sh
+  - PREFIX="$TRAVIS_BUILD_DIR/install" PLAT="${TRAVIS_OS_NAME/osx/macosx}" TMPSRC="$TRAVIS_BUILD_DIR/.src" .travis/install_lua.sh
   - PREFIX="$TRAVIS_BUILD_DIR/install" .travis/install_llvm.sh
+  - ls -lah $TRAVIS_BUILD_DIR/install
+  - ls -lah $TRAVIS_BUILD_DIR/install/latest-llvm-symlinks
 
 
 install:
