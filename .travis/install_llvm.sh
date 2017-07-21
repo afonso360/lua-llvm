@@ -12,7 +12,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
 	sudo apt-add-repository -y 'deb http://llvm.org/apt/trusty llvm-toolchain-trusty-4.0 main';
 
 	sudo apt-get -qq update
-	sudo apt-get -qq install llvm-$LLVM_VERSION;
+	sudo apt-get -qq install llvm-$LLVM_VERSION llvm-$LLVM_VERSION-dev;
 
 	mkdir -p latest-llvm-symlinks;
 	ln -s /usr/bin/llvm-config-$LLVM_VERSION latest-llvm-symlinks/llvm-config;
