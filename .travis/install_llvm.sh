@@ -2,6 +2,11 @@
 
 set -e
 
+if [ -z "$PREFIX" ]; then
+    echo "Missing PREFIX"
+    exit 1
+fi
+
 if [ -z "$LLVM_VERSION" ]; then
 	echo "Missing LLVM_VERSION"
 	exit 1
@@ -14,10 +19,9 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
 	sudo apt-get -qq update
 	sudo apt-get -qq install llvm-$LLVM_VERSION llvm-$LLVM_VERSION-dev;
 
-	mkdir -p latest-llvm-symlinks;
-	ln -s /usr/bin/llvm-config-$LLVM_VERSION latest-llvm-symlinks/llvm-config;
-	export PATH=$PWD/latest-llvm-symlinks:$PATH;
-        echo $PATH;
+	mkdir -p $PREFIX/latest-llvm-symlinks;
+	ln -s /usr/bin/llvm-config-$LLVM_VERSION $PREFIX/latest-llvm-symlinks/llvm-config;
+	export PATH=$PREFIX/latest-llvm-symlinks:$PATH;
 elif [ "$TRAVIS_OS_NAME" = "osx" ]; then
 	if [ "$LLVM_VERSION" = "4.0" ]; then
 		brew install llvm-4.0
