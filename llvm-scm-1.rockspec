@@ -11,7 +11,8 @@ description = {
   maintainer = "Afonso Bordado <afonsobordado@az8.co>"
 }
 dependencies = {
-   "lua >= 5.1"
+   "lua >= 5.1",
+   "luaffi"
 }
 external_dependencies = {
    LIBLLVM = {
