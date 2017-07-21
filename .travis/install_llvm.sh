@@ -20,13 +20,13 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
 
 elif [ "$TRAVIS_OS_NAME" = "osx" ]; then
 	if [ "$LLVM_VERSION" = "4.0" ]; then
-		brew install llvm40
+		brew install llvm-4.0
 	elif [ "$LLVM_VERSION" = "3.9" ]; then
-		brew install llvm39
+		brew install llvm-3.9
 	elif [ "$LLVM_VERSION" = "3.8" ]; then
-		brew install llvm38
+		brew install llvm-3.8
 	elif [ "$LLVM_VERSION" = "3.7" ]; then
-		brew install llvm37
+		brew install llvm-3.7
 	else
 		echo "Invalid llvm version: LLVM_VERSION=$LLVM_VERSION"
 		exit 1
