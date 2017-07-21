@@ -22,6 +22,7 @@ before_install:
   - export PATH="$TRAVIS_BUILD_DIR/install/bin:$PATH"
   - PLAT="${TRAVIS_OS_NAME/osx/macosx}" TMPSRC="$TRAVIS_BUILD_DIR/.src" PREFIX="$TRAVIS_BUILD_DIR/install" .travis/install_lua.sh
   - .travis/install_llvm.sh
+  - echo $PATH
 
 
 install:

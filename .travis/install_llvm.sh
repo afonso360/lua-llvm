@@ -17,7 +17,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
 	mkdir -p latest-llvm-symlinks;
 	ln -s /usr/bin/llvm-config-$LLVM_VERSION latest-llvm-symlinks/llvm-config;
 	export PATH=$PWD/latest-llvm-symlinks:$PATH;
-
+        echo $PATH;
 elif [ "$TRAVIS_OS_NAME" = "osx" ]; then
 	if [ "$LLVM_VERSION" = "4.0" ]; then
 		brew install llvm-4.0
