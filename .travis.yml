@@ -11,9 +11,9 @@ os:
 
 env:
   global:
-    - LUA_VERSION=LUA53
-  matrix:
-    - LLVM_VERSION="4.0"
+    - LUA_VERSION=LUA53 LLVM_VERSION="4.0"
+    - LUA_VERSION=LUA52 LLVM_VERSION="4.0"
+    - LUA_VERSION=LUA51 LLVM_VERSION="4.0"
 
 before_install:
   - export PATH="$TRAVIS_BUILD_DIR/install/bin:$TRAVIS_BUILD_DIR/install/latest-llvm-symlinks:$PATH"
