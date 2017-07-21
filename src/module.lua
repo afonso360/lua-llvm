@@ -4,7 +4,3 @@
 -- This file may not be copied, modified, or distributed except according
 -- to the terms of that license.
 
-
-require "src.module"
-
-return {}
