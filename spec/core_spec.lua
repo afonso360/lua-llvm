@@ -1,3 +1,5 @@
-describe("Should provide access to core modules", function ()
-  assert.truthy("test")
+describe("Core modules", function ()
+	it("should provide access to sub modules", function ()
+		assert.truthy("ay")
+	end)
 end)

@@ -26,6 +26,7 @@ Usually you can use the following commands
 mkdir build
 cd build
 cmake -D USE_PRE_GENERATED_BINDINGS=FALSE ..
+make
 ```
 
 Build Dependencies
