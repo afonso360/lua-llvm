@@ -1,4 +1,4 @@
-language: cpp
+language: c
 sudo: required
 dist: trusty
 
@@ -28,12 +28,12 @@ install:
   - luarocks install --local busted
 
 script:
-  - mkdir build
-  - (cd build && \
-    cmake -D USE_PRE_GENERATED_BINDINGS=FALSE \
+  - mkdir build && pushd build
+  - cmake -D USE_PRE_GENERATED_BINDINGS=FALSE \
           -D LUA_INCLUDE_DIR=$TRAVIS_BUILD_DIR/install/include \
-          ..)
-  - (cd build && make)
+          ..
+  - make
+  - popd
   - luarocks make
 
 test:
