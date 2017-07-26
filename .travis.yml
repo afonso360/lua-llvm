@@ -5,6 +5,10 @@ dist: trusty
 compiler:
   - clang
 
+addons:
+  apt:
+    packages:
+      - cmake
 os:
   - linux
   - osx
