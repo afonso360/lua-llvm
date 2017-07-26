@@ -24,7 +24,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
 	export PATH=$PREFIX/latest-llvm-symlinks:$PATH;
 elif [ "$TRAVIS_OS_NAME" = "osx" ]; then
 	if [ "$LLVM_VERSION" = "4.0" ]; then
-		brew install llvm-4.0
+		brew install llvm@4
 	elif [ "$LLVM_VERSION" = "3.9" ]; then
 		brew install llvm-3.9
 	elif [ "$LLVM_VERSION" = "3.8" ]; then
