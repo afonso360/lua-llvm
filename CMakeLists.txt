@@ -15,13 +15,14 @@ set(COMMON_CFLAGS "${CFLAGS}")
 set(COMMON_LDFLAGS)
 set(COMMON_LIBS)
 
-## Lua 5.1.x
-include(FindLua)
-if(NOT ${LUA_FOUND})
-    message(FATAL_ERROR "The FindLua module could not find lua :-(")
+if(NOT ${LUA_INCLUDE_DIR})
+	## Find Lua 5
+	include(FindLua)
+	if(NOT ${LUA_FOUND})
+		message(FATAL_ERROR "The FindLua module could not find lua :-(")
+	endif()
+	set(COMMON_LIBS "${COMMON_LIBS};${LUA_LIBRARIES}")
 endif()
-set(COMMON_LIBS "${COMMON_LIBS};${LUA_LIBRARIES}")
-message("LUADIR ${LUA_LIBRARIES}")
 
 ## LibLlvm
 include(FindPkgConfig)
