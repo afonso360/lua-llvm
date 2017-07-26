@@ -6,10 +6,11 @@ compiler:
   - clang
 
 os:
-  - linux
+  #  - linux
   - osx
 
 env:
+  #  matrix:
   global:
     - LUA_VERSION=LUA53 LLVM_VERSION="4.0"
     - LUA_VERSION=LUA52 LLVM_VERSION="4.0"
@@ -25,11 +26,10 @@ before_install:
 
 install:
   - luarocks install --local busted
-  - luarocks install --local luadoc
 
 script:
   - mkdir build
-  - (cd build && cmake -D USE_PRE_GENERATED_BINDINGS=FALSE -D LUA_DIR="$TRAVIS_BUILD_DIR/install" ..)
+  - (cd build && LUA_DIR=$TRAVIS_BUILD_DIR/install cmake -D USE_PRE_GENERATED_BINDINGS=FALSE ..)
   - (cd build && make)
   - luarocks make
 

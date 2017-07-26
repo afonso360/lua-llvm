@@ -21,6 +21,7 @@ if(NOT ${LUA_FOUND})
     message(FATAL_ERROR "The FindLua module could not find lua :-(")
 endif()
 set(COMMON_LIBS "${COMMON_LIBS};${LUA_LIBRARIES}")
+message("LUADIR ${LUA_LIBRARIES}")
 
 ## LibLlvm
 include(FindPkgConfig)
