@@ -4,15 +4,19 @@
 -- This file may not be copied, modified, or distributed except according
 -- to the terms of that license.
 
+-- make generated variable nicer.
+set_variable_format "%s%d"
+
 c_module "llvm" {
-
-  -- enable FFI bindings support.
-  luajit_ffi = true,
-
-  -- load LLVM shared library.
-  ffi_load "llvm",
+	luajit_ffi = false,
+	luajit_ffi_load_cmodule = false,
 
   include "llvm-c/Core.h",
+  include "llvm-c/Types.h",
+
+	c_source "typedefs" [[
+typedef struct LLVMOpaqueType * 	LLVMTypeRef;
+]],
 
   subfiles {
     "src/core/core.nobj.lua",

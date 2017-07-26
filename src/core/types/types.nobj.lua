@@ -19,7 +19,7 @@
 --- LLVMDumpType
 --- LLVMPrintTypeToString
 
-object "types" {
+package "types" {
   subfiles {
     "integer.nobj.lua"
   }

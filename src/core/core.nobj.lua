@@ -19,7 +19,7 @@
 ---  LLVMCreateMessage
 ---  LLVMDisposeMessage
 
-object "core" {
+package "core" {
   subfiles {
     "types/types.nobj.lua"
   }
