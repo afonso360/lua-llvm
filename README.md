@@ -1,5 +1,16 @@
-# Lua LLVM Bindings
+lua-llvm
+=======
 
-Build with `luarocks make --server=http://luarocks.org/dev`
+LLVM-C bindings for Lua.
 
-This rock is licensed under the MIT License
+Installing
+----------
+
+### Install lua-llvm:
+
+```
+	curl -O "__project_github_url__/raw/master/lua-llvm-scm-0.rockspec"
+
+	luarocks install lua-llvm-scm-0.rockspec
+```
+
