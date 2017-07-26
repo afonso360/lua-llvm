@@ -29,7 +29,7 @@ install:
 
 script:
   - mkdir build
-  - (cd build && cmake -D USE_PRE_GENERATED_BINDINGS=FALSE ..)
+  - (cd build && cmake -D USE_PRE_GENERATED_BINDINGS=FALSE -D LUA_DIR="$TRAVIS_BUILD_DIR/install" ..)
   - (cd build && make)
   - luarocks make
 
