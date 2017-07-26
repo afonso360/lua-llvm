@@ -25,9 +25,13 @@ before_install:
 
 install:
   - luarocks install --local busted
+  - luarocks install --local luadoc
 
 script:
-  - luarocks make --server=http://luarocks.org/dev
+  - mkdir build
+  - (cd build && cmake -D USE_PRE_GENERATED_BINDINGS=FALSE ..)
+  - (cd build && make)
+  - luarocks make
 
 test:
   - busted spec
