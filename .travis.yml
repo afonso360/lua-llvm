@@ -1,14 +1,10 @@
-language: c
+language: cpp
 sudo: required
 dist: trusty
 
 compiler:
   - clang
 
-addons:
-  apt:
-    packages:
-      - cmake
 os:
   - linux
   - osx
