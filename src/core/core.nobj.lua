@@ -21,6 +21,6 @@
 
 object "core" {
   subfiles {
-    "types.nobj.lua"
+    "types/types.nobj.lua"
   }
 }

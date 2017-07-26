@@ -18,7 +18,7 @@ dependencies = {
 external_dependencies = {
 	LLVM = {
 		header = "llvm-c/Core.h",
-		library = "llvm",
+		library = "LLVM",
 	}
 }
 build	= {

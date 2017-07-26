@@ -7,7 +7,7 @@ set(LUA_NATIVE_OBJECTS_PATH ${CMAKE_SOURCE_DIR}/../LuaNativeObjects CACHE PATH
 set(USE_PRE_GENERATED_BINDINGS TRUE CACHE BOOL
 				"Set this to FALSE to re-generate bindings using LuaNativeObjects")
 
-set(GENERATE_LUADOCS TRUE CACHE BOOL
+set(GENERATE_LUADOCS FALSE CACHE BOOL
 				"Set this to FALSE to avoid generation of docs using LuaDoc")
 
 macro(GenLuaNativeObjects _src_files_var)
