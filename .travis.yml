@@ -30,9 +30,10 @@ install:
 
 script:
   - mkdir build && pushd build
-  - cmake -D USE_PRE_GENERATED_BINDINGS=FALSE \
-          -D CLANG_BINARY_NAME="clang-4.0" \
-          -D LUA_INCLUDE_DIR=$TRAVIS_BUILD_DIR/install/include ..
+  - cmake -D USE_PRE_GENERATED_BINDINGS=FALSE
+          -D CLANG_BINARY_NAME="clang-4.0"
+          -D LUA_INCLUDE_DIR=$TRAVIS_BUILD_DIR/install/include
+          -D LUA_LIBRARIES=$TRAVIS_BUILD_DIR/install/lib ..
   - make
   - popd
   - luarocks make
