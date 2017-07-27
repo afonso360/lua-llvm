@@ -26,15 +26,19 @@ before_install:
 
 install:
   - luarocks install --local busted
+  - luarocks install --local luacov
+  - luarocks install --local luacov-coveralls
 
 script:
   - mkdir build && pushd build
   - cmake -D USE_PRE_GENERATED_BINDINGS=FALSE \
-          -D LUA_INCLUDE_DIR=$TRAVIS_BUILD_DIR/install/include \
-          ..
+          -D LUA_INCLUDE_DIR=$TRAVIS_BUILD_DIR/install/include ..
   - make
   - popd
   - luarocks make
 
 test:
-  - busted spec
+  - busted -c -Xhelper travis,env=full --verbose
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
