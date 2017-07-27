@@ -22,6 +22,8 @@ if [ "$TRAVIS_OS_NAME" = "linux" ]; then
 	mkdir -p $PREFIX/latest-llvm-symlinks;
 	ln -s /usr/bin/llvm-config-$LLVM_VERSION $PREFIX/latest-llvm-symlinks/llvm-config;
 	export PATH=$PREFIX/latest-llvm-symlinks:$PATH;
+
+	llvm-config --version
 elif [ "$TRAVIS_OS_NAME" = "osx" ]; then
 	if [ "$LLVM_VERSION" = "4.0" ]; then
 		brew install llvm@4
@@ -39,5 +41,3 @@ else
     echo "Invalid Travis os name: TRAVIS_OS_NAME=$TRAVIS_OS_NAME"
     exit 1
 fi
-
-llvm-config --version
