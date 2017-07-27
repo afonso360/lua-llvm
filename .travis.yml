@@ -27,6 +27,8 @@ install:
   - luarocks install --local busted
   - luarocks install --local luacov
   - luarocks install --local luacov-coveralls
+  - export CC=`which clang-4.0`
+  - export CXX=`which clang++-4.0`
 
 script:
   - mkdir build && pushd build
