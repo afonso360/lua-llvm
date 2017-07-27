@@ -21,7 +21,6 @@ before_install:
   - PREFIX="$TRAVIS_BUILD_DIR/install" PLAT="${TRAVIS_OS_NAME/osx/macosx}" TMPSRC="$TRAVIS_BUILD_DIR/.src" .travis/install_lua.sh
   - PREFIX="$TRAVIS_BUILD_DIR/install" .travis/install_llvm.sh
   - ls -lah $TRAVIS_BUILD_DIR/install
-  - ls -lah $TRAVIS_BUILD_DIR/install/latest-llvm-symlinks
 
 
 install:
