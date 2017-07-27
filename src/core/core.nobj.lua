@@ -21,6 +21,7 @@
 
 package "core" {
   subfiles {
-    "types/types.nobj.lua"
+    "types/types.nobj.lua",
+    "context.nobj.lua"
   }
 }

@@ -11,15 +11,20 @@ c_module "llvm" {
 	luajit_ffi = false,
 	luajit_ffi_load_cmodule = false,
 
+  use_globals = false,
+  hide_meta_info = false, --true,
+
+
   include "llvm-c/Core.h",
   include "llvm-c/Types.h",
 
-	c_source "typedefs" [[
-typedef struct LLVMOpaqueType * 	LLVMTypeRef;
-]],
+  c_source "typedefs" [[
+    typedef struct LLVMOpaqueType *  LLVMTypeRef;
+  ]],
 
   subfiles {
-    "src/core/core.nobj.lua",
+    --"src/core/core.nobj.lua",
+    "src/core/context.nobj.lua",
     ---- Missing modules
     -- Threading
     -- Bit Reader

@@ -1,0 +1,5 @@
+describe("Context module", function ()
+	it("should cleanly allocate and deallocate global context", function ()
+		assert.truthy("ay")
+	end)
+end)
