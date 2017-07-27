@@ -31,6 +31,7 @@ install:
 script:
   - mkdir build && pushd build
   - cmake -D USE_PRE_GENERATED_BINDINGS=FALSE \
+          -D CLANG_BINARY_NAME="clang-$LLVM_VERSION"
           -D LUA_INCLUDE_DIR=$TRAVIS_BUILD_DIR/install/include ..
   - make
   - popd
