@@ -46,4 +46,3 @@ make install
 popd
 
 luarocks --version
-

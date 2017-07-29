@@ -15,6 +15,11 @@ set(COMMON_CFLAGS "${CFLAGS}")
 set(COMMON_LDFLAGS)
 set(COMMON_LIBS)
 
+message(STATUS "System Name: ${CMAKE_SYSTEM_NAME}")
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+	list(APPEND CMAKE_PREFIX_PATH /usr/local)
+endif()
+
 if(NOT ${LUA_INCLUDE_DIR})
 	## Find Lua 5
 	include(FindLua)
@@ -26,7 +31,7 @@ endif()
 
 ## LibLlvm
 include(FindPkgConfig)
-find_package(LLVM REQUIRED CONFIG)
+find_package(LLVM 4.0 REQUIRED CONFIG)
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
 message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
 

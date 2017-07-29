@@ -5,23 +5,25 @@ dist: trusty
 compiler:
   - clang
 
-os:
-  - linux
-  - osx
-
 env:
-  #  matrix:
-  global:
-    - LUA_VERSION=LUA53 LLVM_VERSION="4.0"
-    - LUA_VERSION=LUA52 LLVM_VERSION="4.0"
-    - LUA_VERSION=LUA51 LLVM_VERSION="4.0"
+  matrix:
+    - LUA_VERSION=LUA53
+    - LUA_VERSION=LUA52
+    - LUA_VERSION=LUA51
 
 before_install:
-  - export PATH="$TRAVIS_BUILD_DIR/install/bin:$TRAVIS_BUILD_DIR/install/latest-llvm-symlinks:$PATH"
-  - PREFIX="$TRAVIS_BUILD_DIR/install" PLAT="${TRAVIS_OS_NAME/osx/macosx}" TMPSRC="$TRAVIS_BUILD_DIR/.src" .travis/install_lua.sh
-  - PREFIX="$TRAVIS_BUILD_DIR/install" .travis/install_llvm.sh
-  - ls -lah $TRAVIS_BUILD_DIR/install
+  - export LLVM_VERSION="4.0"
+  - export PREFIX="$TRAVIS_BUILD_DIR/install"
+  - export PLAT="${TRAVIS_OS_NAME/osx/macosx}"
+  - export PATH="$TRAVIS_BUILD_DIR/install/bin:$PATH"
+  - export PATH="$TRAVIS_BUILD_DIR/install/latest-llvm-symlinks:$PATH"
+  - export PATH="$HOME/.luarocks/bin:$PATH"
 
+  - TMPSRC="$TRAVIS_BUILD_DIR/.src" .travis/install_lua.sh
+  - .travis/install_llvm.sh
+  - .travis/install_luanativeobjects.sh
+
+  - eval $(luarocks path --bin)
 
 install:
   - luarocks install --local busted
@@ -34,16 +36,14 @@ install:
 script:
   - mkdir build && pushd build
   - cmake -D USE_PRE_GENERATED_BINDINGS=FALSE
-          -D CLANG_BINARY_NAME="clang-4.0"
           -D GENERATE_LUADOCS=TRUE
           -D LUA_INCLUDE_DIR=$TRAVIS_BUILD_DIR/install/include
           -D LUA_LIBRARIES=$TRAVIS_BUILD_DIR/install/lib ..
   - make
   - popd
-  - luarocks make
 
-test:
   - make ci-test
+  - make doc
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
