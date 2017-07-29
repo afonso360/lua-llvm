@@ -6,7 +6,7 @@ describe("Context module", function ()
 		assert.is_not_nil(context)
 	end)
 
-	it("provides access to constructors", function ()
+	it("should provide access to constructors", function ()
     assert.is_truthy(llvm.Context.global_context)
     assert.is_truthy(llvm.Context.create)
 	end)

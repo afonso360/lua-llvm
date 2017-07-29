@@ -5,19 +5,21 @@
 -- to the terms of that license.
 
 object "Context" {
+  -- For some reason using LLVMContextRef isn't really working
+  -- so for now we can use LLVMOpaqueContext
   c_source [[
-    typedef LLVMContextRef Context;
+      typedef struct LLVMOpaqueContext Context;
   ]],
 
   constructor "create" {
-    c_call "!Context" "LLVMContextCreate" { },
+    c_call "!Context *" "LLVMContextCreate" { },
   },
 
   constructor "global_context" {
-    c_call "!Context" "LLVMGetGlobalContext" { },
+    c_call "Context *" "LLVMGetGlobalContext" { },
   },
 
   destructor "dispose" {
-    c_call "void" "LLVMContextDispose" { "Context", "*this" },
+    c_method_call "void" "LLVMContextDispose" {},
   },
 }

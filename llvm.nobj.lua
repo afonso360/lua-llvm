@@ -14,7 +14,6 @@ c_module "llvm" {
   use_globals = false,
   hide_meta_info = false, --true,
 
-
   include "llvm-c/Core.h",
   include "llvm-c/Types.h",
 
