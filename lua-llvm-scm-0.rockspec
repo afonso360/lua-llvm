@@ -27,6 +27,8 @@ build	= {
 		llvm = {
 			sources = { "src/pre_generated-llvm.nobj.c" },
 			libraries = { "llvm" },
+			incdirs = { "$(LLVM_INCDIR)" },
+			libdirs = { "$(LLVM_LIBDIR)" },
 		}
 	}
 }

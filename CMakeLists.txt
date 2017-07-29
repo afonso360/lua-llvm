@@ -31,8 +31,12 @@ message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
 message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
 
 include_directories(${LLVM_INCLUDE_DIRS})
+link_directories(${LLVM_LIBRARY_DIRS})
 add_definitions(${LLVM_DEFINITIONS})
-llvm_map_components_to_libnames(llvm_libs support core irreader bitwriter nativecodegen)
+llvm_map_components_to_libnames(LLVM_LIBRARIES support core irreader bitwriter nativecodegen)
+message(STATUS "LLVM_LIBRARIES: ${LLVM_LIBRARIES}")
+# We probably shouldn't staticly link llvm
+set(COMMON_LIBS "${COMMON_LIBS};${LLVM_LIBRARIES}")
 
 ## LuaNativeObjects
 include(LuaNativeObjects)
@@ -58,6 +62,8 @@ target_link_libraries(lua-llvm ${COMMON_LIBS})
 set_target_properties(lua-llvm PROPERTIES PREFIX "")
 set_target_properties(lua-llvm PROPERTIES COMPILE_FLAGS "${COMMON_CFLAGS}")
 set_target_properties(lua-llvm PROPERTIES OUTPUT_NAME llvm)
+# Not sure this is correct
+target_link_libraries(lua-llvm gcc stdc++)
 
 install(TARGETS lua-llvm
         DESTINATION "${INSTALL_CMOD}")
