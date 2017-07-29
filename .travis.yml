@@ -41,7 +41,7 @@ script:
   - luarocks make
 
 test:
-  - busted -c -Xhelper travis,env=full --cpath=./build/?.so --verbose
+  - make ci-test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

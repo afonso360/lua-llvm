@@ -9,8 +9,12 @@ object "Context" {
     typedef LLVMContextRef Context;
   ]],
 
-  constructor "get_global_context" {
-    c_call "Context" "LLVMGetGlobalContext" { },
+  constructor "create" {
+    c_call "!Context" "LLVMContextCreate" { },
+  },
+
+  constructor "global_context" {
+    c_call "!Context" "LLVMGetGlobalContext" { },
   },
 
   destructor "dispose" {
