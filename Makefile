@@ -16,6 +16,10 @@ test: build
 ci-test:
 	busted -c -Xhelper travis,env=full --verbose $(BUSTED_FLAGS)
 
+
+doc:
+	(cd $(BUILD_DIR) && cmake -D USE_PRE_GENERATED_BINDINGS=FALSE -D GENERATE_LUADOCS=TRUE ..)
+
 clean:
 	rm -rf $(BUILD_DIR)
 
