@@ -42,6 +42,7 @@ script:
   - make
   - popd
 
+  - make build
   - make ci-test
   - make doc
 

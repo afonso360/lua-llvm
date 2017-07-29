@@ -10,7 +10,7 @@ build:
 	(cd $(BUILD_DIR) && cmake ..)
 	(cd $(BUILD_DIR) && make)
 
-test: build
+test:
 	busted $(BUSTED_FLAGS)
 
 ci-test:
@@ -22,5 +22,8 @@ doc:
 
 clean:
 	rm -rf $(BUILD_DIR)
+
+deterministic: build
+	while [ $$? -eq 0 ]; do make test; done
 
 .PHONY: test clean build
