@@ -17,14 +17,10 @@ c_module "llvm" {
   include "llvm-c/Core.h",
   include "llvm-c/Types.h",
 
-  c_source "typedefs" [[
-    typedef struct LLVMOpaqueType *  LLVMTypeRef;
-  ]],
-
   subfiles {
     --"src/core/core.nobj.lua",
     "src/core/context.nobj.lua",
-    ---- Missing modules
+    "src/core/value.nobj.lua",
     -- Threading
     -- Bit Reader
     -- Analysis
