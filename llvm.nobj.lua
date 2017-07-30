@@ -8,8 +8,8 @@
 set_variable_format "%s%d"
 
 c_module "llvm" {
-	luajit_ffi = false,
-	luajit_ffi_load_cmodule = false,
+  luajit_ffi = false,
+  luajit_ffi_load_cmodule = false,
 
   use_globals = false,
   hide_meta_info = false, --true,
