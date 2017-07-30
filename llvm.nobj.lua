@@ -31,7 +31,7 @@ c_module "llvm" {
     -- Bit Writer
     -- Target Information
     -- LTO
-    -- Instruction Builders
+    "src/builder.nobj.lua",
     -- Disassembler
     -- Transforms
     -- Link Time Optimization

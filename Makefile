@@ -1,6 +1,6 @@
 BUILD_DIR ?= $(abspath build/)
 
-BUSTED_FLAGS := --cpath=./build/?.so
+BUSTED_FLAGS := --shuffle --cpath=./build/?.so
 
 all: build
 

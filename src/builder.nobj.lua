@@ -4,20 +4,21 @@
 -- This file may not be copied, modified, or distributed except according
 -- to the terms of that license.
 
-object "Context" {
+
+object "Builder" {
   c_source [[
-      typedef struct LLVMOpaqueContext Context;
+      typedef struct LLVMOpaqueBuilder Builder;
   ]],
 
   constructor "create" {
-    c_call "Context *" "LLVMContextCreate" { },
+    c_call "Builder *" "LLVMCreateBuilder" { },
   },
 
-  constructor "global_context" {
-    c_call "Context *" "LLVMGetGlobalContext" { },
+  constructor "create_in_context" {
+    c_call "Builder *" "LLVMCreateBuilderInContext" { "Context *", "ctx" },
   },
 
   destructor "dispose" {
-    c_method_call "void" "LLVMContextDispose" {},
+    c_method_call "void" "LLVMDisposeBuilder" {},
   },
 }
