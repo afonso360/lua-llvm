@@ -14,7 +14,10 @@ object "Context" {
   },
 
   constructor "global_context" {
-    c_call "Context *" "LLVMGetGlobalContext" { },
+    c_source [[
+      ${this} = LLVMGetGlobalContext();
+      ${this_flags} = 0;
+    ]],
   },
 
   destructor "dispose" {
