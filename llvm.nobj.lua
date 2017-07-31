@@ -19,6 +19,7 @@ c_module "llvm" {
 
   subfiles {
     --"src/core/core.nobj.lua",
+    "src/core/module.nobj.lua",
     "src/core/context.nobj.lua",
     "src/core/value.nobj.lua",
     -- Threading

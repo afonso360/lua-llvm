@@ -1,5 +1,0 @@
-describe("Core modules", function ()
-	it("should provide access to sub modules", function ()
-		assert.truthy("ay")
-	end)
-end)

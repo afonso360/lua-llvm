@@ -1,13 +1,16 @@
 local llvm = require "llvm"
 
+-- TODO: Make a ownership function and test for it
 describe("Context module", function ()
-  it("should cleanly allocate and deallocate global context", function ()
---    local context = llvm.Context.global_context()
---    assert.is_not_nil(context)
+  it("should cleanly get global context", function ()
+    local context = llvm.Context.global_context()
+    assert.is_not_nil(context)
   end)
 
   it("should have a destructor", function ()
---    assert.is.truthy(getmetatable(llvm.Context.global_context()).__gc)
+    local context = llvm.Context.global_context()
+    assert.is.truthy(getmetatable(context).__gc)
+    assert.is.truthy(context.dispose)
   end)
 
   it("should provide access to constructors", function ()
