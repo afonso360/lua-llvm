@@ -9,7 +9,7 @@ object "Value" {
       typedef struct LLVMOpaqueValue Value;
   ]],
 
-  method "get_value_name" {
+  method "value_name" {
     c_method_call "const char *" "LLVMGetValueName" {},
   },
 

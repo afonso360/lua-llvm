@@ -22,7 +22,7 @@ object "Module" {
     c_call "Module *" "LLVMCloneModule" { "Module *", "this" },
   },
 
-  method "get_identifier" {
+  method "identifier" {
     var_out { "const char *", "str" },
     c_source [[
       size_t sz;
@@ -31,10 +31,7 @@ object "Module" {
   },
 
   method "set_identifier" {
-    var_in { "const char *", "str" },
-    c_source [[
-      LLVMSetModuleIdentifier(${this}, ${str}, ${str_len});
-    ]],
+    c_method_call "void" "LLVMSetModuleIdentifier" { "const char *", "str", "size_t", "#str" }
   },
 
   destructor "dispose" {

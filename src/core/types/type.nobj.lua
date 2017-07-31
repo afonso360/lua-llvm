@@ -208,4 +208,13 @@ object "Type" {
       }
     ]],
   },
+  --                                          Function types
+  constructor "func" {
+    c_call "Type *" "LLVMFunctionType" {
+      "Type *", "ret",
+      "Type **", "param",
+      "unsigned", "param_count",
+      "bool", "var_arg"
+    },
+  },
 }
