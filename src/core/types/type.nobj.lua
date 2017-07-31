@@ -64,5 +64,43 @@ object "Type" {
   method "get_int_type_width" {
     c_method_call "unsigned" "LLVMGetIntTypeWidth" {}
   },
+
+  --                                          Floating Point types
+  c_function "half_type" {
+    c_call "Type *" "LLVMHalfType" { }
+  },
+  c_function "float_type" {
+    c_call "Type *" "LLVMFloatType" { }
+  },
+  c_function "double_type" {
+    c_call "Type *" "LLVMDoubleType" { }
+  },
+  c_function "x86fp80_type" {
+    c_call "Type *" "LLVMX86FP80Type" { }
+  },
+  c_function "fp128_type" {
+    c_call "Type *" "LLVMFP128Type" { }
+  },
+  c_function "ppcfp128_type" {
+    c_call "Type *" "LLVMPPCFP128Type" { }
+  },
+  c_function "half_type_in_context" {
+    c_call "Type *" "LLVMHalfTypeInContext" { "Context *", "ctx" }
+  },
+  c_function "float_type_in_context" {
+    c_call "Type *" "LLVMFloatTypeInContext" { "Context *", "ctx" }
+  },
+  c_function "double_type_in_context" {
+    c_call "Type *" "LLVMDoubleTypeInContext" { "Context *", "ctx" }
+  },
+  c_function "x86fp80_type_in_context" {
+    c_call "Type *" "LLVMX86FP80TypeInContext" { "Context *", "ctx" }
+  },
+  c_function "fp128_type_in_context" {
+    c_call "Type *" "LLVMFP128TypeInContext" { "Context *", "ctx" }
+  },
+  c_function "ppcfp128_type_in_context" {
+    c_call "Type *" "LLVMPPCFP128TypeInContext" { "Context *", "ctx" }
+  },
 }
 
