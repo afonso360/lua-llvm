@@ -22,8 +22,4 @@
 --LLVMGetIntTypeWidth
 
 package "integer" {
-  --method "int1type" {
-  --  c_call "void *" "LLVMInt1Type" { }
-  --  --c_call "LLVMTypeRef" "LLVMInt1Type" { }
-  --}
 }
