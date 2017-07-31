@@ -18,7 +18,6 @@ c_module "llvm" {
   include "llvm-c/Types.h",
 
   subfiles {
-    --"src/core/core.nobj.lua",
     "src/core/module.nobj.lua",
     "src/core/context.nobj.lua",
     "src/core/value.nobj.lua",

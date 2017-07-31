@@ -13,6 +13,13 @@ object "Value" {
     c_method_call "const char *" "LLVMGetValueName" {},
   },
 
+  method "set_value_name" {
+    var_in { "const char *", "str" },
+    c_source [[
+      LLVMSetValueName(${this}, ${str});
+    ]],
+  },
+
   method "is_constant" {
     c_method_call "bool" "LLVMIsConstant" {},
   },
