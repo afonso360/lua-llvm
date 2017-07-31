@@ -19,46 +19,89 @@ object "Type" {
 
   --                                          Integer types
   c_function "int_1_type" {
-    c_call "Type *" "LLVMInt1Type" { }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMInt1Type();
+      } else {
+         ${type} = LLVMInt1TypeInContext(${ctx});
+      }
+    ]],
   },
   c_function "int_8_type" {
-    c_call "Type *" "LLVMInt8Type" { }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMInt8Type();
+      } else {
+         ${type} = LLVMInt8TypeInContext(${ctx});
+      }
+    ]],
   },
   c_function "int_16_type" {
-    c_call "Type *" "LLVMInt16Type" { }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMInt16Type();
+      } else {
+         ${type} = LLVMInt16TypeInContext(${ctx});
+      }
+    ]],
   },
   c_function "int_32_type" {
-    c_call "Type *" "LLVMInt32Type" { }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMInt32Type();
+      } else {
+         ${type} = LLVMInt32TypeInContext(${ctx});
+      }
+    ]],
   },
   c_function "int_64_type" {
-    c_call "Type *" "LLVMInt64Type" { }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMInt64Type();
+      } else {
+         ${type} = LLVMInt64TypeInContext(${ctx});
+      }
+    ]],
   },
   c_function "int_128_type" {
-    c_call "Type *" "LLVMInt128Type" { }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMInt128Type();
+      } else {
+         ${type} = LLVMInt128TypeInContext(${ctx});
+      }
+    ]],
   },
   c_function "int_type" {
-    c_call "Type *" "LLVMIntType" { "unsigned", "bits" }
-  },
-  c_function "int_1_type_in_context" {
-    c_call "Type *" "LLVMInt1TypeInContext" { "Context *", "ctx" }
-  },
-  c_function "int_8_type_in_context" {
-    c_call "Type *" "LLVMInt8TypeInContext" { "Context *", "ctx" }
-  },
-  c_function "int_16_type_in_context" {
-    c_call "Type *" "LLVMInt16TypeInContext" { "Context *", "ctx" }
-  },
-  c_function "int_32_type_in_context" {
-    c_call "Type *" "LLVMInt32TypeInContext" { "Context *", "ctx" }
-  },
-  c_function "int_64_type_in_context" {
-    c_call "Type *" "LLVMInt64TypeInContext" { "Context *", "ctx" }
-  },
-  c_function "int_128_type_in_context" {
-    c_call "Type *" "LLVMInt128TypeInContext" { "Context *", "ctx" }
-  },
-  c_function "int_type_in_context" {
-    c_call "Type *" "LLVMIntTypeInContext" { "Context *", "ctx", "unsigned", "bits" }
+    doc [[ Context is optional ]],
+    var_in { "unsigned", "bits" },
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMIntType(${bits});
+      } else {
+         ${type} = LLVMIntTypeInContext(${ctx}, ${bits});
+      }
+    ]],
   },
 
   method "get_int_type_width" {
@@ -67,40 +110,76 @@ object "Type" {
 
   --                                          Floating Point types
   c_function "half_type" {
-    c_call "Type *" "LLVMHalfType" { }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMHalfType();
+      } else {
+         ${type} = LLVMHalfTypeInContext(${ctx});
+      }
+    ]],
   },
   c_function "float_type" {
-    c_call "Type *" "LLVMFloatType" { }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMFloatType();
+      } else {
+         ${type} = LLVMFloatTypeInContext(${ctx});
+      }
+    ]],
   },
   c_function "double_type" {
-    c_call "Type *" "LLVMDoubleType" { }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMDoubleType();
+      } else {
+         ${type} = LLVMDoubleTypeInContext(${ctx});
+      }
+    ]],
   },
   c_function "x86fp80_type" {
-    c_call "Type *" "LLVMX86FP80Type" { }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMX86FP80Type();
+      } else {
+         ${type} = LLVMX86FP80TypeInContext(${ctx});
+      }
+    ]],
   },
   c_function "fp128_type" {
-    c_call "Type *" "LLVMFP128Type" { }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMFP128Type();
+      } else {
+         ${type} = LLVMFP128TypeInContext(${ctx});
+      }
+    ]],
   },
   c_function "ppcfp128_type" {
-    c_call "Type *" "LLVMPPCFP128Type" { }
-  },
-  c_function "half_type_in_context" {
-    c_call "Type *" "LLVMHalfTypeInContext" { "Context *", "ctx" }
-  },
-  c_function "float_type_in_context" {
-    c_call "Type *" "LLVMFloatTypeInContext" { "Context *", "ctx" }
-  },
-  c_function "double_type_in_context" {
-    c_call "Type *" "LLVMDoubleTypeInContext" { "Context *", "ctx" }
-  },
-  c_function "x86fp80_type_in_context" {
-    c_call "Type *" "LLVMX86FP80TypeInContext" { "Context *", "ctx" }
-  },
-  c_function "fp128_type_in_context" {
-    c_call "Type *" "LLVMFP128TypeInContext" { "Context *", "ctx" }
-  },
-  c_function "ppcfp128_type_in_context" {
-    c_call "Type *" "LLVMPPCFP128TypeInContext" { "Context *", "ctx" }
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMPPCFP128Type();
+      } else {
+         ${type} = LLVMPPCFP128TypeInContext(${ctx});
+      }
+    ]],
   },
 }
 

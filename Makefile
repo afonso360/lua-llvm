@@ -18,7 +18,7 @@ ci-test:
 
 
 doc:
-	(cd $(BUILD_DIR) && cmake -D USE_PRE_GENERATED_BINDINGS=FALSE -D GENERATE_LUADOCS=TRUE ..)
+	(cd $(BUILD_DIR) && cmake -D USE_PRE_GENERATED_BINDINGS=FALSE -D GENERATE_LUADOCS=TRUE .. && make llvm.luadoc)
 
 clean:
 	rm -rf $(BUILD_DIR)

@@ -17,10 +17,16 @@ describe("Type module", function ()
 
     it("should be able to create in context", function ()
       local context = llvm.Context.global_context()
-      local type = llvm.Type.int_type_in_context(context, 120)
+      local type = llvm.Type.int_type(120, context)
+
       assert.is_not_nil(type)
       assert.is_not_nil(context)
       assert.are.equal(context, type:get_context())
+
+      local type1 = llvm.Type.int_1_type(context)
+      assert.is_not_nil(type1)
+      assert.are.equal(context, type1:get_context())
+
     end)
   end)
   describe("Floating point type", function ()
@@ -32,7 +38,7 @@ describe("Type module", function ()
 
     it("should be able to create in context", function ()
       local context = llvm.Context.global_context()
-      local type = llvm.Type.half_type_in_context(context)
+      local type = llvm.Type.half_type(context)
       assert.is_not_nil(type)
       assert.is_not_nil(context)
       assert.are.equal(context, type:get_context())
