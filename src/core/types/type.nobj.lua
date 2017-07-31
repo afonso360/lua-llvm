@@ -4,6 +4,10 @@
 -- This file may not be copied, modified, or distributed except according
 -- to the terms of that license.
 
+-- Missing
+-- Sequential types
+-- Structure types
+-- Function  types
 object "Type" {
   c_source [[
       typedef struct LLVMOpaqueType Type;
@@ -18,7 +22,7 @@ object "Type" {
   },
 
   --                                          Integer types
-  c_function "int_1_type" {
+  constructor "int_1" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -30,7 +34,7 @@ object "Type" {
       }
     ]],
   },
-  c_function "int_8_type" {
+  constructor "int_8" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -42,7 +46,7 @@ object "Type" {
       }
     ]],
   },
-  c_function "int_16_type" {
+  constructor "int_16" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -54,7 +58,7 @@ object "Type" {
       }
     ]],
   },
-  c_function "int_32_type" {
+  constructor "int_32" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -66,7 +70,7 @@ object "Type" {
       }
     ]],
   },
-  c_function "int_64_type" {
+  constructor "int_64" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -78,7 +82,7 @@ object "Type" {
       }
     ]],
   },
-  c_function "int_128_type" {
+  constructor "int_128" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -90,8 +94,9 @@ object "Type" {
       }
     ]],
   },
-  c_function "int_type" {
+  constructor "int" {
     doc [[ Context is optional ]],
+    doc [[ Bits: Size of the integer ]],
     var_in { "unsigned", "bits" },
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -104,12 +109,12 @@ object "Type" {
     ]],
   },
 
-  method "get_int_type_width" {
+  method "get_int_width" {
     c_method_call "unsigned" "LLVMGetIntTypeWidth" {}
   },
 
   --                                          Floating Point types
-  c_function "half_type" {
+  constructor "half" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -121,7 +126,7 @@ object "Type" {
       }
     ]],
   },
-  c_function "float_type" {
+  constructor "float" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -133,7 +138,7 @@ object "Type" {
       }
     ]],
   },
-  c_function "double_type" {
+  constructor "double" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -145,7 +150,7 @@ object "Type" {
       }
     ]],
   },
-  c_function "x86fp80_type" {
+  constructor "x86fp80" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -157,7 +162,7 @@ object "Type" {
       }
     ]],
   },
-  c_function "fp128_type" {
+  constructor "fp128" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -169,7 +174,7 @@ object "Type" {
       }
     ]],
   },
-  c_function "ppcfp128_type" {
+  constructor "ppcfp128" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     var_out { "Type *", "type" },
@@ -181,5 +186,42 @@ object "Type" {
       }
     ]],
   },
-}
 
+  --                                          Other types
+  constructor "void" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMVoidType();
+      } else {
+         ${type} = LLVMVoidTypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "label" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMLabelType();
+      } else {
+         ${type} = LLVMLabelTypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "x86mmx" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    var_out { "Type *", "type" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${type} = LLVMX86MMXType();
+      } else {
+         ${type} = LLVMX86MMXTypeInContext(${ctx});
+      }
+    ]],
+  },
+}
