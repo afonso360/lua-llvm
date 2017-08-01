@@ -9,7 +9,7 @@ local llvm = require "llvm"
 describe("Type module", function ()
   describe("Integer type", function ()
     it("should have constant length", function ()
-      local type = llvm.Type.int_1()
+      local type = llvm.Type.int1()
       assert.is_not_nil(type)
       assert.is.truthy(type:is_sized())
     end)
@@ -29,7 +29,7 @@ describe("Type module", function ()
       assert.is_not_nil(context)
       assert.are.equal(context, type:get_context())
 
-      local type1 = llvm.Type.int_1(context)
+      local type1 = llvm.Type.int1(context)
       assert.is_not_nil(type1)
       assert.are.equal(context, type1:get_context())
 

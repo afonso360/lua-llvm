@@ -22,7 +22,7 @@ object "Type" {
   },
 
   --                                          Integer types
-  constructor "int_1" {
+  constructor "int1" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     c_source [[
@@ -33,7 +33,7 @@ object "Type" {
       }
     ]],
   },
-  constructor "int_8" {
+  constructor "int8" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     c_source [[
@@ -44,7 +44,7 @@ object "Type" {
       }
     ]],
   },
-  constructor "int_16" {
+  constructor "int16" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     c_source [[
@@ -55,7 +55,7 @@ object "Type" {
       }
     ]],
   },
-  constructor "int_32" {
+  constructor "int32" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     c_source [[
@@ -66,7 +66,7 @@ object "Type" {
       }
     ]],
   },
-  constructor "int_64" {
+  constructor "int64" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     c_source [[
@@ -77,7 +77,7 @@ object "Type" {
       }
     ]],
   },
-  constructor "int_128" {
+  constructor "int128" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     c_source [[
