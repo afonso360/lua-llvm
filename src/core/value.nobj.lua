@@ -27,4 +27,26 @@ object "Value" {
   method "is_undef" {
     c_method_call "bool" "LLVMIsUndef" {},
   },
+
+}
+
+object "IntValue" {
+  extends "Value",
+
+  c_function "const_int" {
+    c_call "Value *" "LLVMConstInt" {
+      "Type *", "int_ty",
+      "uint64_t", "n", -- The original type is unsigned long long, but LNO is not liking that
+      "bool", "sign_extend",
+    },
+  },
+
+  c_function "const_int_of_string" {
+    c_call "Value *" "LLVMConstIntOfStringAndSize" {
+      "Type *", "int_ty",
+      "const char *", "str",
+      "unsigned", "#str",
+      "uint8_t", "radix",
+    },
+  },
 }
