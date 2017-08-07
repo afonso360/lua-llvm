@@ -33,6 +33,8 @@ object "Value" {
 object "IntValue" {
   extends "Value",
 
+
+  -- TODO: Change to constructor
   c_function "const_int" {
     c_call "Value *" "LLVMConstInt" {
       "Type *", "int_ty",

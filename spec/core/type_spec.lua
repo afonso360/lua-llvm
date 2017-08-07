@@ -59,14 +59,15 @@ describe("Type module", function ()
   end)
 end)
 
-describe("TypeArr module", function ()
-  it("should be ", function ()
+describe("FunctionType module", function ()
+  it("should construct correctly", function ()
     local r = llvm.Type.int1()
     local v = {
       llvm.Type.int8(),
       llvm.Type.int16(),
     }
-    local ftype = llvm.Type.func(r, v, false)
+    local ftype = llvm.FunctionType.new(r, v, false)
     assert.is_false(ftype:is_vararg())
+    assert.are_equal(ftype:count_param_types(), 2)
   end)
 end)

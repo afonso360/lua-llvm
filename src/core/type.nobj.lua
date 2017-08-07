@@ -208,8 +208,15 @@ object "Type" {
       }
     ]],
   },
-  --                                          Function types
-  constructor "func" {
+}
+
+object "FunctionType" {
+  extends "Type",
+  c_source [[
+      typedef Type FunctionType;
+  ]],
+
+  constructor "new" {
     var_in { "Type *", "return_type" },
     var_in { "<any>", "parameters" },
     var_in { "bool", "var_arg" },
@@ -235,4 +242,20 @@ object "Type" {
   method "is_vararg" {
     c_method_call "bool" "LLVMIsFunctionVarArg" {}
   },
+
+  method "return_type" {
+    c_method_call "Type *" "LLVMGetReturnType" {}
+  },
+
+  method "count_param_types" {
+    c_method_call "unsigned" "LLVMCountParamTypes" {}
+  },
+  method "param_types" {
+    --c_method_call "bool" "LLVMGetParamTypes" {}
+    --var_in { "FunctionType *", "${this}" },
+    c_source [[
+      size_t n;
+      Type ** arr;
+    ]],
+  }
 }
