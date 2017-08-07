@@ -58,3 +58,15 @@ describe("Type module", function ()
     end)
   end)
 end)
+
+describe("TypeArr module", function ()
+  it("should be ", function ()
+    local r = llvm.Type.int1()
+    local v = {
+      llvm.Type.int8(),
+      llvm.Type.int16(),
+    }
+    local ftype = llvm.Type.func(r, v, false)
+    assert.is_false(ftype:is_vararg())
+  end)
+end)

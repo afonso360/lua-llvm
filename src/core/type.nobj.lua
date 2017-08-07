@@ -106,7 +106,7 @@ object "Type" {
     c_method_call "unsigned" "LLVMGetIntTypeWidth" {}
   },
 
-  --                                          Floating Pointthis 
+  --                                          Floating Point
   constructor "half" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
@@ -210,11 +210,29 @@ object "Type" {
   },
   --                                          Function types
   constructor "func" {
-    c_call "Type *" "LLVMFunctionType" {
-      "Type *", "ret",
-      "Type **", "param",
-      "unsigned", "param_count",
-      "bool", "var_arg"
-    },
+    var_in { "Type *", "return_type" },
+    var_in { "<any>", "parameters" },
+    var_in { "bool", "var_arg" },
+    c_source [[
+      size_t n;
+      Type ** arr;
+
+      n = lua_rawlen(L, 2);
+      arr = calloc(n, sizeof(Type *));
+
+      for (int i=1; i<=n; i++) {
+        lua_rawgeti(L, 2, i);
+        arr[i-1] = obj_type_Type_check(L, -1);
+        lua_pop(L, 1);
+      }
+
+      ${this} = LLVMFunctionType(${return_type}, arr, n, ${var_arg});
+
+      free(arr);
+    ]],
+  },
+
+  method "is_vararg" {
+    c_method_call "bool" "LLVMIsFunctionVarArg" {}
   },
 }
