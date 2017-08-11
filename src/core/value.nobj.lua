@@ -33,6 +33,10 @@ object "Value" {
     c_method_call "bool" "LLVMIsUndef" {},
   },
 
+  method "is_null" {
+    c_method_call "bool" "LLVMIsNull" {},
+  },
+
 }
 
 object "IntValue" {
@@ -42,7 +46,7 @@ object "IntValue" {
   ]],
 
   constructor "const_int" {
-    c_call "Value *" "LLVMConstInt" {
+    c_call "IntValue *" "LLVMConstInt" {
       "Type *", "int_ty",
       "uint64_t", "n", -- The original type is unsigned long long, but LNO is not liking that
       "bool", "sign_extend",
@@ -50,7 +54,7 @@ object "IntValue" {
   },
 
   constructor "const_int_of_string" {
-    c_call "Value *" "LLVMConstIntOfStringAndSize" {
+    c_call "IntValue *" "LLVMConstIntOfStringAndSize" {
       "Type *", "int_ty",
       "const char *", "str",
       "unsigned", "#str",
