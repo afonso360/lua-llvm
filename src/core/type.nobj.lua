@@ -26,7 +26,6 @@ object "Type" {
     c_method_call "void" "LLVMDumpType" {},
   },
 
-  --                                          Other types
   constructor "void" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },

@@ -20,6 +20,11 @@ object "Value" {
     ]],
   },
 
+  method "dump" {
+    doc [[ Dumps the value to stderr ]],
+    c_method_call "void" "LLVMDumpValue" {},
+  },
+
   method "is_constant" {
     c_method_call "bool" "LLVMIsConstant" {},
   },
@@ -32,10 +37,11 @@ object "Value" {
 
 object "IntValue" {
   extends "Value",
+  c_source [[
+      typedef Value IntValue;
+  ]],
 
-
-  -- TODO: Change to constructor
-  c_function "const_int" {
+  constructor "const_int" {
     c_call "Value *" "LLVMConstInt" {
       "Type *", "int_ty",
       "uint64_t", "n", -- The original type is unsigned long long, but LNO is not liking that
@@ -43,7 +49,7 @@ object "IntValue" {
     },
   },
 
-  c_function "const_int_of_string" {
+  constructor "const_int_of_string" {
     c_call "Value *" "LLVMConstIntOfStringAndSize" {
       "Type *", "int_ty",
       "const char *", "str",
