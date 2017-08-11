@@ -21,157 +21,9 @@ object "Type" {
     c_method_call "bool" "LLVMTypeIsSized" {},
   },
 
-  --                                          Integer types
-  constructor "int1" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMInt1Type();
-      } else {
-         ${this} = LLVMInt1TypeInContext(${ctx});
-      }
-    ]],
-  },
-  constructor "int8" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMInt8Type();
-      } else {
-         ${this} = LLVMInt8TypeInContext(${ctx});
-      }
-    ]],
-  },
-  constructor "int16" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMInt16Type();
-      } else {
-         ${this} = LLVMInt16TypeInContext(${ctx});
-      }
-    ]],
-  },
-  constructor "int32" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMInt32Type();
-      } else {
-         ${this} = LLVMInt32TypeInContext(${ctx});
-      }
-    ]],
-  },
-  constructor "int64" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMInt64Type();
-      } else {
-         ${this} = LLVMInt64TypeInContext(${ctx});
-      }
-    ]],
-  },
-  constructor "int128" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMInt128Type();
-      } else {
-         ${this} = LLVMInt128TypeInContext(${ctx});
-      }
-    ]],
-  },
-  constructor "int" {
-    doc [[ Context is optional ]],
-    doc [[ Bits: Size of the integer ]],
-    var_in { "unsigned", "bits" },
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMIntType(${bits});
-      } else {
-         ${this} = LLVMIntTypeInContext(${ctx}, ${bits});
-      }
-    ]],
-  },
-
-  method "get_int_width" {
-    c_method_call "unsigned" "LLVMGetIntTypeWidth" {}
-  },
-
-  --                                          Floating Point
-  constructor "half" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMHalfType();
-      } else {
-         ${this} = LLVMHalfTypeInContext(${ctx});
-      }
-    ]],
-  },
-  constructor "float" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMFloatType();
-      } else {
-         ${this} = LLVMFloatTypeInContext(${ctx});
-      }
-    ]],
-  },
-  constructor "double" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMDoubleType();
-      } else {
-         ${this} = LLVMDoubleTypeInContext(${ctx});
-      }
-    ]],
-  },
-  constructor "x86fp80" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMX86FP80Type();
-      } else {
-         ${this} = LLVMX86FP80TypeInContext(${ctx});
-      }
-    ]],
-  },
-  constructor "fp128" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMFP128Type();
-      } else {
-         ${this} = LLVMFP128TypeInContext(${ctx});
-      }
-    ]],
-  },
-  constructor "ppcfp128" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMPPCFP128Type();
-      } else {
-         ${this} = LLVMPPCFP128TypeInContext(${ctx});
-      }
-    ]],
+  method "dump" {
+    doc [[ Dumps a type to stderr ]],
+    c_method_call "void" "LLVMDumpType" {},
   },
 
   --                                          Other types
@@ -270,4 +122,169 @@ object "FunctionType" {
       free(arr);
     ]],
   }
+}
+
+object "IntType" {
+  extends "Type",
+  c_source [[
+      typedef Type IntType;
+  ]],
+
+  constructor "int1" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMInt1Type();
+      } else {
+         ${this} = LLVMInt1TypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "int8" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMInt8Type();
+      } else {
+         ${this} = LLVMInt8TypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "int16" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMInt16Type();
+      } else {
+         ${this} = LLVMInt16TypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "int32" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMInt32Type();
+      } else {
+         ${this} = LLVMInt32TypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "int64" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMInt64Type();
+      } else {
+         ${this} = LLVMInt64TypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "int128" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMInt128Type();
+      } else {
+         ${this} = LLVMInt128TypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "int" {
+    doc [[ Context is optional ]],
+    doc [[ Bits: Size of the integer ]],
+    var_in { "unsigned", "bits" },
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMIntType(${bits});
+      } else {
+         ${this} = LLVMIntTypeInContext(${ctx}, ${bits});
+      }
+    ]],
+  },
+
+  method "get_int_width" {
+    c_method_call "unsigned" "LLVMGetIntTypeWidth" {}
+  },
+}
+
+object "FloatType" {
+  extends "Type",
+  c_source [[
+      typedef Type FloatType;
+  ]],
+  --                                          Floating Point
+  constructor "half" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMHalfType();
+      } else {
+         ${this} = LLVMHalfTypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "float" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMFloatType();
+      } else {
+         ${this} = LLVMFloatTypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "double" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMDoubleType();
+      } else {
+         ${this} = LLVMDoubleTypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "x86fp80" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMX86FP80Type();
+      } else {
+         ${this} = LLVMX86FP80TypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "fp128" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMFP128Type();
+      } else {
+         ${this} = LLVMFP128TypeInContext(${ctx});
+      }
+    ]],
+  },
+  constructor "ppcfp128" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMPPCFP128Type();
+      } else {
+         ${this} = LLVMPPCFP128TypeInContext(${ctx});
+      }
+    ]],
+  },
 }
