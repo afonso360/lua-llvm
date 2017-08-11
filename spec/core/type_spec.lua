@@ -69,5 +69,8 @@ describe("FunctionType module", function ()
     local ftype = llvm.FunctionType.new(r, v, false)
     assert.is_false(ftype:is_vararg())
     assert.are_equal(ftype:count_param_types(), 2)
+    assert.are.same(ftype:param_types(), v)
+
+    -- TODO: Assert param_types doesen't own its data
   end)
 end)

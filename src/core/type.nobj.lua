@@ -251,11 +251,23 @@ object "FunctionType" {
     c_method_call "unsigned" "LLVMCountParamTypes" {}
   },
   method "param_types" {
-    --c_method_call "bool" "LLVMGetParamTypes" {}
-    --var_in { "FunctionType *", "${this}" },
+    var_out { "<any>", "parameters" },
+
     c_source [[
-      size_t n;
-      Type ** arr;
+      size_t n = LLVMCountParamTypes(${this});
+      Type ** arr = calloc(n, sizeof(Type *));
+
+      lua_createtable(L, n, 0);
+
+      LLVMGetParamTypes(${this}, arr);
+
+      for (int i=0; i<n; i++) {
+        Type * ty = arr[i];
+        obj_type_FunctionType_push(L, ty, 0);
+        lua_rawseti(L, -2, i+1);
+      }
+
+      free(arr);
     ]],
   }
 }
