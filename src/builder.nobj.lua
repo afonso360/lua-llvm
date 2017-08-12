@@ -10,7 +10,7 @@ object "Builder" {
       typedef struct LLVMOpaqueBuilder Builder;
   ]],
 
-  constructor "new" {
+  constructor "create" {
     doc [[ Context is optional ]],
     var_in { "Context *", "ctx?" },
     c_source [[
@@ -26,4 +26,22 @@ object "Builder" {
   destructor "dispose" {
     c_method_call "void" "LLVMDisposeBuilder" {},
   },
+
+
+  method "build_add" {
+    c_method_call "Value *" "LLVMBuildAdd" {
+      "Value *", "lhs",
+      "Value *", "rhs",
+      "const char *", "name"
+    }
+  },
+
+  method "build_sub" {
+    c_method_call "Value *" "LLVMBuildSub" {
+      "Value *", "lhs",
+      "Value *", "rhs",
+      "const char *", "name"
+    }
+  }
+
 }

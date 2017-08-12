@@ -9,11 +9,11 @@ object "Value" {
       typedef struct LLVMOpaqueValue Value;
   ]],
 
-  method "value_name" {
+  method "name" {
     c_method_call "const char *" "LLVMGetValueName" {},
   },
 
-  method "set_value_name" {
+  method "set_name" {
     var_in { "const char *", "str" },
     c_source [[
       LLVMSetValueName(${this}, ${str});
@@ -45,6 +45,7 @@ object "IntValue" {
       typedef Value IntValue;
   ]],
 
+  -- TODO: Rename to const
   constructor "const_int" {
     c_call "IntValue *" "LLVMConstInt" {
       "Type *", "int_ty",
