@@ -10,9 +10,22 @@ object "BasicBlock" {
       typedef struct LLVMOpaqueBasicBlock BasicBlock;
   ]],
 
+  constructor "append" {
+    doc [[ Context is optional ]],
+    var_in { "Value *", "fn" }, -- TODO: Change to FunctionValue
+    var_in { "const char *", "name" },
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMAppendBasicBlock(${fn}, ${name});
+      } else {
+         ${this} = LLVMAppendBasicBlockInContext(${ctx}, ${fn}, ${name});
+      }
+    ]],
+  },
+
   method "name" {
     c_method_call "const char *" "LLVMGetBasicBlockName" { }
   }
-
 
 }
