@@ -20,7 +20,6 @@ object "Builder" {
          ${this} = LLVMCreateBuilderInContext(${ctx});
       }
     ]],
-    c_call "Builder *" "LLVMCreateBuilder" { },
   },
 
   destructor "dispose" {
