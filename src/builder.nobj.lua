@@ -10,12 +10,17 @@ object "Builder" {
       typedef struct LLVMOpaqueBuilder Builder;
   ]],
 
-  constructor "create" {
+  constructor "new" {
+    doc [[ Context is optional ]],
+    var_in { "Context *", "ctx?" },
+    c_source [[
+      if (${ctx} == NULL) {
+         ${this} = LLVMCreateBuilder();
+      } else {
+         ${this} = LLVMCreateBuilderInContext(${ctx});
+      }
+    ]],
     c_call "Builder *" "LLVMCreateBuilder" { },
-  },
-
-  constructor "create_in_context" {
-    c_call "Builder *" "LLVMCreateBuilderInContext" { "Context *", "ctx" },
   },
 
   destructor "dispose" {
