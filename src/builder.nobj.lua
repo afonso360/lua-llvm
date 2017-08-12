@@ -44,6 +44,10 @@ object "Builder" {
       "Value *", "rhs",
       "const char *", "name"
     }
+  },
+
+  method "build_ret" {
+    c_method_call "Value *" "LLVMBuildRet" { "Value *", "lhs" }
   }
 
 }
