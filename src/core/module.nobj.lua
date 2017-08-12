@@ -51,8 +51,10 @@ object "Module" {
   },
 
   method "add_function" {
-    -- TODO: should this be a FunctionType, instead of a valueType?
-    c_method_call "Value *" "LLVMAddFunction" { "const char *", "name", "FunctionType *", "function_type" }
+    c_method_call "FunctionValue *" "LLVMAddFunction" {
+      "const char *", "name",
+      "FunctionType *", "function_type"
+    }
   },
   method "get_function" {
     c_method_call "Value *" "LLVMGetNamedFunction" { "const char *", "name" }
