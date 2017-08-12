@@ -12,7 +12,7 @@ object "BasicBlock" {
 
   constructor "append" {
     doc [[ Context is optional ]],
-    var_in { "Value *", "fn" }, -- TODO: Change to FunctionValue
+    var_in { "FunctionValue *", "fn" }, -- TODO: Change to FunctionValue
     var_in { "const char *", "name" },
     var_in { "Context *", "ctx?" },
     c_source [[

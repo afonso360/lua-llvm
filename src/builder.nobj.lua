@@ -26,6 +26,9 @@ object "Builder" {
     c_method_call "void" "LLVMDisposeBuilder" {},
   },
 
+  method "position_at_end" {
+    c_method_call "void" "LLVMPositionBuilderAtEnd" { "BasicBlock *", "bb" }
+  },
 
   method "build_add" {
     c_method_call "Value *" "LLVMBuildAdd" {

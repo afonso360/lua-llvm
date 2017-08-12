@@ -63,3 +63,11 @@ object "IntValue" {
     },
   },
 }
+
+object "FunctionValue" {
+  extends "Value",
+  c_source [[
+      typedef Value FunctionValue;
+  ]],
+
+}

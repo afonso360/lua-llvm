@@ -22,6 +22,7 @@ c_module "llvm" {
     "src/core/module.nobj.lua",
     "src/core/context.nobj.lua",
     "src/core/value.nobj.lua",
+    "src/core/basic_block.nobj.lua",
     -- Threading
     -- Bit Reader
     -- Analysis
