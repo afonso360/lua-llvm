@@ -10,18 +10,6 @@ object "BasicBlock" {
       typedef struct LLVMOpaqueBasicBlock BasicBlock;
   ]],
 
-  constructor "create" {
-    doc [[ Context is optional ]],
-    var_in { "Context *", "ctx?" },
-    c_source [[
-      if (${ctx} == NULL) {
-         ${this} = LLVMCreateBasicBlock();
-      } else {
-         ${this} = LLVMCreateBasicBlockInContext(${ctx});
-      }
-    ]],
-  },
-
   method "name" {
     c_method_call "const char *" "LLVMGetBasicBlockName" { }
   }
