@@ -48,7 +48,7 @@ object "IntValue" {
   -- TODO: Rename to const
   constructor "const" {
     c_call "IntValue *" "LLVMConstInt" {
-      "Type *", "int_ty",
+      "IntType *", "ty",
       "uint64_t", "n", -- The original type is unsigned long long, but LNO is not liking that
       "bool", "sign_extend",
     },
@@ -56,13 +56,52 @@ object "IntValue" {
 
   constructor "const_of_string" {
     c_call "IntValue *" "LLVMConstIntOfStringAndSize" {
-      "Type *", "int_ty",
+      "IntType *", "ty",
       "const char *", "str",
       "unsigned", "#str",
       "uint8_t", "radix",
     },
   },
+
+  method "zext" {
+    -- The original type is unsigned long long, but LNO is not liking that
+    c_method_call "uint64_t" "LLVMConstIntGetZExtValue" { }
+  },
+
+  method "sext" {
+    -- The original type is long long, but LNO is not liking that
+    c_method_call "int64_t" "LLVMConstIntGetSExtValue" { }
+  }
 }
+
+object "FloatValue" {
+  extends "Value",
+  c_source [[
+      typedef Value FloatValue;
+  ]],
+
+  -- TODO: Rename to const
+  constructor "const" {
+    c_call "FloatValue *" "LLVMConstReal" {
+      "FloatType *", "ty",
+      "double", "n",
+    },
+  },
+
+  constructor "const_of_string" {
+    c_call "IntValue *" "LLVMConstRealOfStringAndSize" {
+      "FloatType *", "ty",
+      "const char *", "str",
+      "unsigned", "#str",
+    },
+  },
+
+  method "value" {
+    -- TODO: double 	LLVMConstRealGetDouble (LLVMValueRef ConstantVal, LLVMBool *losesInfo)
+-- 	Obtain the double value for an floating point constant value.
+  }
+}
+
 
 object "FunctionValue" {
   extends "Value",

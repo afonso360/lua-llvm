@@ -22,7 +22,7 @@ describe("Builder module", function ()
 
   it("can emit instructions", function ()
     local builder = llvm.Builder.create()
-    local val = llvm.IntValue.const_int(llvm.IntType.int8(), 10, false)
+    local val = llvm.IntValue.const(llvm.IntType.int8(), 10, false)
     local result = builder:build_add(val, val, "res")
     --assert.are.equal(result:name(), "res")
   end)
