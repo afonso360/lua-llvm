@@ -321,13 +321,13 @@ object "Builder" {
     }
   },
 
-  method "LLVMBuildFree" {
+  method "build_Free" {
     c_method_call "Value *" "LLVMBuildFree" {
       "Value *", "ptr"
     }
   },
 
-  method "LLVMBuildLoad" {
+  method "build_Load" {
     c_method_call "Value *" "LLVMBuildLoad" {
       -- TODO: Replace with PtrValue
       "Value *", "ptr",
@@ -335,7 +335,7 @@ object "Builder" {
     }
   },
 
-  method "LLVMBuildStore" {
+  method "build_Store" {
     c_method_call "Value *" "LLVMBuildStore" {
       "Value *", "val",
       -- TODO: Replace with PtrValue
@@ -343,4 +343,419 @@ object "Builder" {
     }
   },
 
+  --method "build_GEP" {
+  --  c_method_call "LLVMValueRef" "LLVMBuildGEP" {
+  --    "LLVMValueRef", "ptr",
+  --    "LLVMValueRef *", "Indices",
+  --    "unsigned", "NumIndices",
+  --    "const char *", "name"
+  --  }
+  --},
+
+  --method "build_InBoundsGEP" {
+  --  c_method_call "LLVMValueRef" "LLVMBuildInBoundsGEP" {
+  --    "LLVMValueRef", "ptr",
+  --    "LLVMValueRef *", "Indices",
+  --    "unsigned", "NumIndices",
+  --    "const char *", "name"
+  --  }
+  --},
+
+  method "build_StructGEP" {
+    c_method_call "Value *" "LLVMBuildStructGEP" {
+      "Value *", "ptr",
+      "unsigned", "Idx",
+      "const char *", "name"
+    }
+  },
+
+  method "build_GlobalString" {
+    c_method_call "Value *" "LLVMBuildGlobalString" {
+      "const char *", "Str",
+      "const char *", "name"
+    }
+  },
+
+  method "build_GlobalStringPtr" {
+    c_method_call "Value *" "LLVMBuildGlobalStringPtr" {
+      "const char *", "Str",
+      "const char *", "name"
+    }
+  },
+
+  --[[
+  method "LLVMGetVolatile" {
+    c_method_call "LLVMBool" "LLVMGetVolatile" {
+      "Value *", "MemoryAccessInst"
+    }
+  },
+
+  method "LLVMSetVolatile" {
+    c_method_call "void" "LLVMSetVolatile" {
+      "Value *", "MemoryAccessInst",
+      "bool", "IsVolatile"
+    }
+  },
+
+  method "LLVMGetOrdering" {
+    c_method_call "LLVMAtomicOrdering" "LLVMGetOrdering" {
+      "Value *", "MemoryAccessInst"
+    }
+  },
+
+  method "LLVMSetOrdering" {
+    c_method_call "void" "LLVMSetOrdering" {
+      "Value *", "MemoryAccessInst",
+      "LLVMAtomicOrdering", "Ordering"
+    }
+  },
+  ]]--
+  method "build_Trunc" {
+    c_method_call "Value *" "LLVMBuildTrunc" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_ZExt" {
+    c_method_call "Value *" "LLVMBuildZExt" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_SExt" {
+    c_method_call "Value *" "LLVMBuildSExt" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_FPToUI" {
+    c_method_call "Value *" "LLVMBuildFPToUI" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_FPToSI" {
+    c_method_call "Value *" "LLVMBuildFPToSI" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_UIToFP" {
+    c_method_call "Value *" "LLVMBuildUIToFP" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_SIToFP" {
+    c_method_call "Value *" "LLVMBuildSIToFP" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_FPTrunc" {
+    c_method_call "Value *" "LLVMBuildFPTrunc" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_FPExt" {
+    c_method_call "Value *" "LLVMBuildFPExt" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_PtrToInt" {
+    c_method_call "Value *" "LLVMBuildPtrToInt" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_IntToPtr" {
+    c_method_call "Value *" "LLVMBuildIntToPtr" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_BitCast" {
+    c_method_call "Value *" "LLVMBuildBitCast" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_AddrSpaceCast" {
+    c_method_call "Value *" "LLVMBuildAddrSpaceCast" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_ZExtOrBitCast" {
+    c_method_call "Value *" "LLVMBuildZExtOrBitCast" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_SExtOrBitCast" {
+    c_method_call "Value *" "LLVMBuildSExtOrBitCast" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_TruncOrBitCast" {
+    c_method_call "Value *" "LLVMBuildTruncOrBitCast" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  --[[
+  method "build_Cast" {
+    c_method_call "Value *" "LLVMBuildCast" {
+      "LLVMOpcode", "Op",
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+  ]]--
+
+  method "build_ptrCast" {
+    c_method_call "Value *" "LLVMBuildptrCast" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_IntCast" {
+    c_method_call "Value *" "LLVMBuildIntCast" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_FPCast" {
+    c_method_call "Value *" "LLVMBuildFPCast" {
+      "Value *", "Val",
+      "Type *", "DestTy",
+      "const char *", "name"
+    }
+  },
+
+  method "build_ICmp" {
+    c_method_call "Value *" "LLVMBuildICmp" {
+      "IntPredicate", "Op",
+      "Value *", "lhs",
+      "Value *", "rhs",
+      "const char *", "name"
+    }
+  },
+
+  method "build_FCmp" {
+    c_method_call "Value *" "LLVMBuildFCmp" {
+      "RealPredicate", "Op",
+      "Value *", "lhs",
+      "Value *", "rhs",
+      "const char *", "name"
+    }
+  },
+
+  method "build_Phi" {
+    c_method_call "Value *" "LLVMBuildPhi" {
+      "Type *", "Ty",
+      "const char *", "name"
+    }
+  },
+
+  method "build_Call" {
+    c_method_call "Value *" "LLVMBuildCall" {
+      "Value *", "Fn",
+      "Value *", "*Args",
+      "unsigned", "NumArgs",
+      "const char *", "name"
+    }
+  },
+
+  method "build_Select" {
+    c_method_call "Value *" "LLVMBuildSelect" {
+      "Value *", "If",
+      "Value *", "Then",
+      "Value *", "Else",
+      "const char *", "name"
+    }
+  },
+
+  method "build_VAArg" {
+    c_method_call "Value *" "LLVMBuildVAArg" {
+      "Value *", "list",
+      "Type *", "ty",
+      "const char *", "name"
+    }
+  },
+
+  method "build_ExtractElement" {
+    c_method_call "Value *" "LLVMBuildExtractElement" {
+      "Value *", "vecval",
+      "Value *", "index",
+      "const char *", "name"
+    }
+  },
+
+  method "build_InsertElement" {
+    c_method_call "Value *" "LLVMBuildInsertElement" {
+      "Value *", "vecval",
+      "Value *", "eltval",
+      "Value *", "index",
+      "const char *", "name"
+    }
+  },
+
+  method "build_ShuffleVector" {
+    c_method_call "Value *" "LLVMBuildShuffleVector" {
+      "Value *", "v1",
+      "Value *", "v2",
+      "Value *", "mask",
+      "const char *", "name"
+    }
+  },
+
+  method "build_ExtractValue" {
+    c_method_call "Value *" "LLVMBuildExtractValue" {
+      "Value *", "aggval",
+      "unsigned", "index",
+      "const char *", "name"
+    }
+  },
+
+  method "build_InsertValue" {
+    c_method_call "Value *" "LLVMBuildInsertValue" {
+      "Value *", "agg_val",
+      "Value *", "elt_val",
+      "unsigned", "index",
+      "const char *", "name"
+    }
+  },
+
+  method "build_IsNull" {
+    c_method_call "Value *" "LLVMBuildIsNull" {
+      "Value *", "val",
+      "const char *", "name"
+    }
+  },
+
+  method "build_IsNotNull" {
+    c_method_call "Value *" "LLVMBuildIsNotNull" {
+      "Value *", "val",
+      "const char *", "name"
+    }
+  },
+
+  --[[
+  method "build_PtrDiff" {
+    c_method_call "Value *" "LLVMBuildPtrDiff" {
+      "Value *", "lhs",
+      "Value *", "rhs",
+      "const char *", "name"
+    }
+  },
+
+  method "build_Fence" {
+    c_method_call "Value *" "LLVMBuildFence" {
+      "LLVMAtomicOrdering", "ordering",
+      "LLVMBool", "singleThread",
+      "const char *", "name"
+    }
+  },
+
+  method "build_AtomicRMW" {
+    c_method_call "Value *" "LLVMBuildAtomicRMW" {
+      "LLVMAtomicRMWBinOp", "op",
+      "Value *", "PTR",
+      "Value *", "Val",
+      "LLVMAtomicOrdering", "ordering",
+      "LLVMBool", "singleThread"
+    }
+  },
+
+  method "build_AtomicCmpXchg" {
+    c_method_call "Value *" "LLVMBuildAtomicCmpXchg" {
+      "Value *", "Ptr",
+      "Value *", "Cmp",
+      "Value *", "New",
+      "LLVMAtomicOrdering", "SuccessOrdering",
+      "LLVMAtomicOrdering", "FailureOrdering",
+      "LLVMBool", "SingleThread"
+    }
+  },
+
+  method "LLVMIsAtomicSingleThread" {
+    c_method_call "LLVMBool" "LLVMIsAtomicSingleThread" {
+      "Value *", "AtomicInst"
+    }
+  },
+
+  method "LLVMSetAtomicSingleThread" {
+    c_method_call "void" "LLVMSetAtomicSingleThread" {
+      "Value *", "AtomicInst",
+      "LLVMBool", "SingleThread"
+    }
+  },
+
+  method "LLVMGetCmpXchgSuccessOrdering" {
+    c_method_call "LLVMAtomicOrdering" "LLVMGetCmpXchgSuccessOrdering" {
+      "Value *", "CmpXchgInst"
+    }
+  },
+
+  method "LLVMSetCmpXchgSuccessOrdering" {
+    c_method_call "void" "LLVMSetCmpXchgSuccessOrdering" {
+      "Value *", "CmpXchgInst",
+      "LLVMAtomicOrdering", "Ordering"
+    }
+  },
+
+  method "LLVMGetCmpXchgFailureOrdering" {
+    c_method_call "LLVMAtomicOrdering" "LLVMGetCmpXchgFailureOrdering" {
+      "Value *", "CmpXchgInst"
+    }
+  },
+
+  method "LLVMSetCmpXchgFailureOrdering" {
+    c_method_call "void" "LLVMSetCmpXchgFailureOrdering" {
+      "Value *", "CmpXchgInst",
+      "LLVMAtomicOrdering", "Ordering"
+    }
+  },
+  ]]--
 }

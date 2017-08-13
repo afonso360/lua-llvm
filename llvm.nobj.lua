@@ -41,5 +41,6 @@ c_module "llvm" {
     -- Execution Engine
     -- ThinLTO
     -- Initialization Routines
+    "src/enums.nobj.lua",
   },
 }
