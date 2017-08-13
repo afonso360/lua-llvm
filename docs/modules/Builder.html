@@ -1,0 +1,1508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/llvm.html">llvm</a></li>
+  <li><a href="../modules/BasicBlock.html">BasicBlock</a></li>
+  <li><strong>Builder</strong></li>
+  <li><a href="../modules/Context.html">Context</a></li>
+  <li><a href="../modules/FloatType.html">FloatType</a></li>
+  <li><a href="../modules/FunctionType.html">FunctionType</a></li>
+  <li><a href="../modules/FunctionValue.html">FunctionValue</a></li>
+  <li><a href="../modules/IntType.html">IntType</a></li>
+  <li><a href="../modules/IntValue.html">IntValue</a></li>
+  <li><a href="../modules/Module.html">Module</a></li>
+  <li><a href="../modules/Type.html">Type</a></li>
+  <li><a href="../modules/Value.html">Value</a></li>
+  <li><a href="../modules/const.html">const</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Builder</code></h1>
+<p>Class "Builder".</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#create">create (ctx)</a></td>
+	<td class="summary">Create a new Builder object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dispose">dispose ()</a></td>
+	<td class="summary">Destroy this object (will be called by Garbage Collector).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#position_at_end">position_at_end (bb)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_ret">build_ret (lhs)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_ret_void">build_ret_void ()</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_add">build_add (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_nswadd">build_nswadd (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_nuwadd">build_nuwadd (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_fadd">build_fadd (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_sub">build_sub (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_nswsub">build_nswsub (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_nuwsub">build_nuwsub (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_fsub">build_fsub (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_mul">build_mul (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_nswmul">build_nswmul (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_nuwmul">build_nuwmul (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_fmul">build_fmul (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_udiv">build_udiv (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_exact_udiv">build_exact_udiv (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_sdiv">build_sdiv (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_exact_sdiv">build_exact_sdiv (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_fdiv">build_fdiv (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_urem">build_urem (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_srem">build_srem (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_frem">build_frem (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_shl">build_shl (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_lshr">build_lshr (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_ashr">build_ashr (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_and">build_and (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_or">build_or (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_xor">build_xor (lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_neg">build_neg (v, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_nswneg">build_nswneg (v, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_nuwneg">build_nuwneg (v, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_fneg">build_fneg (v, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_not">build_not (v, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_malloc">build_malloc (Tv, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_array_malloc">build_array_malloc (ty, val, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_alloca">build_alloca (ty, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_array_alloca">build_array_alloca (ty, val, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LLVMBuildFree">LLVMBuildFree (ptr)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LLVMBuildLoad">LLVMBuildLoad (ptr, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LLVMBuildStore">LLVMBuildStore (val, ptr)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "create"></a>
+    <strong>create (ctx)</strong>
+    </dt>
+    <dd>
+    Create a new Builder object.
+<p>  Context is optional
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ctx</span>
+         Must be of type <a href="Context.html">Context</a>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Builder.html">Builder</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dispose"></a>
+    <strong>dispose ()</strong>
+    </dt>
+    <dd>
+    Destroy this object (will be called by Garbage Collector).
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "position_at_end"></a>
+    <strong>position_at_end (bb)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">bb</span>
+         Must be of type <a href="BasicBlock.html">BasicBlock</a>.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_ret"></a>
+    <strong>build_ret (lhs)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_ret_void"></a>
+    <strong>build_ret_void ()</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_add"></a>
+    <strong>build_add (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_nswadd"></a>
+    <strong>build_nswadd (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_nuwadd"></a>
+    <strong>build_nuwadd (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_fadd"></a>
+    <strong>build_fadd (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_sub"></a>
+    <strong>build_sub (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_nswsub"></a>
+    <strong>build_nswsub (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_nuwsub"></a>
+    <strong>build_nuwsub (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_fsub"></a>
+    <strong>build_fsub (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_mul"></a>
+    <strong>build_mul (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_nswmul"></a>
+    <strong>build_nswmul (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_nuwmul"></a>
+    <strong>build_nuwmul (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_fmul"></a>
+    <strong>build_fmul (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_udiv"></a>
+    <strong>build_udiv (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_exact_udiv"></a>
+    <strong>build_exact_udiv (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_sdiv"></a>
+    <strong>build_sdiv (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_exact_sdiv"></a>
+    <strong>build_exact_sdiv (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_fdiv"></a>
+    <strong>build_fdiv (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_urem"></a>
+    <strong>build_urem (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_srem"></a>
+    <strong>build_srem (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_frem"></a>
+    <strong>build_frem (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_shl"></a>
+    <strong>build_shl (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_lshr"></a>
+    <strong>build_lshr (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_ashr"></a>
+    <strong>build_ashr (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_and"></a>
+    <strong>build_and (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_or"></a>
+    <strong>build_or (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_xor"></a>
+    <strong>build_xor (lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_neg"></a>
+    <strong>build_neg (v, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_nswneg"></a>
+    <strong>build_nswneg (v, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_nuwneg"></a>
+    <strong>build_nuwneg (v, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_fneg"></a>
+    <strong>build_fneg (v, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_not"></a>
+    <strong>build_not (v, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_malloc"></a>
+    <strong>build_malloc (Tv, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Tv</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_array_malloc"></a>
+    <strong>build_array_malloc (ty, val, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ty</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_alloca"></a>
+    <strong>build_alloca (ty, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ty</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_array_alloca"></a>
+    <strong>build_array_alloca (ty, val, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ty</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LLVMBuildFree"></a>
+    <strong>LLVMBuildFree (ptr)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ptr</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LLVMBuildLoad"></a>
+    <strong>LLVMBuildLoad (ptr, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ptr</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LLVMBuildStore"></a>
+    <strong>LLVMBuildStore (val, ptr)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">ptr</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-08-13 18:03:06 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

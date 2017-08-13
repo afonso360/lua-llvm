@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/llvm.html">llvm</a></li>
+  <li><a href="../modules/BasicBlock.html">BasicBlock</a></li>
+  <li><a href="../modules/Builder.html">Builder</a></li>
+  <li><a href="../modules/Context.html">Context</a></li>
+  <li><strong>FloatType</strong></li>
+  <li><a href="../modules/FunctionType.html">FunctionType</a></li>
+  <li><a href="../modules/FunctionValue.html">FunctionValue</a></li>
+  <li><a href="../modules/IntType.html">IntType</a></li>
+  <li><a href="../modules/IntValue.html">IntValue</a></li>
+  <li><a href="../modules/Module.html">Module</a></li>
+  <li><a href="../modules/Type.html">Type</a></li>
+  <li><a href="../modules/Value.html">Value</a></li>
+  <li><a href="../modules/const.html">const</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>FloatType</code></h1>
+<p>Class "FloatType".</p>
+<p>
+<p> Extends <a href="Type.html">Type</a><br /></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#half">half (ctx)</a></td>
+	<td class="summary">Create a new FloatType object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#float">float (ctx)</a></td>
+	<td class="summary">Create a new FloatType object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#double">double (ctx)</a></td>
+	<td class="summary">Create a new FloatType object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x86fp80">x86fp80 (ctx)</a></td>
+	<td class="summary">Create a new FloatType object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fp128">fp128 (ctx)</a></td>
+	<td class="summary">Create a new FloatType object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ppcfp128">ppcfp128 (ctx)</a></td>
+	<td class="summary">Create a new FloatType object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Type:get_context">Type:get_context ()</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Type:is_sized">Type:is_sized ()</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Type:dump">Type:dump ()</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "half"></a>
+    <strong>half (ctx)</strong>
+    </dt>
+    <dd>
+    Create a new FloatType object.
+<p>  Context is optional
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ctx</span>
+         Must be of type <a href="Context.html">Context</a>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatType.html">FloatType</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "float"></a>
+    <strong>float (ctx)</strong>
+    </dt>
+    <dd>
+    Create a new FloatType object.
+<p>  Context is optional
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ctx</span>
+         Must be of type <a href="Context.html">Context</a>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatType.html">FloatType</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "double"></a>
+    <strong>double (ctx)</strong>
+    </dt>
+    <dd>
+    Create a new FloatType object.
+<p>  Context is optional
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ctx</span>
+         Must be of type <a href="Context.html">Context</a>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatType.html">FloatType</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x86fp80"></a>
+    <strong>x86fp80 (ctx)</strong>
+    </dt>
+    <dd>
+    Create a new FloatType object.
+<p>  Context is optional
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ctx</span>
+         Must be of type <a href="Context.html">Context</a>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatType.html">FloatType</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fp128"></a>
+    <strong>fp128 (ctx)</strong>
+    </dt>
+    <dd>
+    Create a new FloatType object.
+<p>  Context is optional
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ctx</span>
+         Must be of type <a href="Context.html">Context</a>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatType.html">FloatType</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ppcfp128"></a>
+    <strong>ppcfp128 (ctx)</strong>
+    </dt>
+    <dd>
+    Create a new FloatType object.
+<p>  Context is optional
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ctx</span>
+         Must be of type <a href="Context.html">Context</a>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatType.html">FloatType</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Type:get_context"></a>
+    <strong>Type:get_context ()</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Context.html">Context</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Type:is_sized"></a>
+    <strong>Type:is_sized ()</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <code>boolean</code>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Type:dump"></a>
+    <strong>Type:dump ()</strong>
+    </dt>
+    <dd>
+    object method.
+<p>  Dumps a type to stderr
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-08-13 18:03:06 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
