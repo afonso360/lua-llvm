@@ -9,7 +9,7 @@ local llvm = require "llvm"
 describe("Value module", function ()
   describe("IntValue type", function ()
     it("should construct correctly", function ()
-      local value = llvm.IntValue.const_int(llvm.IntType.int8(), 10, false)
+      local value = llvm.IntValue.const(llvm.IntType.int8(), 10, false)
       assert.is.truthy(value:is_constant())
       assert.is.falsy(value:is_undef())
     end)

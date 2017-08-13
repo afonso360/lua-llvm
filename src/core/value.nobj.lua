@@ -46,7 +46,7 @@ object "IntValue" {
   ]],
 
   -- TODO: Rename to const
-  constructor "const_int" {
+  constructor "const" {
     c_call "IntValue *" "LLVMConstInt" {
       "Type *", "int_ty",
       "uint64_t", "n", -- The original type is unsigned long long, but LNO is not liking that
@@ -54,7 +54,7 @@ object "IntValue" {
     },
   },
 
-  constructor "const_int_of_string" {
+  constructor "const_of_string" {
     c_call "IntValue *" "LLVMConstIntOfStringAndSize" {
       "Type *", "int_ty",
       "const char *", "str",
