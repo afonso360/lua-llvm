@@ -1,9 +1,10 @@
 #!/usr/bin/env lua
 
-package	= "lua-llvm"
+package	= "llvm"
 version	= "scm-0"
 source	= {
-	url	= "https://github.com/afonso360/lua-llvm.git"
+	url	= "git://github.com/afonso360/lua-llvm",
+  branch = "built"
 }
 description	= {
 	summary	= "LLVM-C API Bindings for lua",
@@ -25,10 +26,11 @@ build	= {
 	type = "builtin",
 	modules = {
 		llvm = {
-			sources = { "src/pre_generated-llvm.nobj.c" },
+			sources = { "llvm.nobj.c" },
 			libraries = { "llvm" },
 			incdirs = { "$(LLVM_INCDIR)" },
 			libdirs = { "$(LLVM_LIBDIR)" },
 		}
-	}
+	},
+  copy_directories = { "docs" }
 }
