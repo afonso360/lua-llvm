@@ -5,6 +5,10 @@
 -- to the terms of that license.
 
 object "Opcode" {
+	c_source [[
+    typedef LLVMOpcode Opcode;
+  ]],
+
 	export_definitions {
 		-- Terminator Instructions
 		Ret = "LLVMRet",
@@ -90,6 +94,10 @@ object "Opcode" {
 }
 
 object "TypeKind" {
+	c_source [[
+    typedef LLVMTypeKind TypeKind;
+  ]],
+
 	export_definitions {
 		Void = "LLVMVoidTypeKind",
 		Half = "LLVMHalfTypeKind",
@@ -112,6 +120,10 @@ object "TypeKind" {
 }
 
 object "Linkage" {
+	c_source [[
+    typedef LLVMLinkage Linkage;
+  ]],
+
 	export_definitions {
 		External = "LLVMExternalLinkage",
 		AvailableExternally = "LLVMAvailableExternallyLinkage",
@@ -134,6 +146,10 @@ object "Linkage" {
 }
 
 object "Visibility" {
+	c_source [[
+    typedef LLVMVisibility Visibility;
+  ]],
+
 	export_definitions {
 		Default = "LLVMDefaultVisibility",
 		Hidden = "LLVMHiddenVisibility",
@@ -142,6 +158,10 @@ object "Visibility" {
 }
 
 object "DLLStorageClass" {
+	c_source [[
+    typedef LLVMDLLStorageClass DLLStorageClass;
+  ]],
+
 	export_definitions {
 		Default = "LLVMDefaultStorageClass",
 		DLLImport = "LLVMDLLImportStorageClass",
@@ -150,6 +170,10 @@ object "DLLStorageClass" {
 }
 
 object "CallConv" {
+	c_source [[
+    typedef LLVMCallConv CallConv;
+  ]],
+
 	export_definitions {
 		C = "LLVMCCallConv",
 		Fast = "LLVMFastCallConv",
@@ -162,6 +186,10 @@ object "CallConv" {
 }
 
 object "ValueKind" {
+	c_source [[
+    typedef LLVMValueKind ValueKind;
+  ]],
+
 	export_definitions {
 		ArgumentValueKind = "LLVMArgumentValueKind",
 		BasicBlockValueKind = "LLVMBasicBlockValueKind",
@@ -192,6 +220,10 @@ object "ValueKind" {
 }
 
 object "IntPredicate" {
+	c_source [[
+    typedef LLVMIntPredicate IntPredicate;
+  ]],
+
 	export_definitions {
 		EQ = "LLVMIntEQ",
 		NE = "LLVMIntNE",
@@ -207,6 +239,10 @@ object "IntPredicate" {
 }
 
 object "RealPredicate" {
+	c_source [[
+    typedef LLVMRealPredicate RealPredicate;
+  ]],
+
 	export_definitions {
 		False = "LLVMRealPredicateFalse",
 		OEQ = "LLVMRealOEQ",
@@ -228,6 +264,10 @@ object "RealPredicate" {
 }
 
 object "LandingPadClauseTy" {
+	c_source [[
+    typedef LLVMLandingPadClauseTy LandingPadClauseTy;
+  ]],
+
 	export_definitions {
 		Catch = "LLVMLandingPadCatch",
 		Filter = "LLVMLandingPadFilter",
@@ -235,6 +275,10 @@ object "LandingPadClauseTy" {
 }
 
 object "ThreadLocalMode" {
+	c_source [[
+    typedef LLVMThreadLocalMode ThreadLocalMode;
+  ]],
+
 	export_definitions {
 		NotThreadLocal = "LLVMNotThreadLocal",
 		GeneralDynamicTLSModel = "LLVMGeneralDynamicTLSModel",
@@ -245,6 +289,10 @@ object "ThreadLocalMode" {
 }
 
 object "AtomicOrdering" {
+	c_source [[
+    typedef LLVMAtomicOrdering AtomicOrdering;
+  ]],
+
 	export_definitions {
 		NotAtomic = "LLVMAtomicOrderingNotAtomic",
 		Unordered = "LLVMAtomicOrderingUnordered",
@@ -257,6 +305,10 @@ object "AtomicOrdering" {
 }
 
 object "AtomicRMWBinOp" {
+	c_source [[
+    typedef LLVMAtomicRMWBinOp AtomicRMWBinOp;
+  ]],
+
 	export_definitions {
 		Xchg = "LLVMAtomicRMWBinOpXchg",
 		Add = "LLVMAtomicRMWBinOpAdd",
@@ -273,6 +325,10 @@ object "AtomicRMWBinOp" {
 }
 
 object "DiagnosticSeverity" {
+	c_source [[
+    typedef LLVMDiagnosticSeverity DiagnosticSeverity;
+  ]],
+
 	export_definitions {
 		Error = "LLVMDSError",
 		Warning = "LLVMDSWarning",
@@ -282,6 +338,10 @@ object "DiagnosticSeverity" {
 }
 
 object "AttributeIndex" {
+	c_source [[
+    typedef LLVMAttributeIndex AttributeIndex;
+  ]],
+
 	export_definitions {
    AttributeReturnIndex = "LLVMAttributeReturnIndex",
    AttributeFunctionIndex = "LLVMAttributeFunctionIndex",

@@ -64,8 +64,8 @@ object "Builder" {
 
   method "build_fadd" {
     c_method_call "Value *" "LLVMBuildFAdd" {
-      "Value *", "lhs",
-      "Value *", "rhs",
+      "FloatValue *", "lhs",
+      "FloatValue *", "rhs",
       "const char *", "name"
     }
   },
@@ -96,8 +96,8 @@ object "Builder" {
 
   method "build_fsub" {
     c_method_call "Value *" "LLVMBuildFSub" {
-      "Value *", "lhs",
-      "Value *", "rhs",
+      "FloatValue *", "lhs",
+      "FloatValue *", "rhs",
       "const char *", "name"
     }
   },
@@ -128,8 +128,8 @@ object "Builder" {
 
   method "build_fmul" {
     c_method_call "Value *" "LLVMBuildFMul" {
-      "Value *", "lhs",
-      "Value *", "rhs",
+      "FloatValue *", "lhs",
+      "FloatValue *", "rhs",
       "const char *", "name"
     }
   },
@@ -168,8 +168,8 @@ object "Builder" {
 
   method "build_fdiv" {
     c_method_call "Value *" "LLVMBuildFDiv" {
-      "Value *", "lhs",
-      "Value *", "rhs",
+      "FloatValue *", "lhs",
+      "FloatValue *", "rhs",
       "const char *", "name"
     }
   },
@@ -192,8 +192,8 @@ object "Builder" {
 
   method "build_frem" {
     c_method_call "Value *" "LLVMBuildFRem" {
-      "Value *", "lhs",
-      "Value *", "rhs",
+      "FloatValue *", "lhs",
+      "FloatValue *", "rhs",
       "const char *", "name"
     }
   },
@@ -279,7 +279,7 @@ object "Builder" {
 
   method "build_fneg" {
     c_method_call "Value *" "LLVMBuildFNeg" {
-      "Value *", "v",
+      "FloatValue *", "v",
       "const char *", "name"
     }
   },
@@ -321,13 +321,13 @@ object "Builder" {
     }
   },
 
-  method "build_Free" {
+  method "build_free" {
     c_method_call "Value *" "LLVMBuildFree" {
       "Value *", "ptr"
     }
   },
 
-  method "build_Load" {
+  method "build_load" {
     c_method_call "Value *" "LLVMBuildLoad" {
       -- TODO: Replace with PtrValue
       "Value *", "ptr",
@@ -335,7 +335,7 @@ object "Builder" {
     }
   },
 
-  method "build_Store" {
+  method "build_store" {
     c_method_call "Value *" "LLVMBuildStore" {
       "Value *", "val",
       -- TODO: Replace with PtrValue
@@ -343,7 +343,7 @@ object "Builder" {
     }
   },
 
-  --method "build_GEP" {
+  --method "build_gep" {
   --  c_method_call "LLVMValueRef" "LLVMBuildGEP" {
   --    "LLVMValueRef", "ptr",
   --    "LLVMValueRef *", "Indices",
@@ -352,7 +352,7 @@ object "Builder" {
   --  }
   --},
 
-  --method "build_InBoundsGEP" {
+  --method "build_in_bounds_gep" {
   --  c_method_call "LLVMValueRef" "LLVMBuildInBoundsGEP" {
   --    "LLVMValueRef", "ptr",
   --    "LLVMValueRef *", "Indices",
@@ -361,7 +361,7 @@ object "Builder" {
   --  }
   --},
 
-  method "build_StructGEP" {
+  method "build_Struct_GEP" {
     c_method_call "Value *" "LLVMBuildStructGEP" {
       "Value *", "ptr",
       "unsigned", "Idx",
@@ -369,14 +369,14 @@ object "Builder" {
     }
   },
 
-  method "build_GlobalString" {
+  method "build_global_string" {
     c_method_call "Value *" "LLVMBuildGlobalString" {
       "const char *", "Str",
       "const char *", "name"
     }
   },
 
-  method "build_GlobalStringPtr" {
+  method "build_global_string_ptr" {
     c_method_call "Value *" "LLVMBuildGlobalStringPtr" {
       "const char *", "Str",
       "const char *", "name"
@@ -410,95 +410,95 @@ object "Builder" {
     }
   },
   ]]--
-  method "build_Trunc" {
-    c_method_call "Value *" "LLVMBuildTrunc" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_trunc" {
+    c_method_call "IntValue *" "LLVMBuildTrunc" {
+      "IntValue *", "Val",
+      "IntType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_ZExt" {
-    c_method_call "Value *" "LLVMBuildZExt" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_zext" {
+    c_method_call "IntValue *" "LLVMBuildZExt" {
+      "IntValue *", "Val",
+      "IntType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_SExt" {
-    c_method_call "Value *" "LLVMBuildSExt" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_sext" {
+    c_method_call "IntValue *" "LLVMBuildSExt" {
+      "IntValue *", "Val",
+      "IntType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_FPToUI" {
-    c_method_call "Value *" "LLVMBuildFPToUI" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_fp_to_ui" {
+    c_method_call "IntValue *" "LLVMBuildFPToUI" {
+      "FloatValue *", "Val",
+      "IntType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_FPToSI" {
-    c_method_call "Value *" "LLVMBuildFPToSI" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_fp_to_si" {
+    c_method_call "IntValue *" "LLVMBuildFPToSI" {
+      "FloatValue *", "Val",
+      "IntType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_UIToFP" {
-    c_method_call "Value *" "LLVMBuildUIToFP" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_ui_to_fp" {
+    c_method_call "FloatValue *" "LLVMBuildUIToFP" {
+      "FloatValue *", "Val",
+      "FloatType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_SIToFP" {
-    c_method_call "Value *" "LLVMBuildSIToFP" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_si_to_fp" {
+    c_method_call "FloatValue *" "LLVMBuildSIToFP" {
+      "IntValue *", "Val",
+      "FloatType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_FPTrunc" {
-    c_method_call "Value *" "LLVMBuildFPTrunc" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_fptrunc" {
+    c_method_call "FloatValue *" "LLVMBuildFPTrunc" {
+      "FloatValue *", "Val",
+      "FloatType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_FPExt" {
-    c_method_call "Value *" "LLVMBuildFPExt" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_fpext" {
+    c_method_call "FloatValue *" "LLVMBuildFPExt" {
+      "FloatValue *", "Val",
+      "FloatType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_PtrToInt" {
-    c_method_call "Value *" "LLVMBuildPtrToInt" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_ptr_to_int" {
+    c_method_call "IntValue *" "LLVMBuildPtrToInt" {
+      "Value *", "Val", -- TODO: PtrValue
+      "IntType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_IntToPtr" {
-    c_method_call "Value *" "LLVMBuildIntToPtr" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_int_to_ptr" {
+    c_method_call "Value *" "LLVMBuildIntToPtr" { --TODO PtrValue
+      "IntValue *", "Val",
+      "Type *", "DestTy", -- TODO: PTRType
       "const char *", "name"
     }
   },
 
-  method "build_BitCast" {
+  method "build_bit_cast" {
     c_method_call "Value *" "LLVMBuildBitCast" {
       "Value *", "Val",
       "Type *", "DestTy",
@@ -506,7 +506,7 @@ object "Builder" {
     }
   },
 
-  method "build_AddrSpaceCast" {
+  method "build_addr_space_cast" {
     c_method_call "Value *" "LLVMBuildAddrSpaceCast" {
       "Value *", "Val",
       "Type *", "DestTy",
@@ -514,7 +514,7 @@ object "Builder" {
     }
   },
 
-  method "build_ZExtOrBitCast" {
+  method "build_zext_or_bit_cast" {
     c_method_call "Value *" "LLVMBuildZExtOrBitCast" {
       "Value *", "Val",
       "Type *", "DestTy",
@@ -522,7 +522,7 @@ object "Builder" {
     }
   },
 
-  method "build_SExtOrBitCast" {
+  method "build_sext_or_bit_cast" {
     c_method_call "Value *" "LLVMBuildSExtOrBitCast" {
       "Value *", "Val",
       "Type *", "DestTy",
@@ -530,7 +530,7 @@ object "Builder" {
     }
   },
 
-  method "build_TruncOrBitCast" {
+  method "build_trunc_or_bit_cast" {
     c_method_call "Value *" "LLVMBuildTruncOrBitCast" {
       "Value *", "Val",
       "Type *", "DestTy",
@@ -539,7 +539,7 @@ object "Builder" {
   },
 
   --[[
-  method "build_Cast" {
+  method "build_cast" {
     c_method_call "Value *" "LLVMBuildCast" {
       "LLVMOpcode", "Op",
       "Value *", "Val",
@@ -549,65 +549,66 @@ object "Builder" {
   },
   ]]--
 
-  method "build_ptrCast" {
-    c_method_call "Value *" "LLVMBuildptrCast" {
+	-- TODO: PtrValues
+  method "build_ptr_cast" {
+    c_method_call "Value *" "LLVMBuildPointerCast" {
       "Value *", "Val",
       "Type *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_IntCast" {
-    c_method_call "Value *" "LLVMBuildIntCast" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_int_cast" {
+    c_method_call "IntValue *" "LLVMBuildIntCast" {
+      "IntValue *", "Val",
+      "IntType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_FPCast" {
-    c_method_call "Value *" "LLVMBuildFPCast" {
-      "Value *", "Val",
-      "Type *", "DestTy",
+  method "build_fpcast" {
+    c_method_call "FloatValue *" "LLVMBuildFPCast" {
+      "FloatValue *", "Val",
+      "FloatType *", "DestTy",
       "const char *", "name"
     }
   },
 
-  method "build_ICmp" {
+  method "build_icmp" {
     c_method_call "Value *" "LLVMBuildICmp" {
-      "IntPredicate", "Op",
-      "Value *", "lhs",
-      "Value *", "rhs",
+      "IntPredicate *", "*Op",
+      "IntValue *", "lhs",
+      "IntValue *", "rhs",
       "const char *", "name"
     }
   },
 
-  method "build_FCmp" {
+  method "build_fcmp" {
     c_method_call "Value *" "LLVMBuildFCmp" {
-      "RealPredicate", "Op",
-      "Value *", "lhs",
-      "Value *", "rhs",
+      "RealPredicate *", "*Op",
+      "FloatValue *", "lhs",
+      "FloatValue *", "rhs",
       "const char *", "name"
     }
   },
 
-  method "build_Phi" {
+  method "build_phi" {
     c_method_call "Value *" "LLVMBuildPhi" {
       "Type *", "Ty",
       "const char *", "name"
     }
   },
 
-  method "build_Call" {
-    c_method_call "Value *" "LLVMBuildCall" {
-      "Value *", "Fn",
-      "Value *", "*Args",
-      "unsigned", "NumArgs",
-      "const char *", "name"
-    }
-  },
+  --method "build_call" {
+  --  c_method_call "Value *" "LLVMBuildCall" {
+  --    "Value *", "Fn",
+  --    "Value **", "Args",
+  --    "unsigned", "NumArgs",
+  --    "const char *", "name"
+  --  }
+  --},
 
-  method "build_Select" {
+  method "build_select" {
     c_method_call "Value *" "LLVMBuildSelect" {
       "Value *", "If",
       "Value *", "Then",
@@ -616,7 +617,7 @@ object "Builder" {
     }
   },
 
-  method "build_VAArg" {
+  method "build_vaarg" {
     c_method_call "Value *" "LLVMBuildVAArg" {
       "Value *", "list",
       "Type *", "ty",
@@ -624,7 +625,7 @@ object "Builder" {
     }
   },
 
-  method "build_ExtractElement" {
+  method "build_extract_element" {
     c_method_call "Value *" "LLVMBuildExtractElement" {
       "Value *", "vecval",
       "Value *", "index",
@@ -632,7 +633,7 @@ object "Builder" {
     }
   },
 
-  method "build_InsertElement" {
+  method "build_insert_element" {
     c_method_call "Value *" "LLVMBuildInsertElement" {
       "Value *", "vecval",
       "Value *", "eltval",
@@ -641,7 +642,7 @@ object "Builder" {
     }
   },
 
-  method "build_ShuffleVector" {
+  method "build_shuffle_vector" {
     c_method_call "Value *" "LLVMBuildShuffleVector" {
       "Value *", "v1",
       "Value *", "v2",
@@ -650,7 +651,7 @@ object "Builder" {
     }
   },
 
-  method "build_ExtractValue" {
+  method "build_extract_value" {
     c_method_call "Value *" "LLVMBuildExtractValue" {
       "Value *", "aggval",
       "unsigned", "index",
@@ -658,7 +659,7 @@ object "Builder" {
     }
   },
 
-  method "build_InsertValue" {
+  method "build_insert_value" {
     c_method_call "Value *" "LLVMBuildInsertValue" {
       "Value *", "agg_val",
       "Value *", "elt_val",
@@ -667,14 +668,14 @@ object "Builder" {
     }
   },
 
-  method "build_IsNull" {
+  method "build_is_null" {
     c_method_call "Value *" "LLVMBuildIsNull" {
       "Value *", "val",
       "const char *", "name"
     }
   },
 
-  method "build_IsNotNull" {
+  method "build_is_not_null" {
     c_method_call "Value *" "LLVMBuildIsNotNull" {
       "Value *", "val",
       "const char *", "name"
@@ -682,7 +683,7 @@ object "Builder" {
   },
 
   --[[
-  method "build_PtrDiff" {
+  method "build_ptr_diff" {
     c_method_call "Value *" "LLVMBuildPtrDiff" {
       "Value *", "lhs",
       "Value *", "rhs",
@@ -690,7 +691,7 @@ object "Builder" {
     }
   },
 
-  method "build_Fence" {
+  method "build_fence" {
     c_method_call "Value *" "LLVMBuildFence" {
       "LLVMAtomicOrdering", "ordering",
       "LLVMBool", "singleThread",
@@ -698,7 +699,7 @@ object "Builder" {
     }
   },
 
-  method "build_AtomicRMW" {
+  method "build_atomic_rmw" {
     c_method_call "Value *" "LLVMBuildAtomicRMW" {
       "LLVMAtomicRMWBinOp", "op",
       "Value *", "PTR",
@@ -708,7 +709,7 @@ object "Builder" {
     }
   },
 
-  method "build_AtomicCmpXchg" {
+  method "build_Atomic_Cmp_Xchg" {
     c_method_call "Value *" "LLVMBuildAtomicCmpXchg" {
       "Value *", "Ptr",
       "Value *", "Cmp",
@@ -719,7 +720,7 @@ object "Builder" {
     }
   },
 
-  method "LLVMIsAtomicSingleThread" {
+  method "build_is_atomic_single_thread" {
     c_method_call "LLVMBool" "LLVMIsAtomicSingleThread" {
       "Value *", "AtomicInst"
     }
