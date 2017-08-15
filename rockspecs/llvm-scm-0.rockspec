@@ -27,7 +27,7 @@ build	= {
 	modules = {
 		llvm = {
 			sources = { "llvm.nobj.c" },
-			libraries = { "llvm" },
+			libraries = { "LLVM" },
 			incdirs = { "$(LLVM_INCDIR)" },
 			libdirs = { "$(LLVM_LIBDIR)" },
 		}
