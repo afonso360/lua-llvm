@@ -39,18 +39,33 @@
 <h2>Modules</h2>
 <ul class="nowrap">
   <li><a href="../modules/llvm.html">llvm</a></li>
+  <li><a href="../modules/AtomicOrdering.html">AtomicOrdering</a></li>
+  <li><a href="../modules/AtomicRMWBinOp.html">AtomicRMWBinOp</a></li>
+  <li><a href="../modules/AttributeIndex.html">AttributeIndex</a></li>
   <li><a href="../modules/BasicBlock.html">BasicBlock</a></li>
   <li><strong>Builder</strong></li>
+  <li><a href="../modules/CallConv.html">CallConv</a></li>
   <li><a href="../modules/Context.html">Context</a></li>
+  <li><a href="../modules/DLLStorageClass.html">DLLStorageClass</a></li>
+  <li><a href="../modules/DiagnosticSeverity.html">DiagnosticSeverity</a></li>
   <li><a href="../modules/FloatType.html">FloatType</a></li>
+  <li><a href="../modules/FloatValue.html">FloatValue</a></li>
   <li><a href="../modules/FunctionType.html">FunctionType</a></li>
   <li><a href="../modules/FunctionValue.html">FunctionValue</a></li>
+  <li><a href="../modules/IntPredicate.html">IntPredicate</a></li>
   <li><a href="../modules/IntType.html">IntType</a></li>
   <li><a href="../modules/IntValue.html">IntValue</a></li>
+  <li><a href="../modules/LandingPadClauseTy.html">LandingPadClauseTy</a></li>
+  <li><a href="../modules/Linkage.html">Linkage</a></li>
   <li><a href="../modules/Module.html">Module</a></li>
+  <li><a href="../modules/Opcode.html">Opcode</a></li>
+  <li><a href="../modules/RealPredicate.html">RealPredicate</a></li>
+  <li><a href="../modules/ThreadLocalMode.html">ThreadLocalMode</a></li>
   <li><a href="../modules/Type.html">Type</a></li>
+  <li><a href="../modules/TypeKind.html">TypeKind</a></li>
   <li><a href="../modules/Value.html">Value</a></li>
-  <li><a href="../modules/const.html">const</a></li>
+  <li><a href="../modules/ValueKind.html">ValueKind</a></li>
+  <li><a href="../modules/Visibility.html">Visibility</a></li>
 </ul>
 
 </div>
@@ -225,15 +240,151 @@
 	<td class="summary">object method.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#LLVMBuildFree">LLVMBuildFree (ptr)</a></td>
+	<td class="name" nowrap><a href="#build_free">build_free (ptr)</a></td>
 	<td class="summary">object method.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#LLVMBuildLoad">LLVMBuildLoad (ptr, name)</a></td>
+	<td class="name" nowrap><a href="#build_load">build_load (ptr, name)</a></td>
 	<td class="summary">object method.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#LLVMBuildStore">LLVMBuildStore (val, ptr)</a></td>
+	<td class="name" nowrap><a href="#build_store">build_store (val, ptr)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_Struct_GEP">build_Struct_GEP (ptr, Idx, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_global_string">build_global_string (Str, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_global_string_ptr">build_global_string_ptr (Str, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_trunc">build_trunc (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_zext">build_zext (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_sext">build_sext (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_fp_to_ui">build_fp_to_ui (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_fp_to_si">build_fp_to_si (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_ui_to_fp">build_ui_to_fp (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_si_to_fp">build_si_to_fp (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_fptrunc">build_fptrunc (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_fpext">build_fpext (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_ptr_to_int">build_ptr_to_int (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_int_to_ptr">build_int_to_ptr (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_bit_cast">build_bit_cast (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_addr_space_cast">build_addr_space_cast (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_zext_or_bit_cast">build_zext_or_bit_cast (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_sext_or_bit_cast">build_sext_or_bit_cast (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_trunc_or_bit_cast">build_trunc_or_bit_cast (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_ptr_cast">build_ptr_cast (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_int_cast">build_int_cast (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_fpcast">build_fpcast (Val, DestTy, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_icmp">build_icmp (Op, lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_fcmp">build_fcmp (Op, lhs, rhs, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_phi">build_phi (Ty, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_select">build_select (If, Then, Else, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_vaarg">build_vaarg (list, ty, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_extract_element">build_extract_element (vecval, index, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_insert_element">build_insert_element (vecval, eltval, index, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_shuffle_vector">build_shuffle_vector (v1, v2, mask, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_extract_value">build_extract_value (aggval, index, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_insert_value">build_insert_value (agg_val, elt_val, index, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_is_null">build_is_null (val, name)</a></td>
+	<td class="summary">object method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#build_is_not_null">build_is_not_null (val, name)</a></td>
 	<td class="summary">object method.</td>
 	</tr>
 </table>
@@ -453,10 +604,10 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">lhs</span>
-         Must be of type <a href="Value.html">Value</a>.
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
         </li>
         <li><span class="parameter">rhs</span>
-         Must be of type <a href="Value.html">Value</a>.
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
         </li>
         <li><span class="parameter">name</span>
          Must be of type <code>string</code>.
@@ -577,10 +728,10 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">lhs</span>
-         Must be of type <a href="Value.html">Value</a>.
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
         </li>
         <li><span class="parameter">rhs</span>
-         Must be of type <a href="Value.html">Value</a>.
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
         </li>
         <li><span class="parameter">name</span>
          Must be of type <code>string</code>.
@@ -701,10 +852,10 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">lhs</span>
-         Must be of type <a href="Value.html">Value</a>.
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
         </li>
         <li><span class="parameter">rhs</span>
-         Must be of type <a href="Value.html">Value</a>.
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
         </li>
         <li><span class="parameter">name</span>
          Must be of type <code>string</code>.
@@ -856,10 +1007,10 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">lhs</span>
-         Must be of type <a href="Value.html">Value</a>.
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
         </li>
         <li><span class="parameter">rhs</span>
-         Must be of type <a href="Value.html">Value</a>.
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
         </li>
         <li><span class="parameter">name</span>
          Must be of type <code>string</code>.
@@ -949,10 +1100,10 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">lhs</span>
-         Must be of type <a href="Value.html">Value</a>.
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
         </li>
         <li><span class="parameter">rhs</span>
-         Must be of type <a href="Value.html">Value</a>.
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
         </li>
         <li><span class="parameter">name</span>
          Must be of type <code>string</code>.
@@ -1250,7 +1401,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">v</span>
-         Must be of type <a href="Value.html">Value</a>.
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
         </li>
         <li><span class="parameter">name</span>
          Must be of type <code>string</code>.
@@ -1414,8 +1565,8 @@
 
 </dd>
     <dt>
-    <a name = "LLVMBuildFree"></a>
-    <strong>LLVMBuildFree (ptr)</strong>
+    <a name = "build_free"></a>
+    <strong>build_free (ptr)</strong>
     </dt>
     <dd>
     object method.
@@ -1439,8 +1590,8 @@
 
 </dd>
     <dt>
-    <a name = "LLVMBuildLoad"></a>
-    <strong>LLVMBuildLoad (ptr, name)</strong>
+    <a name = "build_load"></a>
+    <strong>build_load (ptr, name)</strong>
     </dt>
     <dd>
     object method.
@@ -1467,8 +1618,8 @@
 
 </dd>
     <dt>
-    <a name = "LLVMBuildStore"></a>
-    <strong>LLVMBuildStore (val, ptr)</strong>
+    <a name = "build_store"></a>
+    <strong>build_store (val, ptr)</strong>
     </dt>
     <dd>
     object method.
@@ -1494,6 +1645,1063 @@
 
 
 </dd>
+    <dt>
+    <a name = "build_Struct_GEP"></a>
+    <strong>build_Struct_GEP (ptr, Idx, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ptr</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">Idx</span>
+         Must be of type <code>integer</code>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_global_string"></a>
+    <strong>build_global_string (Str, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Str</span>
+         Must be of type <code>string</code>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_global_string_ptr"></a>
+    <strong>build_global_string_ptr (Str, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Str</span>
+         Must be of type <code>string</code>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_trunc"></a>
+    <strong>build_trunc (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="IntValue.html">IntValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="IntType.html">IntType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="IntValue.html">IntValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_zext"></a>
+    <strong>build_zext (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="IntValue.html">IntValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="IntType.html">IntType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="IntValue.html">IntValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_sext"></a>
+    <strong>build_sext (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="IntValue.html">IntValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="IntType.html">IntType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="IntValue.html">IntValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_fp_to_ui"></a>
+    <strong>build_fp_to_ui (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="IntType.html">IntType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="IntValue.html">IntValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_fp_to_si"></a>
+    <strong>build_fp_to_si (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="IntType.html">IntType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="IntValue.html">IntValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_ui_to_fp"></a>
+    <strong>build_ui_to_fp (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="FloatType.html">FloatType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatValue.html">FloatValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_si_to_fp"></a>
+    <strong>build_si_to_fp (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="IntValue.html">IntValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="FloatType.html">FloatType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatValue.html">FloatValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_fptrunc"></a>
+    <strong>build_fptrunc (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="FloatType.html">FloatType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatValue.html">FloatValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_fpext"></a>
+    <strong>build_fpext (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="FloatType.html">FloatType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatValue.html">FloatValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_ptr_to_int"></a>
+    <strong>build_ptr_to_int (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="IntType.html">IntType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="IntValue.html">IntValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_int_to_ptr"></a>
+    <strong>build_int_to_ptr (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="IntValue.html">IntValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_bit_cast"></a>
+    <strong>build_bit_cast (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_addr_space_cast"></a>
+    <strong>build_addr_space_cast (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_zext_or_bit_cast"></a>
+    <strong>build_zext_or_bit_cast (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_sext_or_bit_cast"></a>
+    <strong>build_sext_or_bit_cast (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_trunc_or_bit_cast"></a>
+    <strong>build_trunc_or_bit_cast (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_ptr_cast"></a>
+    <strong>build_ptr_cast (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_int_cast"></a>
+    <strong>build_int_cast (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="IntValue.html">IntValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="IntType.html">IntType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="IntValue.html">IntValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_fpcast"></a>
+    <strong>build_fpcast (Val, DestTy, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Val</span>
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
+        </li>
+        <li><span class="parameter">DestTy</span>
+         Must be of type <a href="FloatType.html">FloatType</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatValue.html">FloatValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_icmp"></a>
+    <strong>build_icmp (Op, lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Op</span>
+         Must be of type <a href="IntPredicate.html">IntPredicate</a>.
+        </li>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="IntValue.html">IntValue</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="IntValue.html">IntValue</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_fcmp"></a>
+    <strong>build_fcmp (Op, lhs, rhs, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Op</span>
+         Must be of type <a href="RealPredicate.html">RealPredicate</a>.
+        </li>
+        <li><span class="parameter">lhs</span>
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
+        </li>
+        <li><span class="parameter">rhs</span>
+         Must be of type <a href="FloatValue.html">FloatValue</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_phi"></a>
+    <strong>build_phi (Ty, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">Ty</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_select"></a>
+    <strong>build_select (If, Then, Else, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">If</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">Then</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">Else</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_vaarg"></a>
+    <strong>build_vaarg (list, ty, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">list</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">ty</span>
+         Must be of type <a href="Type.html">Type</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_extract_element"></a>
+    <strong>build_extract_element (vecval, index, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">vecval</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">index</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_insert_element"></a>
+    <strong>build_insert_element (vecval, eltval, index, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">vecval</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">eltval</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">index</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_shuffle_vector"></a>
+    <strong>build_shuffle_vector (v1, v2, mask, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v1</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">v2</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">mask</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_extract_value"></a>
+    <strong>build_extract_value (aggval, index, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">aggval</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">index</span>
+         Must be of type <code>integer</code>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_insert_value"></a>
+    <strong>build_insert_value (agg_val, elt_val, index, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">agg_val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">elt_val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">index</span>
+         Must be of type <code>integer</code>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_is_null"></a>
+    <strong>build_is_null (val, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "build_is_not_null"></a>
+    <strong>build_is_not_null (val, name)</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">val</span>
+         Must be of type <a href="Value.html">Value</a>.
+        </li>
+        <li><span class="parameter">name</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="Value.html">Value</a>.
+    </ol>
+
+
+
+
+</dd>
 </dl>
 
 
@@ -1501,7 +2709,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2017-08-13 18:03:06 </i>
+<i style="float:right;">Last updated 2017-08-15 20:50:40 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

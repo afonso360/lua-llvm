@@ -75,8 +75,8 @@ end
 
 --- object method.
 --
--- @param lhs Must be of type <a href="Value.html">Value</a>.
--- @param rhs Must be of type <a href="Value.html">Value</a>.
+-- @param lhs Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param rhs Must be of type <a href="FloatValue.html">FloatValue</a>.
 -- @param name Must be of type <code>string</code>.
 -- @return <a href="Value.html">Value</a>.
 -- @name Builder:build_fadd
@@ -115,8 +115,8 @@ end
 
 --- object method.
 --
--- @param lhs Must be of type <a href="Value.html">Value</a>.
--- @param rhs Must be of type <a href="Value.html">Value</a>.
+-- @param lhs Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param rhs Must be of type <a href="FloatValue.html">FloatValue</a>.
 -- @param name Must be of type <code>string</code>.
 -- @return <a href="Value.html">Value</a>.
 -- @name Builder:build_fsub
@@ -155,8 +155,8 @@ end
 
 --- object method.
 --
--- @param lhs Must be of type <a href="Value.html">Value</a>.
--- @param rhs Must be of type <a href="Value.html">Value</a>.
+-- @param lhs Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param rhs Must be of type <a href="FloatValue.html">FloatValue</a>.
 -- @param name Must be of type <code>string</code>.
 -- @return <a href="Value.html">Value</a>.
 -- @name Builder:build_fmul
@@ -205,8 +205,8 @@ end
 
 --- object method.
 --
--- @param lhs Must be of type <a href="Value.html">Value</a>.
--- @param rhs Must be of type <a href="Value.html">Value</a>.
+-- @param lhs Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param rhs Must be of type <a href="FloatValue.html">FloatValue</a>.
 -- @param name Must be of type <code>string</code>.
 -- @return <a href="Value.html">Value</a>.
 -- @name Builder:build_fdiv
@@ -235,8 +235,8 @@ end
 
 --- object method.
 --
--- @param lhs Must be of type <a href="Value.html">Value</a>.
--- @param rhs Must be of type <a href="Value.html">Value</a>.
+-- @param lhs Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param rhs Must be of type <a href="FloatValue.html">FloatValue</a>.
 -- @param name Must be of type <code>string</code>.
 -- @return <a href="Value.html">Value</a>.
 -- @name Builder:build_frem
@@ -332,7 +332,7 @@ end
 
 --- object method.
 --
--- @param v Must be of type <a href="Value.html">Value</a>.
+-- @param v Must be of type <a href="FloatValue.html">FloatValue</a>.
 -- @param name Must be of type <code>string</code>.
 -- @return <a href="Value.html">Value</a>.
 -- @name Builder:build_fneg
@@ -390,8 +390,8 @@ end
 --
 -- @param ptr Must be of type <a href="Value.html">Value</a>.
 -- @return <a href="Value.html">Value</a>.
--- @name Builder:LLVMBuildFree
-function Builder:LLVMBuildFree(ptr)
+-- @name Builder:build_free
+function Builder:build_free(ptr)
 end
 
 --- object method.
@@ -399,8 +399,8 @@ end
 -- @param ptr Must be of type <a href="Value.html">Value</a>.
 -- @param name Must be of type <code>string</code>.
 -- @return <a href="Value.html">Value</a>.
--- @name Builder:LLVMBuildLoad
-function Builder:LLVMBuildLoad(ptr, name)
+-- @name Builder:build_load
+function Builder:build_load(ptr, name)
 end
 
 --- object method.
@@ -408,7 +408,348 @@ end
 -- @param val Must be of type <a href="Value.html">Value</a>.
 -- @param ptr Must be of type <a href="Value.html">Value</a>.
 -- @return <a href="Value.html">Value</a>.
--- @name Builder:LLVMBuildStore
-function Builder:LLVMBuildStore(val, ptr)
+-- @name Builder:build_store
+function Builder:build_store(val, ptr)
+end
+
+--- object method.
+--
+-- @param ptr Must be of type <a href="Value.html">Value</a>.
+-- @param Idx Must be of type <code>integer</code>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_Struct_GEP
+function Builder:build_Struct_GEP(ptr, Idx, name)
+end
+
+--- object method.
+--
+-- @param Str Must be of type <code>string</code>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_global_string
+function Builder:build_global_string(Str, name)
+end
+
+--- object method.
+--
+-- @param Str Must be of type <code>string</code>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_global_string_ptr
+function Builder:build_global_string_ptr(Str, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="IntValue.html">IntValue</a>.
+-- @param DestTy Must be of type <a href="IntType.html">IntType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="IntValue.html">IntValue</a>.
+-- @name Builder:build_trunc
+function Builder:build_trunc(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="IntValue.html">IntValue</a>.
+-- @param DestTy Must be of type <a href="IntType.html">IntType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="IntValue.html">IntValue</a>.
+-- @name Builder:build_zext
+function Builder:build_zext(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="IntValue.html">IntValue</a>.
+-- @param DestTy Must be of type <a href="IntType.html">IntType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="IntValue.html">IntValue</a>.
+-- @name Builder:build_sext
+function Builder:build_sext(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param DestTy Must be of type <a href="IntType.html">IntType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="IntValue.html">IntValue</a>.
+-- @name Builder:build_fp_to_ui
+function Builder:build_fp_to_ui(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param DestTy Must be of type <a href="IntType.html">IntType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="IntValue.html">IntValue</a>.
+-- @name Builder:build_fp_to_si
+function Builder:build_fp_to_si(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param DestTy Must be of type <a href="FloatType.html">FloatType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="FloatValue.html">FloatValue</a>.
+-- @name Builder:build_ui_to_fp
+function Builder:build_ui_to_fp(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="IntValue.html">IntValue</a>.
+-- @param DestTy Must be of type <a href="FloatType.html">FloatType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="FloatValue.html">FloatValue</a>.
+-- @name Builder:build_si_to_fp
+function Builder:build_si_to_fp(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param DestTy Must be of type <a href="FloatType.html">FloatType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="FloatValue.html">FloatValue</a>.
+-- @name Builder:build_fptrunc
+function Builder:build_fptrunc(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param DestTy Must be of type <a href="FloatType.html">FloatType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="FloatValue.html">FloatValue</a>.
+-- @name Builder:build_fpext
+function Builder:build_fpext(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="Value.html">Value</a>.
+-- @param DestTy Must be of type <a href="IntType.html">IntType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="IntValue.html">IntValue</a>.
+-- @name Builder:build_ptr_to_int
+function Builder:build_ptr_to_int(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="IntValue.html">IntValue</a>.
+-- @param DestTy Must be of type <a href="Type.html">Type</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_int_to_ptr
+function Builder:build_int_to_ptr(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="Value.html">Value</a>.
+-- @param DestTy Must be of type <a href="Type.html">Type</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_bit_cast
+function Builder:build_bit_cast(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="Value.html">Value</a>.
+-- @param DestTy Must be of type <a href="Type.html">Type</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_addr_space_cast
+function Builder:build_addr_space_cast(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="Value.html">Value</a>.
+-- @param DestTy Must be of type <a href="Type.html">Type</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_zext_or_bit_cast
+function Builder:build_zext_or_bit_cast(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="Value.html">Value</a>.
+-- @param DestTy Must be of type <a href="Type.html">Type</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_sext_or_bit_cast
+function Builder:build_sext_or_bit_cast(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="Value.html">Value</a>.
+-- @param DestTy Must be of type <a href="Type.html">Type</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_trunc_or_bit_cast
+function Builder:build_trunc_or_bit_cast(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="Value.html">Value</a>.
+-- @param DestTy Must be of type <a href="Type.html">Type</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_ptr_cast
+function Builder:build_ptr_cast(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="IntValue.html">IntValue</a>.
+-- @param DestTy Must be of type <a href="IntType.html">IntType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="IntValue.html">IntValue</a>.
+-- @name Builder:build_int_cast
+function Builder:build_int_cast(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Val Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param DestTy Must be of type <a href="FloatType.html">FloatType</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="FloatValue.html">FloatValue</a>.
+-- @name Builder:build_fpcast
+function Builder:build_fpcast(Val, DestTy, name)
+end
+
+--- object method.
+--
+-- @param Op Must be of type <a href="IntPredicate.html">IntPredicate</a>.
+-- @param lhs Must be of type <a href="IntValue.html">IntValue</a>.
+-- @param rhs Must be of type <a href="IntValue.html">IntValue</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_icmp
+function Builder:build_icmp(Op, lhs, rhs, name)
+end
+
+--- object method.
+--
+-- @param Op Must be of type <a href="RealPredicate.html">RealPredicate</a>.
+-- @param lhs Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param rhs Must be of type <a href="FloatValue.html">FloatValue</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_fcmp
+function Builder:build_fcmp(Op, lhs, rhs, name)
+end
+
+--- object method.
+--
+-- @param Ty Must be of type <a href="Type.html">Type</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_phi
+function Builder:build_phi(Ty, name)
+end
+
+--- object method.
+--
+-- @param If Must be of type <a href="Value.html">Value</a>.
+-- @param Then Must be of type <a href="Value.html">Value</a>.
+-- @param Else Must be of type <a href="Value.html">Value</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_select
+function Builder:build_select(If, Then, Else, name)
+end
+
+--- object method.
+--
+-- @param list Must be of type <a href="Value.html">Value</a>.
+-- @param ty Must be of type <a href="Type.html">Type</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_vaarg
+function Builder:build_vaarg(list, ty, name)
+end
+
+--- object method.
+--
+-- @param vecval Must be of type <a href="Value.html">Value</a>.
+-- @param index Must be of type <a href="Value.html">Value</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_extract_element
+function Builder:build_extract_element(vecval, index, name)
+end
+
+--- object method.
+--
+-- @param vecval Must be of type <a href="Value.html">Value</a>.
+-- @param eltval Must be of type <a href="Value.html">Value</a>.
+-- @param index Must be of type <a href="Value.html">Value</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_insert_element
+function Builder:build_insert_element(vecval, eltval, index, name)
+end
+
+--- object method.
+--
+-- @param v1 Must be of type <a href="Value.html">Value</a>.
+-- @param v2 Must be of type <a href="Value.html">Value</a>.
+-- @param mask Must be of type <a href="Value.html">Value</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_shuffle_vector
+function Builder:build_shuffle_vector(v1, v2, mask, name)
+end
+
+--- object method.
+--
+-- @param aggval Must be of type <a href="Value.html">Value</a>.
+-- @param index Must be of type <code>integer</code>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_extract_value
+function Builder:build_extract_value(aggval, index, name)
+end
+
+--- object method.
+--
+-- @param agg_val Must be of type <a href="Value.html">Value</a>.
+-- @param elt_val Must be of type <a href="Value.html">Value</a>.
+-- @param index Must be of type <code>integer</code>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_insert_value
+function Builder:build_insert_value(agg_val, elt_val, index, name)
+end
+
+--- object method.
+--
+-- @param val Must be of type <a href="Value.html">Value</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_is_null
+function Builder:build_is_null(val, name)
+end
+
+--- object method.
+--
+-- @param val Must be of type <a href="Value.html">Value</a>.
+-- @param name Must be of type <code>string</code>.
+-- @return <a href="Value.html">Value</a>.
+-- @name Builder:build_is_not_null
+function Builder:build_is_not_null(val, name)
 end
 

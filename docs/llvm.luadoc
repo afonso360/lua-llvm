@@ -12,8 +12,24 @@
 -- <br />Class <a href="Context.html">Context</a>
 -- <br />Class <a href="Value.html">Value</a>
 -- <br />Class <a href="IntValue.html">IntValue</a>
+-- <br />Class <a href="FloatValue.html">FloatValue</a>
 -- <br />Class <a href="FunctionValue.html">FunctionValue</a>
 -- <br />Class <a href="BasicBlock.html">BasicBlock</a>
 -- <br />Class <a href="Builder.html">Builder</a>
+-- <br />Class <a href="Opcode.html">Opcode</a>
+-- <br />Class <a href="TypeKind.html">TypeKind</a>
+-- <br />Class <a href="Linkage.html">Linkage</a>
+-- <br />Class <a href="Visibility.html">Visibility</a>
+-- <br />Class <a href="DLLStorageClass.html">DLLStorageClass</a>
+-- <br />Class <a href="CallConv.html">CallConv</a>
+-- <br />Class <a href="ValueKind.html">ValueKind</a>
+-- <br />Class <a href="IntPredicate.html">IntPredicate</a>
+-- <br />Class <a href="RealPredicate.html">RealPredicate</a>
+-- <br />Class <a href="LandingPadClauseTy.html">LandingPadClauseTy</a>
+-- <br />Class <a href="ThreadLocalMode.html">ThreadLocalMode</a>
+-- <br />Class <a href="AtomicOrdering.html">AtomicOrdering</a>
+-- <br />Class <a href="AtomicRMWBinOp.html">AtomicRMWBinOp</a>
+-- <br />Class <a href="DiagnosticSeverity.html">DiagnosticSeverity</a>
+-- <br />Class <a href="AttributeIndex.html">AttributeIndex</a>
 module("llvm")
 

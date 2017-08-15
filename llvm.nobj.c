@@ -303,15 +303,63 @@ static obj_type obj_types[] = {
 #define obj_type_id_IntValue 7
 #define obj_type_IntValue (obj_types[obj_type_id_IntValue])
   { NULL, 7, OBJ_TYPE_FLAG_WEAK_REF, "IntValue" },
-#define obj_type_id_FunctionValue 8
+#define obj_type_id_FloatValue 8
+#define obj_type_FloatValue (obj_types[obj_type_id_FloatValue])
+  { NULL, 8, OBJ_TYPE_FLAG_WEAK_REF, "FloatValue" },
+#define obj_type_id_FunctionValue 9
 #define obj_type_FunctionValue (obj_types[obj_type_id_FunctionValue])
-  { NULL, 8, OBJ_TYPE_FLAG_WEAK_REF, "FunctionValue" },
-#define obj_type_id_BasicBlock 9
+  { NULL, 9, OBJ_TYPE_FLAG_WEAK_REF, "FunctionValue" },
+#define obj_type_id_BasicBlock 10
 #define obj_type_BasicBlock (obj_types[obj_type_id_BasicBlock])
-  { NULL, 9, OBJ_TYPE_FLAG_WEAK_REF, "BasicBlock" },
-#define obj_type_id_Builder 10
+  { NULL, 10, OBJ_TYPE_FLAG_WEAK_REF, "BasicBlock" },
+#define obj_type_id_Builder 11
 #define obj_type_Builder (obj_types[obj_type_id_Builder])
-  { NULL, 10, OBJ_TYPE_FLAG_WEAK_REF, "Builder" },
+  { NULL, 11, OBJ_TYPE_FLAG_WEAK_REF, "Builder" },
+#define obj_type_id_Opcode 12
+#define obj_type_Opcode (obj_types[obj_type_id_Opcode])
+  { NULL, 12, OBJ_TYPE_FLAG_WEAK_REF, "Opcode" },
+#define obj_type_id_TypeKind 13
+#define obj_type_TypeKind (obj_types[obj_type_id_TypeKind])
+  { NULL, 13, OBJ_TYPE_FLAG_WEAK_REF, "TypeKind" },
+#define obj_type_id_Linkage 14
+#define obj_type_Linkage (obj_types[obj_type_id_Linkage])
+  { NULL, 14, OBJ_TYPE_FLAG_WEAK_REF, "Linkage" },
+#define obj_type_id_Visibility 15
+#define obj_type_Visibility (obj_types[obj_type_id_Visibility])
+  { NULL, 15, OBJ_TYPE_FLAG_WEAK_REF, "Visibility" },
+#define obj_type_id_DLLStorageClass 16
+#define obj_type_DLLStorageClass (obj_types[obj_type_id_DLLStorageClass])
+  { NULL, 16, OBJ_TYPE_FLAG_WEAK_REF, "DLLStorageClass" },
+#define obj_type_id_CallConv 17
+#define obj_type_CallConv (obj_types[obj_type_id_CallConv])
+  { NULL, 17, OBJ_TYPE_FLAG_WEAK_REF, "CallConv" },
+#define obj_type_id_ValueKind 18
+#define obj_type_ValueKind (obj_types[obj_type_id_ValueKind])
+  { NULL, 18, OBJ_TYPE_FLAG_WEAK_REF, "ValueKind" },
+#define obj_type_id_IntPredicate 19
+#define obj_type_IntPredicate (obj_types[obj_type_id_IntPredicate])
+  { NULL, 19, OBJ_TYPE_FLAG_WEAK_REF, "IntPredicate" },
+#define obj_type_id_RealPredicate 20
+#define obj_type_RealPredicate (obj_types[obj_type_id_RealPredicate])
+  { NULL, 20, OBJ_TYPE_FLAG_WEAK_REF, "RealPredicate" },
+#define obj_type_id_LandingPadClauseTy 21
+#define obj_type_LandingPadClauseTy (obj_types[obj_type_id_LandingPadClauseTy])
+  { NULL, 21, OBJ_TYPE_FLAG_WEAK_REF, "LandingPadClauseTy" },
+#define obj_type_id_ThreadLocalMode 22
+#define obj_type_ThreadLocalMode (obj_types[obj_type_id_ThreadLocalMode])
+  { NULL, 22, OBJ_TYPE_FLAG_WEAK_REF, "ThreadLocalMode" },
+#define obj_type_id_AtomicOrdering 23
+#define obj_type_AtomicOrdering (obj_types[obj_type_id_AtomicOrdering])
+  { NULL, 23, OBJ_TYPE_FLAG_WEAK_REF, "AtomicOrdering" },
+#define obj_type_id_AtomicRMWBinOp 24
+#define obj_type_AtomicRMWBinOp (obj_types[obj_type_id_AtomicRMWBinOp])
+  { NULL, 24, OBJ_TYPE_FLAG_WEAK_REF, "AtomicRMWBinOp" },
+#define obj_type_id_DiagnosticSeverity 25
+#define obj_type_DiagnosticSeverity (obj_types[obj_type_id_DiagnosticSeverity])
+  { NULL, 25, OBJ_TYPE_FLAG_WEAK_REF, "DiagnosticSeverity" },
+#define obj_type_id_AttributeIndex 26
+#define obj_type_AttributeIndex (obj_types[obj_type_id_AttributeIndex])
+  { NULL, 26, OBJ_TYPE_FLAG_WEAK_REF, "AttributeIndex" },
   {NULL, -1, 0, NULL},
 };
 
@@ -1456,6 +1504,15 @@ static char *obj_interfaces[] = {
 #define obj_type_IntValue_push(L, obj, flags) \
 	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_IntValue), flags)
 
+#define obj_type_FloatValue_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_FloatValue))
+#define obj_type_FloatValue_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_FloatValue))
+#define obj_type_FloatValue_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_FloatValue), flags)
+#define obj_type_FloatValue_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_FloatValue), flags)
+
 #define obj_type_FunctionValue_check(L, _index) \
 	obj_udata_luacheck(L, _index, &(obj_type_FunctionValue))
 #define obj_type_FunctionValue_optional(L, _index) \
@@ -1483,6 +1540,141 @@ static char *obj_interfaces[] = {
 #define obj_type_Builder_push(L, obj, flags) \
 	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_Builder), flags)
 
+#define obj_type_Opcode_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_Opcode))
+#define obj_type_Opcode_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_Opcode))
+#define obj_type_Opcode_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_Opcode), flags)
+#define obj_type_Opcode_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_Opcode), flags)
+
+#define obj_type_TypeKind_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_TypeKind))
+#define obj_type_TypeKind_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_TypeKind))
+#define obj_type_TypeKind_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_TypeKind), flags)
+#define obj_type_TypeKind_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_TypeKind), flags)
+
+#define obj_type_Linkage_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_Linkage))
+#define obj_type_Linkage_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_Linkage))
+#define obj_type_Linkage_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_Linkage), flags)
+#define obj_type_Linkage_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_Linkage), flags)
+
+#define obj_type_Visibility_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_Visibility))
+#define obj_type_Visibility_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_Visibility))
+#define obj_type_Visibility_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_Visibility), flags)
+#define obj_type_Visibility_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_Visibility), flags)
+
+#define obj_type_DLLStorageClass_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_DLLStorageClass))
+#define obj_type_DLLStorageClass_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_DLLStorageClass))
+#define obj_type_DLLStorageClass_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_DLLStorageClass), flags)
+#define obj_type_DLLStorageClass_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_DLLStorageClass), flags)
+
+#define obj_type_CallConv_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_CallConv))
+#define obj_type_CallConv_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_CallConv))
+#define obj_type_CallConv_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_CallConv), flags)
+#define obj_type_CallConv_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_CallConv), flags)
+
+#define obj_type_ValueKind_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_ValueKind))
+#define obj_type_ValueKind_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_ValueKind))
+#define obj_type_ValueKind_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_ValueKind), flags)
+#define obj_type_ValueKind_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_ValueKind), flags)
+
+#define obj_type_IntPredicate_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_IntPredicate))
+#define obj_type_IntPredicate_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_IntPredicate))
+#define obj_type_IntPredicate_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_IntPredicate), flags)
+#define obj_type_IntPredicate_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_IntPredicate), flags)
+
+#define obj_type_RealPredicate_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_RealPredicate))
+#define obj_type_RealPredicate_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_RealPredicate))
+#define obj_type_RealPredicate_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_RealPredicate), flags)
+#define obj_type_RealPredicate_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_RealPredicate), flags)
+
+#define obj_type_LandingPadClauseTy_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_LandingPadClauseTy))
+#define obj_type_LandingPadClauseTy_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_LandingPadClauseTy))
+#define obj_type_LandingPadClauseTy_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_LandingPadClauseTy), flags)
+#define obj_type_LandingPadClauseTy_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_LandingPadClauseTy), flags)
+
+#define obj_type_ThreadLocalMode_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_ThreadLocalMode))
+#define obj_type_ThreadLocalMode_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_ThreadLocalMode))
+#define obj_type_ThreadLocalMode_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_ThreadLocalMode), flags)
+#define obj_type_ThreadLocalMode_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_ThreadLocalMode), flags)
+
+#define obj_type_AtomicOrdering_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_AtomicOrdering))
+#define obj_type_AtomicOrdering_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_AtomicOrdering))
+#define obj_type_AtomicOrdering_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_AtomicOrdering), flags)
+#define obj_type_AtomicOrdering_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_AtomicOrdering), flags)
+
+#define obj_type_AtomicRMWBinOp_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_AtomicRMWBinOp))
+#define obj_type_AtomicRMWBinOp_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_AtomicRMWBinOp))
+#define obj_type_AtomicRMWBinOp_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_AtomicRMWBinOp), flags)
+#define obj_type_AtomicRMWBinOp_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_AtomicRMWBinOp), flags)
+
+#define obj_type_DiagnosticSeverity_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_DiagnosticSeverity))
+#define obj_type_DiagnosticSeverity_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_DiagnosticSeverity))
+#define obj_type_DiagnosticSeverity_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_DiagnosticSeverity), flags)
+#define obj_type_DiagnosticSeverity_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_DiagnosticSeverity), flags)
+
+#define obj_type_AttributeIndex_check(L, _index) \
+	obj_udata_luacheck(L, _index, &(obj_type_AttributeIndex))
+#define obj_type_AttributeIndex_optional(L, _index) \
+	obj_udata_luaoptional(L, _index, &(obj_type_AttributeIndex))
+#define obj_type_AttributeIndex_delete(L, _index, flags) \
+	obj_udata_luadelete_weak(L, _index, &(obj_type_AttributeIndex), flags)
+#define obj_type_AttributeIndex_push(L, obj, flags) \
+	obj_udata_luapush_weak(L, (void *)obj, &(obj_type_AttributeIndex), flags)
+
 
 
       typedef struct LLVMOpaqueType Type;
@@ -1506,11 +1698,44 @@ static char *obj_interfaces[] = {
       typedef Value IntValue;
   
 
+      typedef Value FloatValue;
+  
+
       typedef Value FunctionValue;
   
       typedef struct LLVMOpaqueBasicBlock BasicBlock;
   
       typedef struct LLVMOpaqueBuilder Builder;
+  
+    typedef LLVMOpcode Opcode;
+  
+    typedef LLVMTypeKind TypeKind;
+  
+    typedef LLVMLinkage Linkage;
+  
+    typedef LLVMVisibility Visibility;
+  
+    typedef LLVMDLLStorageClass DLLStorageClass;
+  
+    typedef LLVMCallConv CallConv;
+  
+    typedef LLVMValueKind ValueKind;
+  
+    typedef LLVMIntPredicate IntPredicate;
+  
+    typedef LLVMRealPredicate RealPredicate;
+  
+    typedef LLVMLandingPadClauseTy LandingPadClauseTy;
+  
+    typedef LLVMThreadLocalMode ThreadLocalMode;
+  
+    typedef LLVMAtomicOrdering AtomicOrdering;
+  
+    typedef LLVMAtomicRMWBinOp AtomicRMWBinOp;
+  
+    typedef LLVMDiagnosticSeverity DiagnosticSeverity;
+  
+    typedef LLVMAttributeIndex AttributeIndex;
   
 
 
@@ -2099,35 +2324,91 @@ static int Value__is_null__meth(lua_State *L) {
   return 1;
 }
 
-/* method: const_int */
-static int IntValue__const_int__meth(lua_State *L) {
-  Type * int_ty1;
+/* method: const */
+static int IntValue__const__meth(lua_State *L) {
+  IntType * ty1;
   uint64_t n2;
   bool sign_extend3;
   int this_flags1 = OBJ_UDATA_FLAG_OWN;
   IntValue * this1;
-  int_ty1 = obj_type_Type_check(L,1);
+  ty1 = obj_type_IntType_check(L,1);
   n2 = luaL_checkinteger(L,2);
   sign_extend3 = lua_toboolean(L,3);
-  this1 = LLVMConstInt(int_ty1, n2, sign_extend3);
+  this1 = LLVMConstInt(ty1, n2, sign_extend3);
   obj_type_IntValue_push(L, this1, this_flags1);
   return 1;
 }
 
-/* method: const_int_of_string */
-static int IntValue__const_int_of_string__meth(lua_State *L) {
-  Type * int_ty1;
+/* method: const_of_string */
+static int IntValue__const_of_string__meth(lua_State *L) {
+  IntType * ty1;
   size_t str_len2;
   const char * str2;
   uint8_t radix3;
   int this_flags1 = OBJ_UDATA_FLAG_OWN;
   IntValue * this1;
-  int_ty1 = obj_type_Type_check(L,1);
+  ty1 = obj_type_IntType_check(L,1);
   str2 = luaL_checklstring(L,2,&(str_len2));
   radix3 = luaL_checkinteger(L,3);
-  this1 = LLVMConstIntOfStringAndSize(int_ty1, str2, str_len2, radix3);
+  this1 = LLVMConstIntOfStringAndSize(ty1, str2, str_len2, radix3);
   obj_type_IntValue_push(L, this1, this_flags1);
   return 1;
+}
+
+/* method: zext */
+static int IntValue__zext__meth(lua_State *L) {
+  IntValue * this1;
+  uint64_t rc_LLVMConstIntGetZExtValue1 = 0;
+  this1 = obj_type_IntValue_check(L,1);
+  rc_LLVMConstIntGetZExtValue1 = LLVMConstIntGetZExtValue(this1);
+  lua_pushinteger(L, rc_LLVMConstIntGetZExtValue1);
+  return 1;
+}
+
+/* method: sext */
+static int IntValue__sext__meth(lua_State *L) {
+  IntValue * this1;
+  int64_t rc_LLVMConstIntGetSExtValue1 = 0;
+  this1 = obj_type_IntValue_check(L,1);
+  rc_LLVMConstIntGetSExtValue1 = LLVMConstIntGetSExtValue(this1);
+  lua_pushinteger(L, rc_LLVMConstIntGetSExtValue1);
+  return 1;
+}
+
+/* method: const */
+static int FloatValue__const__meth(lua_State *L) {
+  FloatType * ty1;
+  double n2;
+  int this_flags1 = OBJ_UDATA_FLAG_OWN;
+  FloatValue * this1;
+  ty1 = obj_type_FloatType_check(L,1);
+  n2 = luaL_checknumber(L,2);
+  this1 = LLVMConstReal(ty1, n2);
+  obj_type_FloatValue_push(L, this1, this_flags1);
+  return 1;
+}
+
+/* method: const_of_string */
+static int FloatValue__const_of_string__meth(lua_State *L) {
+  FloatType * ty1;
+  size_t str_len2;
+  const char * str2;
+  int this_flags1 = OBJ_UDATA_FLAG_OWN;
+  FloatValue * this1;
+  IntValue * rc_LLVMConstRealOfStringAndSize2;
+  ty1 = obj_type_FloatType_check(L,1);
+  str2 = luaL_checklstring(L,2,&(str_len2));
+  rc_LLVMConstRealOfStringAndSize2 = LLVMConstRealOfStringAndSize(ty1, str2, str_len2);
+  obj_type_FloatValue_push(L, this1, this_flags1);
+  obj_type_IntValue_push(L, rc_LLVMConstRealOfStringAndSize2, 0);
+  return 2;
+}
+
+/* method: value */
+static int FloatValue__value__meth(lua_State *L) {
+  FloatValue * this1;
+  this1 = obj_type_FloatValue_check(L,1);
+  return 0;
 }
 
 /* method: append */
@@ -2273,14 +2554,14 @@ static int Builder__build_nuwadd__meth(lua_State *L) {
 /* method: build_fadd */
 static int Builder__build_fadd__meth(lua_State *L) {
   Builder * this1;
-  Value * lhs2;
-  Value * rhs3;
+  FloatValue * lhs2;
+  FloatValue * rhs3;
   size_t name_len4;
   const char * name4;
   Value * rc_LLVMBuildFAdd1;
   this1 = obj_type_Builder_check(L,1);
-  lhs2 = obj_type_Value_check(L,2);
-  rhs3 = obj_type_Value_check(L,3);
+  lhs2 = obj_type_FloatValue_check(L,2);
+  rhs3 = obj_type_FloatValue_check(L,3);
   name4 = luaL_checklstring(L,4,&(name_len4));
   rc_LLVMBuildFAdd1 = LLVMBuildFAdd(this1, lhs2, rhs3, name4);
   obj_type_Value_push(L, rc_LLVMBuildFAdd1, 0);
@@ -2341,14 +2622,14 @@ static int Builder__build_nuwsub__meth(lua_State *L) {
 /* method: build_fsub */
 static int Builder__build_fsub__meth(lua_State *L) {
   Builder * this1;
-  Value * lhs2;
-  Value * rhs3;
+  FloatValue * lhs2;
+  FloatValue * rhs3;
   size_t name_len4;
   const char * name4;
   Value * rc_LLVMBuildFSub1;
   this1 = obj_type_Builder_check(L,1);
-  lhs2 = obj_type_Value_check(L,2);
-  rhs3 = obj_type_Value_check(L,3);
+  lhs2 = obj_type_FloatValue_check(L,2);
+  rhs3 = obj_type_FloatValue_check(L,3);
   name4 = luaL_checklstring(L,4,&(name_len4));
   rc_LLVMBuildFSub1 = LLVMBuildFSub(this1, lhs2, rhs3, name4);
   obj_type_Value_push(L, rc_LLVMBuildFSub1, 0);
@@ -2409,14 +2690,14 @@ static int Builder__build_nuwmul__meth(lua_State *L) {
 /* method: build_fmul */
 static int Builder__build_fmul__meth(lua_State *L) {
   Builder * this1;
-  Value * lhs2;
-  Value * rhs3;
+  FloatValue * lhs2;
+  FloatValue * rhs3;
   size_t name_len4;
   const char * name4;
   Value * rc_LLVMBuildFMul1;
   this1 = obj_type_Builder_check(L,1);
-  lhs2 = obj_type_Value_check(L,2);
-  rhs3 = obj_type_Value_check(L,3);
+  lhs2 = obj_type_FloatValue_check(L,2);
+  rhs3 = obj_type_FloatValue_check(L,3);
   name4 = luaL_checklstring(L,4,&(name_len4));
   rc_LLVMBuildFMul1 = LLVMBuildFMul(this1, lhs2, rhs3, name4);
   obj_type_Value_push(L, rc_LLVMBuildFMul1, 0);
@@ -2494,14 +2775,14 @@ static int Builder__build_exact_sdiv__meth(lua_State *L) {
 /* method: build_fdiv */
 static int Builder__build_fdiv__meth(lua_State *L) {
   Builder * this1;
-  Value * lhs2;
-  Value * rhs3;
+  FloatValue * lhs2;
+  FloatValue * rhs3;
   size_t name_len4;
   const char * name4;
   Value * rc_LLVMBuildFDiv1;
   this1 = obj_type_Builder_check(L,1);
-  lhs2 = obj_type_Value_check(L,2);
-  rhs3 = obj_type_Value_check(L,3);
+  lhs2 = obj_type_FloatValue_check(L,2);
+  rhs3 = obj_type_FloatValue_check(L,3);
   name4 = luaL_checklstring(L,4,&(name_len4));
   rc_LLVMBuildFDiv1 = LLVMBuildFDiv(this1, lhs2, rhs3, name4);
   obj_type_Value_push(L, rc_LLVMBuildFDiv1, 0);
@@ -2545,14 +2826,14 @@ static int Builder__build_srem__meth(lua_State *L) {
 /* method: build_frem */
 static int Builder__build_frem__meth(lua_State *L) {
   Builder * this1;
-  Value * lhs2;
-  Value * rhs3;
+  FloatValue * lhs2;
+  FloatValue * rhs3;
   size_t name_len4;
   const char * name4;
   Value * rc_LLVMBuildFRem1;
   this1 = obj_type_Builder_check(L,1);
-  lhs2 = obj_type_Value_check(L,2);
-  rhs3 = obj_type_Value_check(L,3);
+  lhs2 = obj_type_FloatValue_check(L,2);
+  rhs3 = obj_type_FloatValue_check(L,3);
   name4 = luaL_checklstring(L,4,&(name_len4));
   rc_LLVMBuildFRem1 = LLVMBuildFRem(this1, lhs2, rhs3, name4);
   obj_type_Value_push(L, rc_LLVMBuildFRem1, 0);
@@ -2709,12 +2990,12 @@ static int Builder__build_nuwneg__meth(lua_State *L) {
 /* method: build_fneg */
 static int Builder__build_fneg__meth(lua_State *L) {
   Builder * this1;
-  Value * v2;
+  FloatValue * v2;
   size_t name_len3;
   const char * name3;
   Value * rc_LLVMBuildFNeg1;
   this1 = obj_type_Builder_check(L,1);
-  v2 = obj_type_Value_check(L,2);
+  v2 = obj_type_FloatValue_check(L,2);
   name3 = luaL_checklstring(L,3,&(name_len3));
   rc_LLVMBuildFNeg1 = LLVMBuildFNeg(this1, v2, name3);
   obj_type_Value_push(L, rc_LLVMBuildFNeg1, 0);
@@ -2800,8 +3081,8 @@ static int Builder__build_array_alloca__meth(lua_State *L) {
   return 1;
 }
 
-/* method: LLVMBuildFree */
-static int Builder__LLVMBuildFree__meth(lua_State *L) {
+/* method: build_free */
+static int Builder__build_free__meth(lua_State *L) {
   Builder * this1;
   Value * ptr2;
   Value * rc_LLVMBuildFree1;
@@ -2812,8 +3093,8 @@ static int Builder__LLVMBuildFree__meth(lua_State *L) {
   return 1;
 }
 
-/* method: LLVMBuildLoad */
-static int Builder__LLVMBuildLoad__meth(lua_State *L) {
+/* method: build_load */
+static int Builder__build_load__meth(lua_State *L) {
   Builder * this1;
   Value * ptr2;
   size_t name_len3;
@@ -2827,8 +3108,8 @@ static int Builder__LLVMBuildLoad__meth(lua_State *L) {
   return 1;
 }
 
-/* method: LLVMBuildStore */
-static int Builder__LLVMBuildStore__meth(lua_State *L) {
+/* method: build_store */
+static int Builder__build_store__meth(lua_State *L) {
   Builder * this1;
   Value * val2;
   Value * ptr3;
@@ -2838,6 +3119,588 @@ static int Builder__LLVMBuildStore__meth(lua_State *L) {
   ptr3 = obj_type_Value_check(L,3);
   rc_LLVMBuildStore1 = LLVMBuildStore(this1, val2, ptr3);
   obj_type_Value_push(L, rc_LLVMBuildStore1, 0);
+  return 1;
+}
+
+/* method: build_Struct_GEP */
+static int Builder__build_Struct_GEP__meth(lua_State *L) {
+  Builder * this1;
+  Value * ptr2;
+  unsigned Idx3;
+  size_t name_len4;
+  const char * name4;
+  Value * rc_LLVMBuildStructGEP1;
+  this1 = obj_type_Builder_check(L,1);
+  ptr2 = obj_type_Value_check(L,2);
+  Idx3 = luaL_checkinteger(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildStructGEP1 = LLVMBuildStructGEP(this1, ptr2, Idx3, name4);
+  obj_type_Value_push(L, rc_LLVMBuildStructGEP1, 0);
+  return 1;
+}
+
+/* method: build_global_string */
+static int Builder__build_global_string__meth(lua_State *L) {
+  Builder * this1;
+  size_t Str_len2;
+  const char * Str2;
+  size_t name_len3;
+  const char * name3;
+  Value * rc_LLVMBuildGlobalString1;
+  this1 = obj_type_Builder_check(L,1);
+  Str2 = luaL_checklstring(L,2,&(Str_len2));
+  name3 = luaL_checklstring(L,3,&(name_len3));
+  rc_LLVMBuildGlobalString1 = LLVMBuildGlobalString(this1, Str2, name3);
+  obj_type_Value_push(L, rc_LLVMBuildGlobalString1, 0);
+  return 1;
+}
+
+/* method: build_global_string_ptr */
+static int Builder__build_global_string_ptr__meth(lua_State *L) {
+  Builder * this1;
+  size_t Str_len2;
+  const char * Str2;
+  size_t name_len3;
+  const char * name3;
+  Value * rc_LLVMBuildGlobalStringPtr1;
+  this1 = obj_type_Builder_check(L,1);
+  Str2 = luaL_checklstring(L,2,&(Str_len2));
+  name3 = luaL_checklstring(L,3,&(name_len3));
+  rc_LLVMBuildGlobalStringPtr1 = LLVMBuildGlobalStringPtr(this1, Str2, name3);
+  obj_type_Value_push(L, rc_LLVMBuildGlobalStringPtr1, 0);
+  return 1;
+}
+
+/* method: build_trunc */
+static int Builder__build_trunc__meth(lua_State *L) {
+  Builder * this1;
+  IntValue * Val2;
+  IntType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  IntValue * rc_LLVMBuildTrunc1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_IntValue_check(L,2);
+  DestTy3 = obj_type_IntType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildTrunc1 = LLVMBuildTrunc(this1, Val2, DestTy3, name4);
+  obj_type_IntValue_push(L, rc_LLVMBuildTrunc1, 0);
+  return 1;
+}
+
+/* method: build_zext */
+static int Builder__build_zext__meth(lua_State *L) {
+  Builder * this1;
+  IntValue * Val2;
+  IntType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  IntValue * rc_LLVMBuildZExt1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_IntValue_check(L,2);
+  DestTy3 = obj_type_IntType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildZExt1 = LLVMBuildZExt(this1, Val2, DestTy3, name4);
+  obj_type_IntValue_push(L, rc_LLVMBuildZExt1, 0);
+  return 1;
+}
+
+/* method: build_sext */
+static int Builder__build_sext__meth(lua_State *L) {
+  Builder * this1;
+  IntValue * Val2;
+  IntType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  IntValue * rc_LLVMBuildSExt1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_IntValue_check(L,2);
+  DestTy3 = obj_type_IntType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildSExt1 = LLVMBuildSExt(this1, Val2, DestTy3, name4);
+  obj_type_IntValue_push(L, rc_LLVMBuildSExt1, 0);
+  return 1;
+}
+
+/* method: build_fp_to_ui */
+static int Builder__build_fp_to_ui__meth(lua_State *L) {
+  Builder * this1;
+  FloatValue * Val2;
+  IntType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  IntValue * rc_LLVMBuildFPToUI1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_FloatValue_check(L,2);
+  DestTy3 = obj_type_IntType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildFPToUI1 = LLVMBuildFPToUI(this1, Val2, DestTy3, name4);
+  obj_type_IntValue_push(L, rc_LLVMBuildFPToUI1, 0);
+  return 1;
+}
+
+/* method: build_fp_to_si */
+static int Builder__build_fp_to_si__meth(lua_State *L) {
+  Builder * this1;
+  FloatValue * Val2;
+  IntType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  IntValue * rc_LLVMBuildFPToSI1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_FloatValue_check(L,2);
+  DestTy3 = obj_type_IntType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildFPToSI1 = LLVMBuildFPToSI(this1, Val2, DestTy3, name4);
+  obj_type_IntValue_push(L, rc_LLVMBuildFPToSI1, 0);
+  return 1;
+}
+
+/* method: build_ui_to_fp */
+static int Builder__build_ui_to_fp__meth(lua_State *L) {
+  Builder * this1;
+  FloatValue * Val2;
+  FloatType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  FloatValue * rc_LLVMBuildUIToFP1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_FloatValue_check(L,2);
+  DestTy3 = obj_type_FloatType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildUIToFP1 = LLVMBuildUIToFP(this1, Val2, DestTy3, name4);
+  obj_type_FloatValue_push(L, rc_LLVMBuildUIToFP1, 0);
+  return 1;
+}
+
+/* method: build_si_to_fp */
+static int Builder__build_si_to_fp__meth(lua_State *L) {
+  Builder * this1;
+  IntValue * Val2;
+  FloatType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  FloatValue * rc_LLVMBuildSIToFP1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_IntValue_check(L,2);
+  DestTy3 = obj_type_FloatType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildSIToFP1 = LLVMBuildSIToFP(this1, Val2, DestTy3, name4);
+  obj_type_FloatValue_push(L, rc_LLVMBuildSIToFP1, 0);
+  return 1;
+}
+
+/* method: build_fptrunc */
+static int Builder__build_fptrunc__meth(lua_State *L) {
+  Builder * this1;
+  FloatValue * Val2;
+  FloatType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  FloatValue * rc_LLVMBuildFPTrunc1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_FloatValue_check(L,2);
+  DestTy3 = obj_type_FloatType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildFPTrunc1 = LLVMBuildFPTrunc(this1, Val2, DestTy3, name4);
+  obj_type_FloatValue_push(L, rc_LLVMBuildFPTrunc1, 0);
+  return 1;
+}
+
+/* method: build_fpext */
+static int Builder__build_fpext__meth(lua_State *L) {
+  Builder * this1;
+  FloatValue * Val2;
+  FloatType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  FloatValue * rc_LLVMBuildFPExt1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_FloatValue_check(L,2);
+  DestTy3 = obj_type_FloatType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildFPExt1 = LLVMBuildFPExt(this1, Val2, DestTy3, name4);
+  obj_type_FloatValue_push(L, rc_LLVMBuildFPExt1, 0);
+  return 1;
+}
+
+/* method: build_ptr_to_int */
+static int Builder__build_ptr_to_int__meth(lua_State *L) {
+  Builder * this1;
+  Value * Val2;
+  IntType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  IntValue * rc_LLVMBuildPtrToInt1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_Value_check(L,2);
+  DestTy3 = obj_type_IntType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildPtrToInt1 = LLVMBuildPtrToInt(this1, Val2, DestTy3, name4);
+  obj_type_IntValue_push(L, rc_LLVMBuildPtrToInt1, 0);
+  return 1;
+}
+
+/* method: build_int_to_ptr */
+static int Builder__build_int_to_ptr__meth(lua_State *L) {
+  Builder * this1;
+  IntValue * Val2;
+  Type * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  Value * rc_LLVMBuildIntToPtr1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_IntValue_check(L,2);
+  DestTy3 = obj_type_Type_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildIntToPtr1 = LLVMBuildIntToPtr(this1, Val2, DestTy3, name4);
+  obj_type_Value_push(L, rc_LLVMBuildIntToPtr1, 0);
+  return 1;
+}
+
+/* method: build_bit_cast */
+static int Builder__build_bit_cast__meth(lua_State *L) {
+  Builder * this1;
+  Value * Val2;
+  Type * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  Value * rc_LLVMBuildBitCast1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_Value_check(L,2);
+  DestTy3 = obj_type_Type_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildBitCast1 = LLVMBuildBitCast(this1, Val2, DestTy3, name4);
+  obj_type_Value_push(L, rc_LLVMBuildBitCast1, 0);
+  return 1;
+}
+
+/* method: build_addr_space_cast */
+static int Builder__build_addr_space_cast__meth(lua_State *L) {
+  Builder * this1;
+  Value * Val2;
+  Type * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  Value * rc_LLVMBuildAddrSpaceCast1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_Value_check(L,2);
+  DestTy3 = obj_type_Type_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildAddrSpaceCast1 = LLVMBuildAddrSpaceCast(this1, Val2, DestTy3, name4);
+  obj_type_Value_push(L, rc_LLVMBuildAddrSpaceCast1, 0);
+  return 1;
+}
+
+/* method: build_zext_or_bit_cast */
+static int Builder__build_zext_or_bit_cast__meth(lua_State *L) {
+  Builder * this1;
+  Value * Val2;
+  Type * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  Value * rc_LLVMBuildZExtOrBitCast1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_Value_check(L,2);
+  DestTy3 = obj_type_Type_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildZExtOrBitCast1 = LLVMBuildZExtOrBitCast(this1, Val2, DestTy3, name4);
+  obj_type_Value_push(L, rc_LLVMBuildZExtOrBitCast1, 0);
+  return 1;
+}
+
+/* method: build_sext_or_bit_cast */
+static int Builder__build_sext_or_bit_cast__meth(lua_State *L) {
+  Builder * this1;
+  Value * Val2;
+  Type * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  Value * rc_LLVMBuildSExtOrBitCast1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_Value_check(L,2);
+  DestTy3 = obj_type_Type_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildSExtOrBitCast1 = LLVMBuildSExtOrBitCast(this1, Val2, DestTy3, name4);
+  obj_type_Value_push(L, rc_LLVMBuildSExtOrBitCast1, 0);
+  return 1;
+}
+
+/* method: build_trunc_or_bit_cast */
+static int Builder__build_trunc_or_bit_cast__meth(lua_State *L) {
+  Builder * this1;
+  Value * Val2;
+  Type * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  Value * rc_LLVMBuildTruncOrBitCast1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_Value_check(L,2);
+  DestTy3 = obj_type_Type_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildTruncOrBitCast1 = LLVMBuildTruncOrBitCast(this1, Val2, DestTy3, name4);
+  obj_type_Value_push(L, rc_LLVMBuildTruncOrBitCast1, 0);
+  return 1;
+}
+
+/* method: build_ptr_cast */
+static int Builder__build_ptr_cast__meth(lua_State *L) {
+  Builder * this1;
+  Value * Val2;
+  Type * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  Value * rc_LLVMBuildPointerCast1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_Value_check(L,2);
+  DestTy3 = obj_type_Type_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildPointerCast1 = LLVMBuildPointerCast(this1, Val2, DestTy3, name4);
+  obj_type_Value_push(L, rc_LLVMBuildPointerCast1, 0);
+  return 1;
+}
+
+/* method: build_int_cast */
+static int Builder__build_int_cast__meth(lua_State *L) {
+  Builder * this1;
+  IntValue * Val2;
+  IntType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  IntValue * rc_LLVMBuildIntCast1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_IntValue_check(L,2);
+  DestTy3 = obj_type_IntType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildIntCast1 = LLVMBuildIntCast(this1, Val2, DestTy3, name4);
+  obj_type_IntValue_push(L, rc_LLVMBuildIntCast1, 0);
+  return 1;
+}
+
+/* method: build_fpcast */
+static int Builder__build_fpcast__meth(lua_State *L) {
+  Builder * this1;
+  FloatValue * Val2;
+  FloatType * DestTy3;
+  size_t name_len4;
+  const char * name4;
+  FloatValue * rc_LLVMBuildFPCast1;
+  this1 = obj_type_Builder_check(L,1);
+  Val2 = obj_type_FloatValue_check(L,2);
+  DestTy3 = obj_type_FloatType_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildFPCast1 = LLVMBuildFPCast(this1, Val2, DestTy3, name4);
+  obj_type_FloatValue_push(L, rc_LLVMBuildFPCast1, 0);
+  return 1;
+}
+
+/* method: build_icmp */
+static int Builder__build_icmp__meth(lua_State *L) {
+  Builder * this1;
+  IntPredicate * Op2;
+  IntValue * lhs3;
+  IntValue * rhs4;
+  size_t name_len5;
+  const char * name5;
+  Value * rc_LLVMBuildICmp1;
+  this1 = obj_type_Builder_check(L,1);
+  Op2 = obj_type_IntPredicate_check(L,2);
+  lhs3 = obj_type_IntValue_check(L,3);
+  rhs4 = obj_type_IntValue_check(L,4);
+  name5 = luaL_checklstring(L,5,&(name_len5));
+  rc_LLVMBuildICmp1 = LLVMBuildICmp(this1, *(Op2), lhs3, rhs4, name5);
+  obj_type_Value_push(L, rc_LLVMBuildICmp1, 0);
+  return 1;
+}
+
+/* method: build_fcmp */
+static int Builder__build_fcmp__meth(lua_State *L) {
+  Builder * this1;
+  RealPredicate * Op2;
+  FloatValue * lhs3;
+  FloatValue * rhs4;
+  size_t name_len5;
+  const char * name5;
+  Value * rc_LLVMBuildFCmp1;
+  this1 = obj_type_Builder_check(L,1);
+  Op2 = obj_type_RealPredicate_check(L,2);
+  lhs3 = obj_type_FloatValue_check(L,3);
+  rhs4 = obj_type_FloatValue_check(L,4);
+  name5 = luaL_checklstring(L,5,&(name_len5));
+  rc_LLVMBuildFCmp1 = LLVMBuildFCmp(this1, *(Op2), lhs3, rhs4, name5);
+  obj_type_Value_push(L, rc_LLVMBuildFCmp1, 0);
+  return 1;
+}
+
+/* method: build_phi */
+static int Builder__build_phi__meth(lua_State *L) {
+  Builder * this1;
+  Type * Ty2;
+  size_t name_len3;
+  const char * name3;
+  Value * rc_LLVMBuildPhi1;
+  this1 = obj_type_Builder_check(L,1);
+  Ty2 = obj_type_Type_check(L,2);
+  name3 = luaL_checklstring(L,3,&(name_len3));
+  rc_LLVMBuildPhi1 = LLVMBuildPhi(this1, Ty2, name3);
+  obj_type_Value_push(L, rc_LLVMBuildPhi1, 0);
+  return 1;
+}
+
+/* method: build_select */
+static int Builder__build_select__meth(lua_State *L) {
+  Builder * this1;
+  Value * If2;
+  Value * Then3;
+  Value * Else4;
+  size_t name_len5;
+  const char * name5;
+  Value * rc_LLVMBuildSelect1;
+  this1 = obj_type_Builder_check(L,1);
+  If2 = obj_type_Value_check(L,2);
+  Then3 = obj_type_Value_check(L,3);
+  Else4 = obj_type_Value_check(L,4);
+  name5 = luaL_checklstring(L,5,&(name_len5));
+  rc_LLVMBuildSelect1 = LLVMBuildSelect(this1, If2, Then3, Else4, name5);
+  obj_type_Value_push(L, rc_LLVMBuildSelect1, 0);
+  return 1;
+}
+
+/* method: build_vaarg */
+static int Builder__build_vaarg__meth(lua_State *L) {
+  Builder * this1;
+  Value * list2;
+  Type * ty3;
+  size_t name_len4;
+  const char * name4;
+  Value * rc_LLVMBuildVAArg1;
+  this1 = obj_type_Builder_check(L,1);
+  list2 = obj_type_Value_check(L,2);
+  ty3 = obj_type_Type_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildVAArg1 = LLVMBuildVAArg(this1, list2, ty3, name4);
+  obj_type_Value_push(L, rc_LLVMBuildVAArg1, 0);
+  return 1;
+}
+
+/* method: build_extract_element */
+static int Builder__build_extract_element__meth(lua_State *L) {
+  Builder * this1;
+  Value * vecval2;
+  Value * index3;
+  size_t name_len4;
+  const char * name4;
+  Value * rc_LLVMBuildExtractElement1;
+  this1 = obj_type_Builder_check(L,1);
+  vecval2 = obj_type_Value_check(L,2);
+  index3 = obj_type_Value_check(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildExtractElement1 = LLVMBuildExtractElement(this1, vecval2, index3, name4);
+  obj_type_Value_push(L, rc_LLVMBuildExtractElement1, 0);
+  return 1;
+}
+
+/* method: build_insert_element */
+static int Builder__build_insert_element__meth(lua_State *L) {
+  Builder * this1;
+  Value * vecval2;
+  Value * eltval3;
+  Value * index4;
+  size_t name_len5;
+  const char * name5;
+  Value * rc_LLVMBuildInsertElement1;
+  this1 = obj_type_Builder_check(L,1);
+  vecval2 = obj_type_Value_check(L,2);
+  eltval3 = obj_type_Value_check(L,3);
+  index4 = obj_type_Value_check(L,4);
+  name5 = luaL_checklstring(L,5,&(name_len5));
+  rc_LLVMBuildInsertElement1 = LLVMBuildInsertElement(this1, vecval2, eltval3, index4, name5);
+  obj_type_Value_push(L, rc_LLVMBuildInsertElement1, 0);
+  return 1;
+}
+
+/* method: build_shuffle_vector */
+static int Builder__build_shuffle_vector__meth(lua_State *L) {
+  Builder * this1;
+  Value * v12;
+  Value * v23;
+  Value * mask4;
+  size_t name_len5;
+  const char * name5;
+  Value * rc_LLVMBuildShuffleVector1;
+  this1 = obj_type_Builder_check(L,1);
+  v12 = obj_type_Value_check(L,2);
+  v23 = obj_type_Value_check(L,3);
+  mask4 = obj_type_Value_check(L,4);
+  name5 = luaL_checklstring(L,5,&(name_len5));
+  rc_LLVMBuildShuffleVector1 = LLVMBuildShuffleVector(this1, v12, v23, mask4, name5);
+  obj_type_Value_push(L, rc_LLVMBuildShuffleVector1, 0);
+  return 1;
+}
+
+/* method: build_extract_value */
+static int Builder__build_extract_value__meth(lua_State *L) {
+  Builder * this1;
+  Value * aggval2;
+  unsigned index3;
+  size_t name_len4;
+  const char * name4;
+  Value * rc_LLVMBuildExtractValue1;
+  this1 = obj_type_Builder_check(L,1);
+  aggval2 = obj_type_Value_check(L,2);
+  index3 = luaL_checkinteger(L,3);
+  name4 = luaL_checklstring(L,4,&(name_len4));
+  rc_LLVMBuildExtractValue1 = LLVMBuildExtractValue(this1, aggval2, index3, name4);
+  obj_type_Value_push(L, rc_LLVMBuildExtractValue1, 0);
+  return 1;
+}
+
+/* method: build_insert_value */
+static int Builder__build_insert_value__meth(lua_State *L) {
+  Builder * this1;
+  Value * agg_val2;
+  Value * elt_val3;
+  unsigned index4;
+  size_t name_len5;
+  const char * name5;
+  Value * rc_LLVMBuildInsertValue1;
+  this1 = obj_type_Builder_check(L,1);
+  agg_val2 = obj_type_Value_check(L,2);
+  elt_val3 = obj_type_Value_check(L,3);
+  index4 = luaL_checkinteger(L,4);
+  name5 = luaL_checklstring(L,5,&(name_len5));
+  rc_LLVMBuildInsertValue1 = LLVMBuildInsertValue(this1, agg_val2, elt_val3, index4, name5);
+  obj_type_Value_push(L, rc_LLVMBuildInsertValue1, 0);
+  return 1;
+}
+
+/* method: build_is_null */
+static int Builder__build_is_null__meth(lua_State *L) {
+  Builder * this1;
+  Value * val2;
+  size_t name_len3;
+  const char * name3;
+  Value * rc_LLVMBuildIsNull1;
+  this1 = obj_type_Builder_check(L,1);
+  val2 = obj_type_Value_check(L,2);
+  name3 = luaL_checklstring(L,3,&(name_len3));
+  rc_LLVMBuildIsNull1 = LLVMBuildIsNull(this1, val2, name3);
+  obj_type_Value_push(L, rc_LLVMBuildIsNull1, 0);
+  return 1;
+}
+
+/* method: build_is_not_null */
+static int Builder__build_is_not_null__meth(lua_State *L) {
+  Builder * this1;
+  Value * val2;
+  size_t name_len3;
+  const char * name3;
+  Value * rc_LLVMBuildIsNotNull1;
+  this1 = obj_type_Builder_check(L,1);
+  val2 = obj_type_Value_check(L,2);
+  name3 = luaL_checklstring(L,3,&(name_len3));
+  rc_LLVMBuildIsNotNull1 = LLVMBuildIsNotNull(this1, val2, name3);
+  obj_type_Value_push(L, rc_LLVMBuildIsNotNull1, 0);
   return 1;
 }
 
@@ -2885,9 +3748,9 @@ static const luaL_Reg obj_FunctionType_pub_funcs[] = {
 };
 
 static const luaL_Reg obj_FunctionType_methods[] = {
-  {"dump", Type__dump__meth},
-  {"is_sized", Type__is_sized__meth},
   {"get_context", Type__get_context__meth},
+  {"is_sized", Type__is_sized__meth},
+  {"dump", Type__dump__meth},
   {"is_vararg", FunctionType__is_vararg__meth},
   {"return_type", FunctionType__return_type__meth},
   {"count_param_types", FunctionType__count_param_types__meth},
@@ -2930,9 +3793,9 @@ static const luaL_Reg obj_IntType_pub_funcs[] = {
 };
 
 static const luaL_Reg obj_IntType_methods[] = {
-  {"dump", Type__dump__meth},
-  {"is_sized", Type__is_sized__meth},
   {"get_context", Type__get_context__meth},
+  {"is_sized", Type__is_sized__meth},
+  {"dump", Type__dump__meth},
   {"get_int_width", IntType__get_int_width__meth},
   {NULL, NULL}
 };
@@ -2971,9 +3834,9 @@ static const luaL_Reg obj_FloatType_pub_funcs[] = {
 };
 
 static const luaL_Reg obj_FloatType_methods[] = {
-  {"dump", Type__dump__meth},
-  {"is_sized", Type__is_sized__meth},
   {"get_context", Type__get_context__meth},
+  {"is_sized", Type__is_sized__meth},
+  {"dump", Type__dump__meth},
   {NULL, NULL}
 };
 
@@ -3112,18 +3975,20 @@ static const reg_impl obj_Value_implements[] = {
 };
 
 static const luaL_Reg obj_IntValue_pub_funcs[] = {
-  {"const_int", IntValue__const_int__meth},
-  {"const_int_of_string", IntValue__const_int_of_string__meth},
+  {"const", IntValue__const__meth},
+  {"const_of_string", IntValue__const_of_string__meth},
   {NULL, NULL}
 };
 
 static const luaL_Reg obj_IntValue_methods[] = {
-  {"is_null", Value__is_null__meth},
-  {"is_undef", Value__is_undef__meth},
-  {"dump", Value__dump__meth},
-  {"is_constant", Value__is_constant__meth},
-  {"name", Value__name__meth},
   {"set_name", Value__set_name__meth},
+  {"is_constant", Value__is_constant__meth},
+  {"is_undef", Value__is_undef__meth},
+  {"is_null", Value__is_null__meth},
+  {"name", Value__name__meth},
+  {"dump", Value__dump__meth},
+  {"zext", IntValue__zext__meth},
+  {"sext", IntValue__sext__meth},
   {NULL, NULL}
 };
 
@@ -3150,17 +4015,57 @@ static const reg_impl obj_IntValue_implements[] = {
   {NULL, NULL}
 };
 
+static const luaL_Reg obj_FloatValue_pub_funcs[] = {
+  {"const", FloatValue__const__meth},
+  {"const_of_string", FloatValue__const_of_string__meth},
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_FloatValue_methods[] = {
+  {"set_name", Value__set_name__meth},
+  {"is_constant", Value__is_constant__meth},
+  {"is_undef", Value__is_undef__meth},
+  {"is_null", Value__is_null__meth},
+  {"name", Value__name__meth},
+  {"dump", Value__dump__meth},
+  {"value", FloatValue__value__meth},
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_FloatValue_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_FloatValue_bases[] = {
+  {6, NULL},
+  {-1, NULL}
+};
+
+static const obj_field obj_FloatValue_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_FloatValue_constants[] = {
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_FloatValue_implements[] = {
+  {NULL, NULL}
+};
+
 static const luaL_Reg obj_FunctionValue_pub_funcs[] = {
   {NULL, NULL}
 };
 
 static const luaL_Reg obj_FunctionValue_methods[] = {
-  {"is_null", Value__is_null__meth},
-  {"is_undef", Value__is_undef__meth},
-  {"dump", Value__dump__meth},
-  {"is_constant", Value__is_constant__meth},
-  {"name", Value__name__meth},
   {"set_name", Value__set_name__meth},
+  {"is_constant", Value__is_constant__meth},
+  {"is_undef", Value__is_undef__meth},
+  {"is_null", Value__is_null__meth},
+  {"name", Value__name__meth},
+  {"dump", Value__dump__meth},
   {NULL, NULL}
 };
 
@@ -3264,9 +4169,43 @@ static const luaL_Reg obj_Builder_methods[] = {
   {"build_array_malloc", Builder__build_array_malloc__meth},
   {"build_alloca", Builder__build_alloca__meth},
   {"build_array_alloca", Builder__build_array_alloca__meth},
-  {"LLVMBuildFree", Builder__LLVMBuildFree__meth},
-  {"LLVMBuildLoad", Builder__LLVMBuildLoad__meth},
-  {"LLVMBuildStore", Builder__LLVMBuildStore__meth},
+  {"build_free", Builder__build_free__meth},
+  {"build_load", Builder__build_load__meth},
+  {"build_store", Builder__build_store__meth},
+  {"build_Struct_GEP", Builder__build_Struct_GEP__meth},
+  {"build_global_string", Builder__build_global_string__meth},
+  {"build_global_string_ptr", Builder__build_global_string_ptr__meth},
+  {"build_trunc", Builder__build_trunc__meth},
+  {"build_zext", Builder__build_zext__meth},
+  {"build_sext", Builder__build_sext__meth},
+  {"build_fp_to_ui", Builder__build_fp_to_ui__meth},
+  {"build_fp_to_si", Builder__build_fp_to_si__meth},
+  {"build_ui_to_fp", Builder__build_ui_to_fp__meth},
+  {"build_si_to_fp", Builder__build_si_to_fp__meth},
+  {"build_fptrunc", Builder__build_fptrunc__meth},
+  {"build_fpext", Builder__build_fpext__meth},
+  {"build_ptr_to_int", Builder__build_ptr_to_int__meth},
+  {"build_int_to_ptr", Builder__build_int_to_ptr__meth},
+  {"build_bit_cast", Builder__build_bit_cast__meth},
+  {"build_addr_space_cast", Builder__build_addr_space_cast__meth},
+  {"build_zext_or_bit_cast", Builder__build_zext_or_bit_cast__meth},
+  {"build_sext_or_bit_cast", Builder__build_sext_or_bit_cast__meth},
+  {"build_trunc_or_bit_cast", Builder__build_trunc_or_bit_cast__meth},
+  {"build_ptr_cast", Builder__build_ptr_cast__meth},
+  {"build_int_cast", Builder__build_int_cast__meth},
+  {"build_fpcast", Builder__build_fpcast__meth},
+  {"build_icmp", Builder__build_icmp__meth},
+  {"build_fcmp", Builder__build_fcmp__meth},
+  {"build_phi", Builder__build_phi__meth},
+  {"build_select", Builder__build_select__meth},
+  {"build_vaarg", Builder__build_vaarg__meth},
+  {"build_extract_element", Builder__build_extract_element__meth},
+  {"build_insert_element", Builder__build_insert_element__meth},
+  {"build_shuffle_vector", Builder__build_shuffle_vector__meth},
+  {"build_extract_value", Builder__build_extract_value__meth},
+  {"build_insert_value", Builder__build_insert_value__meth},
+  {"build_is_null", Builder__build_is_null__meth},
+  {"build_is_not_null", Builder__build_is_not_null__meth},
   {NULL, NULL}
 };
 
@@ -3293,6 +4232,1035 @@ static const reg_impl obj_Builder_implements[] = {
   {NULL, NULL}
 };
 
+static const luaL_Reg obj_Opcode_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_Opcode_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_Opcode_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_Opcode_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_Opcode_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_Opcode_constants[] = {
+#ifdef LLVMInsertValue
+  {"InsertValue", NULL, LLVMInsertValue, CONST_NUMBER},
+#endif
+#ifdef LLVMSub
+  {"Sub", NULL, LLVMSub, CONST_NUMBER},
+#endif
+#ifdef LLVMCatchSwitch
+  {"CatchSwitch", NULL, LLVMCatchSwitch, CONST_NUMBER},
+#endif
+#ifdef LLVMIntToPtr
+  {"IntToPtr", NULL, LLVMIntToPtr, CONST_NUMBER},
+#endif
+#ifdef LLVMICmp
+  {"ICmp", NULL, LLVMICmp, CONST_NUMBER},
+#endif
+#ifdef LLVMSwitch
+  {"Switch", NULL, LLVMSwitch, CONST_NUMBER},
+#endif
+#ifdef LLVMIndirectBr
+  {"IndirectBr", NULL, LLVMIndirectBr, CONST_NUMBER},
+#endif
+#ifdef LLVMFDiv
+  {"FDiv", NULL, LLVMFDiv, CONST_NUMBER},
+#endif
+#ifdef LLVMCatchRet
+  {"CatchRet", NULL, LLVMCatchRet, CONST_NUMBER},
+#endif
+#ifdef LLVMFRem
+  {"FRem", NULL, LLVMFRem, CONST_NUMBER},
+#endif
+#ifdef LLVMUDiv
+  {"UDiv", NULL, LLVMUDiv, CONST_NUMBER},
+#endif
+#ifdef LLVMSRem
+  {"SRem", NULL, LLVMSRem, CONST_NUMBER},
+#endif
+#ifdef LLVMFMul
+  {"FMul", NULL, LLVMFMul, CONST_NUMBER},
+#endif
+#ifdef LLVMMul
+  {"Mul", NULL, LLVMMul, CONST_NUMBER},
+#endif
+#ifdef LLVMPtrToInt
+  {"PtrToInt", NULL, LLVMPtrToInt, CONST_NUMBER},
+#endif
+#ifdef LLVMBr
+  {"Br", NULL, LLVMBr, CONST_NUMBER},
+#endif
+#ifdef LLVMURem
+  {"URem", NULL, LLVMURem, CONST_NUMBER},
+#endif
+#ifdef LLVMAddrSpaceCast
+  {"AddrSpaceCast", NULL, LLVMAddrSpaceCast, CONST_NUMBER},
+#endif
+#ifdef LLVMInsertElement
+  {"InsertElement", NULL, LLVMInsertElement, CONST_NUMBER},
+#endif
+#ifdef LLVMOr
+  {"Or", NULL, LLVMOr, CONST_NUMBER},
+#endif
+#ifdef LLVMAlloca
+  {"Alloca", NULL, LLVMAlloca, CONST_NUMBER},
+#endif
+#ifdef LLVMSelect
+  {"Select", NULL, LLVMSelect, CONST_NUMBER},
+#endif
+#ifdef LLVMUserOp2
+  {"UserOp2", NULL, LLVMUserOp2, CONST_NUMBER},
+#endif
+#ifdef LLVMShuffleVector
+  {"ShuffleVector", NULL, LLVMShuffleVector, CONST_NUMBER},
+#endif
+#ifdef LLVMFence
+  {"Fence", NULL, LLVMFence, CONST_NUMBER},
+#endif
+#ifdef LLVMLoad
+  {"Load", NULL, LLVMLoad, CONST_NUMBER},
+#endif
+#ifdef LLVMGetElementPtr
+  {"GetElementPtr", NULL, LLVMGetElementPtr, CONST_NUMBER},
+#endif
+#ifdef LLVMRet
+  {"Ret", NULL, LLVMRet, CONST_NUMBER},
+#endif
+#ifdef LLVMLandingPad
+  {"LandingPad", NULL, LLVMLandingPad, CONST_NUMBER},
+#endif
+#ifdef LLVMAShr
+  {"AShr", NULL, LLVMAShr, CONST_NUMBER},
+#endif
+#ifdef LLVMExtractElement
+  {"ExtractElement", NULL, LLVMExtractElement, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicCmpXchg
+  {"AtomicCmpXchg", NULL, LLVMAtomicCmpXchg, CONST_NUMBER},
+#endif
+#ifdef LLVMStore
+  {"Store", NULL, LLVMStore, CONST_NUMBER},
+#endif
+#ifdef LLVMPHI
+  {"PHI", NULL, LLVMPHI, CONST_NUMBER},
+#endif
+#ifdef LLVMFPToSI
+  {"FPToSI", NULL, LLVMFPToSI, CONST_NUMBER},
+#endif
+#ifdef LLVMFSub
+  {"FSub", NULL, LLVMFSub, CONST_NUMBER},
+#endif
+#ifdef LLVMZExt
+  {"ZExt", NULL, LLVMZExt, CONST_NUMBER},
+#endif
+#ifdef LLVMUIToFP
+  {"UIToFP", NULL, LLVMUIToFP, CONST_NUMBER},
+#endif
+#ifdef LLVMFPTrunc
+  {"FPTrunc", NULL, LLVMFPTrunc, CONST_NUMBER},
+#endif
+#ifdef LLVMSIToFP
+  {"SIToFP", NULL, LLVMSIToFP, CONST_NUMBER},
+#endif
+#ifdef LLVMFPToUI
+  {"FPToUI", NULL, LLVMFPToUI, CONST_NUMBER},
+#endif
+#ifdef LLVMFPExt
+  {"FPExt", NULL, LLVMFPExt, CONST_NUMBER},
+#endif
+#ifdef LLVMSExt
+  {"SExt", NULL, LLVMSExt, CONST_NUMBER},
+#endif
+#ifdef LLVMInvoke
+  {"Invoke", NULL, LLVMInvoke, CONST_NUMBER},
+#endif
+#ifdef LLVMAdd
+  {"Add", NULL, LLVMAdd, CONST_NUMBER},
+#endif
+#ifdef LLVMExtractValue
+  {"ExtractValue", NULL, LLVMExtractValue, CONST_NUMBER},
+#endif
+#ifdef LLVMAnd
+  {"And", NULL, LLVMAnd, CONST_NUMBER},
+#endif
+#ifdef LLVMUnreachable
+  {"Unreachable", NULL, LLVMUnreachable, CONST_NUMBER},
+#endif
+#ifdef LLVMLShr
+  {"LShr", NULL, LLVMLShr, CONST_NUMBER},
+#endif
+#ifdef LLVMBitCast
+  {"BitCast", NULL, LLVMBitCast, CONST_NUMBER},
+#endif
+#ifdef LLVMFCmp
+  {"FCmp", NULL, LLVMFCmp, CONST_NUMBER},
+#endif
+#ifdef LLVMFAdd
+  {"FAdd", NULL, LLVMFAdd, CONST_NUMBER},
+#endif
+#ifdef LLVMVAArg
+  {"VAArg", NULL, LLVMVAArg, CONST_NUMBER},
+#endif
+#ifdef LLVMTrunc
+  {"Trunc", NULL, LLVMTrunc, CONST_NUMBER},
+#endif
+#ifdef LLVMUserOp1
+  {"UserOp1", NULL, LLVMUserOp1, CONST_NUMBER},
+#endif
+#ifdef LLVMXor
+  {"Xor", NULL, LLVMXor, CONST_NUMBER},
+#endif
+#ifdef LLVMShl
+  {"Shl", NULL, LLVMShl, CONST_NUMBER},
+#endif
+#ifdef LLVMResume
+  {"Resume", NULL, LLVMResume, CONST_NUMBER},
+#endif
+#ifdef LLVMCall
+  {"Call", NULL, LLVMCall, CONST_NUMBER},
+#endif
+#ifdef LLVMSDiv
+  {"SDiv", NULL, LLVMSDiv, CONST_NUMBER},
+#endif
+#ifdef LLVMCleanupPad
+  {"CleanupPad", NULL, LLVMCleanupPad, CONST_NUMBER},
+#endif
+#ifdef LLVMCleanupRet
+  {"CleanupRet", NULL, LLVMCleanupRet, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicRMW
+  {"AtomicRMW", NULL, LLVMAtomicRMW, CONST_NUMBER},
+#endif
+#ifdef LLVMCatchPad
+  {"CatchPad", NULL, LLVMCatchPad, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_Opcode_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_TypeKind_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_TypeKind_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_TypeKind_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_TypeKind_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_TypeKind_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_TypeKind_constants[] = {
+#ifdef LLVMVoidTypeKind
+  {"Void", NULL, LLVMVoidTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMVectorTypeKind
+  {"Vector", NULL, LLVMVectorTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMFloatTypeKind
+  {"Float", NULL, LLVMFloatTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMTokenTypeKind
+  {"Token", NULL, LLVMTokenTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMHalfTypeKind
+  {"Half", NULL, LLVMHalfTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMStructTypeKind
+  {"Struct", NULL, LLVMStructTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMDoubleTypeKind
+  {"Double", NULL, LLVMDoubleTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMArrayTypeKind
+  {"Array", NULL, LLVMArrayTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMFP128TypeKind
+  {"FP128", NULL, LLVMFP128TypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMMetadataTypeKind
+  {"Metadata", NULL, LLVMMetadataTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMFunctionTypeKind
+  {"Function", NULL, LLVMFunctionTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMX86_MMXTypeKind
+  {"X86_MMX", NULL, LLVMX86_MMXTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMPPC_FP128TypeKind
+  {"PPC_FP128", NULL, LLVMPPC_FP128TypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMX86_FP80TypeKind
+  {"X86_FP80", NULL, LLVMX86_FP80TypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMLabelTypeKind
+  {"Label", NULL, LLVMLabelTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMPointerTypeKind
+  {"Pointer", NULL, LLVMPointerTypeKind, CONST_NUMBER},
+#endif
+#ifdef LLVMIntegerTypeKind
+  {"Integer", NULL, LLVMIntegerTypeKind, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_TypeKind_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_Linkage_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_Linkage_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_Linkage_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_Linkage_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_Linkage_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_Linkage_constants[] = {
+#ifdef LLVMGhostLinkage
+  {"Ghost", NULL, LLVMGhostLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMLinkerPrivateLinkage
+  {"LinkerPrivate", NULL, LLVMLinkerPrivateLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMLinkOnceODRLinkage
+  {"LinkOnceODR", NULL, LLVMLinkOnceODRLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMDLLImportLinkage
+  {"DLLImport", NULL, LLVMDLLImportLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMAvailableExternallyLinkage
+  {"AvailableExternally", NULL, LLVMAvailableExternallyLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMPrivateLinkage
+  {"Private", NULL, LLVMPrivateLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMLinkerPrivateWeakLinkage
+  {"LLVMLinkerPrivateWeak", NULL, LLVMLinkerPrivateWeakLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMCommonLinkage
+  {"Common", NULL, LLVMCommonLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMLinkOnceODRAutoHideLinkage
+  {"LinkOnceODRAutoHide", NULL, LLVMLinkOnceODRAutoHideLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMAppendingLinkage
+  {"Appending", NULL, LLVMAppendingLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMExternalWeakLinkage
+  {"ExternalWeak", NULL, LLVMExternalWeakLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMExternalLinkage
+  {"External", NULL, LLVMExternalLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMLinkOnceAnyLinkage
+  {"LinkOnceAny", NULL, LLVMLinkOnceAnyLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMWeakAnyLinkage
+  {"WeakAny", NULL, LLVMWeakAnyLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMWeakODRLinkage
+  {"WeakODR", NULL, LLVMWeakODRLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMDLLExportLinkage
+  {"DLLExport", NULL, LLVMDLLExportLinkage, CONST_NUMBER},
+#endif
+#ifdef LLVMInternalLinkage
+  {"Internal", NULL, LLVMInternalLinkage, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_Linkage_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_Visibility_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_Visibility_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_Visibility_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_Visibility_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_Visibility_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_Visibility_constants[] = {
+#ifdef LLVMHiddenVisibility
+  {"Hidden", NULL, LLVMHiddenVisibility, CONST_NUMBER},
+#endif
+#ifdef LLVMDefaultVisibility
+  {"Default", NULL, LLVMDefaultVisibility, CONST_NUMBER},
+#endif
+#ifdef LLVMProtectedVisibility
+  {"Protected", NULL, LLVMProtectedVisibility, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_Visibility_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_DLLStorageClass_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_DLLStorageClass_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_DLLStorageClass_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_DLLStorageClass_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_DLLStorageClass_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_DLLStorageClass_constants[] = {
+#ifdef LLVMDefaultStorageClass
+  {"Default", NULL, LLVMDefaultStorageClass, CONST_NUMBER},
+#endif
+#ifdef LLVMDLLImportStorageClass
+  {"DLLImport", NULL, LLVMDLLImportStorageClass, CONST_NUMBER},
+#endif
+#ifdef LLVMDLLExportStorageClass
+  {"DLLExport", NULL, LLVMDLLExportStorageClass, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_DLLStorageClass_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_CallConv_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_CallConv_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_CallConv_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_CallConv_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_CallConv_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_CallConv_constants[] = {
+#ifdef LLVMAnyRegCallConv
+  {"AnyReg", NULL, LLVMAnyRegCallConv, CONST_NUMBER},
+#endif
+#ifdef LLVMX86StdcallCallConv
+  {"X86Stdcall", NULL, LLVMX86StdcallCallConv, CONST_NUMBER},
+#endif
+#ifdef LLVMWebKitJSCallConv
+  {"WebKitJS", NULL, LLVMWebKitJSCallConv, CONST_NUMBER},
+#endif
+#ifdef LLVMX86FastcallCallConv
+  {"X86Fastcall", NULL, LLVMX86FastcallCallConv, CONST_NUMBER},
+#endif
+#ifdef LLVMFastCallConv
+  {"Fast", NULL, LLVMFastCallConv, CONST_NUMBER},
+#endif
+#ifdef LLVMColdCallConv
+  {"Cold", NULL, LLVMColdCallConv, CONST_NUMBER},
+#endif
+#ifdef LLVMCCallConv
+  {"C", NULL, LLVMCCallConv, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_CallConv_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_ValueKind_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_ValueKind_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_ValueKind_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_ValueKind_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_ValueKind_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_ValueKind_constants[] = {
+#ifdef LLVMConstantVectorValueKind
+  {"ConstantVectorValueKind", NULL, LLVMConstantVectorValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMConstantTokenNoneValueKind
+  {"ConstantTokenNoneValueKind", NULL, LLVMConstantTokenNoneValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMInstructionValueKind
+  {"InstructionValueKind", NULL, LLVMInstructionValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMConstantStructValueKind
+  {"ConstantStructValueKind", NULL, LLVMConstantStructValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMMemoryPhiValueKind
+  {"MemoryPhiValueKind", NULL, LLVMMemoryPhiValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMGlobalAliasValueKind
+  {"GlobalAliasValueKind", NULL, LLVMGlobalAliasValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMGlobalVariableValueKind
+  {"GlobalVariableValueKind", NULL, LLVMGlobalVariableValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMConstantArrayValueKind
+  {"ConstantArrayValueKind", NULL, LLVMConstantArrayValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMMemoryDefValueKind
+  {"MemoryDefValueKind", NULL, LLVMMemoryDefValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMUndefValueValueKind
+  {"UndefValueValueKind", NULL, LLVMUndefValueValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMFunctionValueKind
+  {"FunctionValueKind", NULL, LLVMFunctionValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMArgumentValueKind
+  {"ArgumentValueKind", NULL, LLVMArgumentValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMConstantPointerNullValueKind
+  {"ConstantPointerNullValueKind", NULL, LLVMConstantPointerNullValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMBlockAddressValueKind
+  {"BlockAddressValueKind", NULL, LLVMBlockAddressValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMMemoryUseValueKind
+  {"MemoryUseValueKind", NULL, LLVMMemoryUseValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMConstantExprValueKind
+  {"ConstantExprValueKind", NULL, LLVMConstantExprValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMConstantAggregateZeroValueKind
+  {"ConstantAggregateZeroValueKind", NULL, LLVMConstantAggregateZeroValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMConstantDataVectorValueKind
+  {"ConstantDataVectorValueKind", NULL, LLVMConstantDataVectorValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMConstantDataArrayValueKind
+  {"ConstantDataArrayValueKind", NULL, LLVMConstantDataArrayValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMInlineAsmValueKind
+  {"InlineAsmValueKind", NULL, LLVMInlineAsmValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMMetadataAsValueValueKind
+  {"MetadataAsValueValueKind", NULL, LLVMMetadataAsValueValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMConstantIntValueKind
+  {"ConstantIntValueKind", NULL, LLVMConstantIntValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMGlobalIFuncValueKind
+  {"GlobalIFuncValueKind", NULL, LLVMGlobalIFuncValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMBasicBlockValueKind
+  {"BasicBlockValueKind", NULL, LLVMBasicBlockValueKind, CONST_NUMBER},
+#endif
+#ifdef LLVMConstantFPValueKind
+  {"ConstantFPValueKind", NULL, LLVMConstantFPValueKind, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_ValueKind_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_IntPredicate_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_IntPredicate_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_IntPredicate_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_IntPredicate_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_IntPredicate_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_IntPredicate_constants[] = {
+#ifdef LLVMIntSLE
+  {"SLE", NULL, LLVMIntSLE, CONST_NUMBER},
+#endif
+#ifdef LLVMIntEQ
+  {"EQ", NULL, LLVMIntEQ, CONST_NUMBER},
+#endif
+#ifdef LLVMIntSGE
+  {"SGE", NULL, LLVMIntSGE, CONST_NUMBER},
+#endif
+#ifdef LLVMIntSLT
+  {"SLT", NULL, LLVMIntSLT, CONST_NUMBER},
+#endif
+#ifdef LLVMIntUGE
+  {"UGE", NULL, LLVMIntUGE, CONST_NUMBER},
+#endif
+#ifdef LLVMIntSGT
+  {"SGT", NULL, LLVMIntSGT, CONST_NUMBER},
+#endif
+#ifdef LLVMIntUGT
+  {"UGT", NULL, LLVMIntUGT, CONST_NUMBER},
+#endif
+#ifdef LLVMIntNE
+  {"NE", NULL, LLVMIntNE, CONST_NUMBER},
+#endif
+#ifdef LLVMIntULE
+  {"ULE", NULL, LLVMIntULE, CONST_NUMBER},
+#endif
+#ifdef LLVMIntULT
+  {"ULT", NULL, LLVMIntULT, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_IntPredicate_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_RealPredicate_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_RealPredicate_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_RealPredicate_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_RealPredicate_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_RealPredicate_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_RealPredicate_constants[] = {
+#ifdef LLVMRealOGE
+  {"OGE", NULL, LLVMRealOGE, CONST_NUMBER},
+#endif
+#ifdef LLVMRealUNE
+  {"UNE", NULL, LLVMRealUNE, CONST_NUMBER},
+#endif
+#ifdef LLVMRealOGT
+  {"OGT", NULL, LLVMRealOGT, CONST_NUMBER},
+#endif
+#ifdef LLVMRealULE
+  {"ULE", NULL, LLVMRealULE, CONST_NUMBER},
+#endif
+#ifdef LLVMRealONE
+  {"ONE", NULL, LLVMRealONE, CONST_NUMBER},
+#endif
+#ifdef LLVMRealOLT
+  {"OLT", NULL, LLVMRealOLT, CONST_NUMBER},
+#endif
+#ifdef LLVMRealOEQ
+  {"OEQ", NULL, LLVMRealOEQ, CONST_NUMBER},
+#endif
+#ifdef LLVMRealUNO
+  {"UNO", NULL, LLVMRealUNO, CONST_NUMBER},
+#endif
+#ifdef LLVMRealUEQ
+  {"UEQ", NULL, LLVMRealUEQ, CONST_NUMBER},
+#endif
+#ifdef LLVMRealUGT
+  {"UGT", NULL, LLVMRealUGT, CONST_NUMBER},
+#endif
+#ifdef LLVMRealUGE
+  {"UGE", NULL, LLVMRealUGE, CONST_NUMBER},
+#endif
+#ifdef LLVMRealORD
+  {"ORD", NULL, LLVMRealORD, CONST_NUMBER},
+#endif
+#ifdef LLVMRealPredicateFalse
+  {"False", NULL, LLVMRealPredicateFalse, CONST_NUMBER},
+#endif
+#ifdef LLVMRealOLE
+  {"OLE", NULL, LLVMRealOLE, CONST_NUMBER},
+#endif
+#ifdef LLVMRealPredicateTrue
+  {"True", NULL, LLVMRealPredicateTrue, CONST_NUMBER},
+#endif
+#ifdef LLVMRealULT
+  {"ULT", NULL, LLVMRealULT, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_RealPredicate_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_LandingPadClauseTy_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_LandingPadClauseTy_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_LandingPadClauseTy_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_LandingPadClauseTy_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_LandingPadClauseTy_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_LandingPadClauseTy_constants[] = {
+#ifdef LLVMLandingPadCatch
+  {"Catch", NULL, LLVMLandingPadCatch, CONST_NUMBER},
+#endif
+#ifdef LLVMLandingPadFilter
+  {"Filter", NULL, LLVMLandingPadFilter, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_LandingPadClauseTy_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_ThreadLocalMode_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_ThreadLocalMode_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_ThreadLocalMode_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_ThreadLocalMode_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_ThreadLocalMode_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_ThreadLocalMode_constants[] = {
+#ifdef LLVMInitialExecTLSModel
+  {"InitialExecTLSModel", NULL, LLVMInitialExecTLSModel, CONST_NUMBER},
+#endif
+#ifdef LLVMLocalExecTLSModel
+  {"LocalExecTLSModel", NULL, LLVMLocalExecTLSModel, CONST_NUMBER},
+#endif
+#ifdef LLVMNotThreadLocal
+  {"NotThreadLocal", NULL, LLVMNotThreadLocal, CONST_NUMBER},
+#endif
+#ifdef LLVMGeneralDynamicTLSModel
+  {"GeneralDynamicTLSModel", NULL, LLVMGeneralDynamicTLSModel, CONST_NUMBER},
+#endif
+#ifdef LLVMLocalDynamicTLSModel
+  {"LocalDynamicTLSModel", NULL, LLVMLocalDynamicTLSModel, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_ThreadLocalMode_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_AtomicOrdering_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_AtomicOrdering_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_AtomicOrdering_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_AtomicOrdering_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_AtomicOrdering_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_AtomicOrdering_constants[] = {
+#ifdef LLVMAtomicOrderingAcquire
+  {"Acquire", NULL, LLVMAtomicOrderingAcquire, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicOrderingUnordered
+  {"Unordered", NULL, LLVMAtomicOrderingUnordered, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicOrderingMonotonic
+  {"Monotonic", NULL, LLVMAtomicOrderingMonotonic, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicOrderingAcquireRelease
+  {"AcquireRelease", NULL, LLVMAtomicOrderingAcquireRelease, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicOrderingNotAtomic
+  {"NotAtomic", NULL, LLVMAtomicOrderingNotAtomic, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicOrderingSequentiallyConsistent
+  {"SequentiallyConsistent", NULL, LLVMAtomicOrderingSequentiallyConsistent, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicOrderingRelease
+  {"Release", NULL, LLVMAtomicOrderingRelease, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_AtomicOrdering_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_AtomicRMWBinOp_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_AtomicRMWBinOp_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_AtomicRMWBinOp_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_AtomicRMWBinOp_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_AtomicRMWBinOp_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_AtomicRMWBinOp_constants[] = {
+#ifdef LLVMAtomicRMWBinOpXor
+  {"Xor", NULL, LLVMAtomicRMWBinOpXor, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicRMWBinOpSub
+  {"Sub", NULL, LLVMAtomicRMWBinOpSub, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicRMWBinOpUMax
+  {"UMax", NULL, LLVMAtomicRMWBinOpUMax, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicRMWBinOpNand
+  {"Nand", NULL, LLVMAtomicRMWBinOpNand, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicRMWBinOpMax
+  {"Max", NULL, LLVMAtomicRMWBinOpMax, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicRMWBinOpUMin
+  {"UMin", NULL, LLVMAtomicRMWBinOpUMin, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicRMWBinOpXchg
+  {"Xchg", NULL, LLVMAtomicRMWBinOpXchg, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicRMWBinOpOr
+  {"Or", NULL, LLVMAtomicRMWBinOpOr, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicRMWBinOpAnd
+  {"And", NULL, LLVMAtomicRMWBinOpAnd, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicRMWBinOpAdd
+  {"Add", NULL, LLVMAtomicRMWBinOpAdd, CONST_NUMBER},
+#endif
+#ifdef LLVMAtomicRMWBinOpMin
+  {"Min", NULL, LLVMAtomicRMWBinOpMin, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_AtomicRMWBinOp_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_DiagnosticSeverity_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_DiagnosticSeverity_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_DiagnosticSeverity_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_DiagnosticSeverity_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_DiagnosticSeverity_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_DiagnosticSeverity_constants[] = {
+#ifdef LLVMDSError
+  {"Error", NULL, LLVMDSError, CONST_NUMBER},
+#endif
+#ifdef LLVMDSWarning
+  {"Warning", NULL, LLVMDSWarning, CONST_NUMBER},
+#endif
+#ifdef LLVMDSRemark
+  {"Remark", NULL, LLVMDSRemark, CONST_NUMBER},
+#endif
+#ifdef LLVMDSNote
+  {"Note", NULL, LLVMDSNote, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_DiagnosticSeverity_implements[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_AttributeIndex_pub_funcs[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_AttributeIndex_methods[] = {
+  {NULL, NULL}
+};
+
+static const luaL_Reg obj_AttributeIndex_metas[] = {
+  {"__tostring", obj_udata_default_tostring},
+  {"__eq", obj_udata_default_equal},
+  {NULL, NULL}
+};
+
+static const obj_base obj_AttributeIndex_bases[] = {
+  {-1, NULL}
+};
+
+static const obj_field obj_AttributeIndex_fields[] = {
+  {NULL, 0, 0, 0}
+};
+
+static const obj_const obj_AttributeIndex_constants[] = {
+#ifdef LLVMAttributeReturnIndex
+  {"AttributeReturnIndex", NULL, LLVMAttributeReturnIndex, CONST_NUMBER},
+#endif
+#ifdef LLVMAttributeFunctionIndex
+  {"AttributeFunctionIndex", NULL, LLVMAttributeFunctionIndex, CONST_NUMBER},
+#endif
+  {NULL, NULL, 0.0 , 0}
+};
+
+static const reg_impl obj_AttributeIndex_implements[] = {
+  {NULL, NULL}
+};
+
 static const luaL_Reg llvm_function[] = {
   {NULL, NULL}
 };
@@ -3312,9 +5280,25 @@ static const reg_sub_module reg_sub_modules[] = {
   { &(obj_type_Context), REG_OBJECT, obj_Context_pub_funcs, obj_Context_methods, obj_Context_metas, obj_Context_bases, obj_Context_fields, obj_Context_constants, obj_Context_implements, 0},
   { &(obj_type_Value), REG_OBJECT, obj_Value_pub_funcs, obj_Value_methods, obj_Value_metas, obj_Value_bases, obj_Value_fields, obj_Value_constants, obj_Value_implements, 0},
   { &(obj_type_IntValue), REG_OBJECT, obj_IntValue_pub_funcs, obj_IntValue_methods, obj_IntValue_metas, obj_IntValue_bases, obj_IntValue_fields, obj_IntValue_constants, obj_IntValue_implements, 0},
+  { &(obj_type_FloatValue), REG_OBJECT, obj_FloatValue_pub_funcs, obj_FloatValue_methods, obj_FloatValue_metas, obj_FloatValue_bases, obj_FloatValue_fields, obj_FloatValue_constants, obj_FloatValue_implements, 0},
   { &(obj_type_FunctionValue), REG_OBJECT, obj_FunctionValue_pub_funcs, obj_FunctionValue_methods, obj_FunctionValue_metas, obj_FunctionValue_bases, obj_FunctionValue_fields, obj_FunctionValue_constants, obj_FunctionValue_implements, 0},
   { &(obj_type_BasicBlock), REG_OBJECT, obj_BasicBlock_pub_funcs, obj_BasicBlock_methods, obj_BasicBlock_metas, obj_BasicBlock_bases, obj_BasicBlock_fields, obj_BasicBlock_constants, obj_BasicBlock_implements, 0},
   { &(obj_type_Builder), REG_OBJECT, obj_Builder_pub_funcs, obj_Builder_methods, obj_Builder_metas, obj_Builder_bases, obj_Builder_fields, obj_Builder_constants, obj_Builder_implements, 0},
+  { &(obj_type_Opcode), REG_OBJECT, obj_Opcode_pub_funcs, obj_Opcode_methods, obj_Opcode_metas, obj_Opcode_bases, obj_Opcode_fields, obj_Opcode_constants, obj_Opcode_implements, 0},
+  { &(obj_type_TypeKind), REG_OBJECT, obj_TypeKind_pub_funcs, obj_TypeKind_methods, obj_TypeKind_metas, obj_TypeKind_bases, obj_TypeKind_fields, obj_TypeKind_constants, obj_TypeKind_implements, 0},
+  { &(obj_type_Linkage), REG_OBJECT, obj_Linkage_pub_funcs, obj_Linkage_methods, obj_Linkage_metas, obj_Linkage_bases, obj_Linkage_fields, obj_Linkage_constants, obj_Linkage_implements, 0},
+  { &(obj_type_Visibility), REG_OBJECT, obj_Visibility_pub_funcs, obj_Visibility_methods, obj_Visibility_metas, obj_Visibility_bases, obj_Visibility_fields, obj_Visibility_constants, obj_Visibility_implements, 0},
+  { &(obj_type_DLLStorageClass), REG_OBJECT, obj_DLLStorageClass_pub_funcs, obj_DLLStorageClass_methods, obj_DLLStorageClass_metas, obj_DLLStorageClass_bases, obj_DLLStorageClass_fields, obj_DLLStorageClass_constants, obj_DLLStorageClass_implements, 0},
+  { &(obj_type_CallConv), REG_OBJECT, obj_CallConv_pub_funcs, obj_CallConv_methods, obj_CallConv_metas, obj_CallConv_bases, obj_CallConv_fields, obj_CallConv_constants, obj_CallConv_implements, 0},
+  { &(obj_type_ValueKind), REG_OBJECT, obj_ValueKind_pub_funcs, obj_ValueKind_methods, obj_ValueKind_metas, obj_ValueKind_bases, obj_ValueKind_fields, obj_ValueKind_constants, obj_ValueKind_implements, 0},
+  { &(obj_type_IntPredicate), REG_OBJECT, obj_IntPredicate_pub_funcs, obj_IntPredicate_methods, obj_IntPredicate_metas, obj_IntPredicate_bases, obj_IntPredicate_fields, obj_IntPredicate_constants, obj_IntPredicate_implements, 0},
+  { &(obj_type_RealPredicate), REG_OBJECT, obj_RealPredicate_pub_funcs, obj_RealPredicate_methods, obj_RealPredicate_metas, obj_RealPredicate_bases, obj_RealPredicate_fields, obj_RealPredicate_constants, obj_RealPredicate_implements, 0},
+  { &(obj_type_LandingPadClauseTy), REG_OBJECT, obj_LandingPadClauseTy_pub_funcs, obj_LandingPadClauseTy_methods, obj_LandingPadClauseTy_metas, obj_LandingPadClauseTy_bases, obj_LandingPadClauseTy_fields, obj_LandingPadClauseTy_constants, obj_LandingPadClauseTy_implements, 0},
+  { &(obj_type_ThreadLocalMode), REG_OBJECT, obj_ThreadLocalMode_pub_funcs, obj_ThreadLocalMode_methods, obj_ThreadLocalMode_metas, obj_ThreadLocalMode_bases, obj_ThreadLocalMode_fields, obj_ThreadLocalMode_constants, obj_ThreadLocalMode_implements, 0},
+  { &(obj_type_AtomicOrdering), REG_OBJECT, obj_AtomicOrdering_pub_funcs, obj_AtomicOrdering_methods, obj_AtomicOrdering_metas, obj_AtomicOrdering_bases, obj_AtomicOrdering_fields, obj_AtomicOrdering_constants, obj_AtomicOrdering_implements, 0},
+  { &(obj_type_AtomicRMWBinOp), REG_OBJECT, obj_AtomicRMWBinOp_pub_funcs, obj_AtomicRMWBinOp_methods, obj_AtomicRMWBinOp_metas, obj_AtomicRMWBinOp_bases, obj_AtomicRMWBinOp_fields, obj_AtomicRMWBinOp_constants, obj_AtomicRMWBinOp_implements, 0},
+  { &(obj_type_DiagnosticSeverity), REG_OBJECT, obj_DiagnosticSeverity_pub_funcs, obj_DiagnosticSeverity_methods, obj_DiagnosticSeverity_metas, obj_DiagnosticSeverity_bases, obj_DiagnosticSeverity_fields, obj_DiagnosticSeverity_constants, obj_DiagnosticSeverity_implements, 0},
+  { &(obj_type_AttributeIndex), REG_OBJECT, obj_AttributeIndex_pub_funcs, obj_AttributeIndex_methods, obj_AttributeIndex_metas, obj_AttributeIndex_bases, obj_AttributeIndex_fields, obj_AttributeIndex_constants, obj_AttributeIndex_implements, 0},
   {NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0}
 };
 

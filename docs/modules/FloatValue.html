@@ -49,9 +49,9 @@
   <li><a href="../modules/DLLStorageClass.html">DLLStorageClass</a></li>
   <li><a href="../modules/DiagnosticSeverity.html">DiagnosticSeverity</a></li>
   <li><a href="../modules/FloatType.html">FloatType</a></li>
-  <li><a href="../modules/FloatValue.html">FloatValue</a></li>
+  <li><strong>FloatValue</strong></li>
   <li><a href="../modules/FunctionType.html">FunctionType</a></li>
-  <li><strong>FunctionValue</strong></li>
+  <li><a href="../modules/FunctionValue.html">FunctionValue</a></li>
   <li><a href="../modules/IntPredicate.html">IntPredicate</a></li>
   <li><a href="../modules/IntType.html">IntType</a></li>
   <li><a href="../modules/IntValue.html">IntValue</a></li>
@@ -72,14 +72,26 @@
 
 <div id="content">
 
-<h1>Module <code>FunctionValue</code></h1>
-<p>Class "FunctionValue".</p>
+<h1>Module <code>FloatValue</code></h1>
+<p>Class "FloatValue".</p>
 <p>
 <p> Extends <a href="Value.html">Value</a><br /></p>
 
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#const">const (ty, n)</a></td>
+	<td class="summary">Create a new FloatValue object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#const_of_string">const_of_string (ty, str)</a></td>
+	<td class="summary">Create a new FloatValue object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#value">value ()</a></td>
+	<td class="summary">object method.</td>
+	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#Value:name">Value:name ()</a></td>
 	<td class="summary">object method.</td>
@@ -113,6 +125,78 @@
     <h2 class="section-header "><a name="Functions"></a>Functions</h2>
 
     <dl class="function">
+    <dt>
+    <a name = "const"></a>
+    <strong>const (ty, n)</strong>
+    </dt>
+    <dd>
+    Create a new FloatValue object.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ty</span>
+         Must be of type <a href="FloatType.html">FloatType</a>.
+        </li>
+        <li><span class="parameter">n</span>
+         Must be of type <code>number</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        <a href="FloatValue.html">FloatValue</a>.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "const_of_string"></a>
+    <strong>const_of_string (ty, str)</strong>
+    </dt>
+    <dd>
+    Create a new FloatValue object.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ty</span>
+         Must be of type <a href="FloatType.html">FloatType</a>.
+        </li>
+        <li><span class="parameter">str</span>
+         Must be of type <code>string</code>.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        <a href="FloatValue.html">FloatValue</a>.</li>
+        <li>
+        <a href="IntValue.html">IntValue</a>.</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "value"></a>
+    <strong>value ()</strong>
+    </dt>
+    <dd>
+    object method.
+
+
+
+
+
+
+
+</dd>
     <dt>
     <a name = "Value:name"></a>
     <strong>Value:name ()</strong>
