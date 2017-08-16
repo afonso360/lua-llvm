@@ -4,22 +4,90 @@
 -- This file may not be copied, modified, or distributed except according
 -- to the terms of that license.
 
+
+-- TODO: The c_source blocks with the defines are to fix a bug
+-- in lua native objects
+
 object "Opcode" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMOpcode Opcode;
   ]],
 
+	c_source [[
+    #define LLVMRet LLVMRet
+    #define LLVMBr LLVMBr
+    #define LLVMSwitch LLVMSwitch
+    #define LLVMIndirectBr LLVMIndirectBr
+    #define LLVMInvoke LLVMInvoke
+    #define LLVMUnreachable LLVMUnreachable
+    #define LLVMAdd LLVMAdd
+    #define LLVMFAdd LLVMFAdd
+    #define LLVMSub LLVMSub
+    #define LLVMFSub LLVMFSub
+    #define LLVMMul LLVMMul
+    #define LLVMFMul LLVMFMul
+    #define LLVMUDiv LLVMUDiv
+    #define LLVMSDiv LLVMSDiv
+    #define LLVMFDiv LLVMFDiv
+    #define LLVMURem LLVMURem
+    #define LLVMSRem LLVMSRem
+    #define LLVMFRem LLVMFRem
+    #define LLVMShl LLVMShl
+    #define LLVMLShr LLVMLShr
+    #define LLVMAShr LLVMAShr
+    #define LLVMAnd LLVMAnd
+    #define LLVMOr LLVMOr
+    #define LLVMXor LLVMXor
+    #define LLVMAlloca LLVMAlloca
+    #define LLVMLoad LLVMLoad
+    #define LLVMStore LLVMStore
+    #define LLVMGetElementPtr LLVMGetElementPtr
+    #define LLVMTrunc LLVMTrunc
+    #define LLVMZExt LLVMZExt
+    #define LLVMSExt LLVMSExt
+    #define LLVMFPToUI LLVMFPToUI
+    #define LLVMFPToSI LLVMFPToSI
+    #define LLVMUIToFP LLVMUIToFP
+    #define LLVMSIToFP LLVMSIToFP
+    #define LLVMFPTrunc LLVMFPTrunc
+    #define LLVMFPExt LLVMFPExt
+    #define LLVMPtrToInt LLVMPtrToInt
+    #define LLVMIntToPtr LLVMIntToPtr
+    #define LLVMBitCast LLVMBitCast
+    #define LLVMAddrSpaceCast LLVMAddrSpaceCast
+    #define LLVMICmp LLVMICmp
+    #define LLVMFCmp LLVMFCmp
+    #define LLVMPHI LLVMPHI
+    #define LLVMCall LLVMCall
+    #define LLVMSelect LLVMSelect
+    #define LLVMUserOp1 LLVMUserOp1
+    #define LLVMUserOp2 LLVMUserOp2
+    #define LLVMVAArg LLVMVAArg
+    #define LLVMExtractElement LLVMExtractElement
+    #define LLVMInsertElement LLVMInsertElement
+    #define LLVMShuffleVector LLVMShuffleVector
+    #define LLVMExtractValue LLVMExtractValue
+    #define LLVMInsertValue LLVMInsertValue
+    #define LLVMFence LLVMFence
+    #define LLVMAtomicCmpXchg LLVMAtomicCmpXchg
+    #define LLVMAtomicRMW LLVMAtomicRMW
+    #define LLVMResume LLVMResume
+    #define LLVMLandingPad LLVMLandingPad
+    #define LLVMCleanupRet LLVMCleanupRet
+    #define LLVMCatchRet LLVMCatchRet
+    #define LLVMCatchPad LLVMCatchPad
+    #define LLVMCleanupPad LLVMCleanupPad
+    #define LLVMCatchSwitch LLVMCatchSwitch
+  ]],
+
 	export_definitions {
-		-- Terminator Instructions
 		Ret = "LLVMRet",
 		Br = "LLVMBr",
 		Switch = "LLVMSwitch",
 		IndirectBr = "LLVMIndirectBr",
 		Invoke = "LLVMInvoke",
-		-- removed 6 due to API changes
 		Unreachable = "LLVMUnreachable",
-
-		-- Standard Binary Operators
 		Add = "LLVMAdd",
 		FAdd = "LLVMFAdd",
 		Sub = "LLVMSub",
@@ -32,22 +100,16 @@ object "Opcode" {
 		URem = "LLVMURem",
 		SRem = "LLVMSRem",
 		FRem = "LLVMFRem",
-
-		-- Logical Operators
 		Shl = "LLVMShl",
 		LShr = "LLVMLShr",
 		AShr = "LLVMAShr",
 		And = "LLVMAnd",
 		Or = "LLVMOr",
 		Xor = "LLVMXor",
-
-		-- Memory Operators
 		Alloca = "LLVMAlloca",
 		Load = "LLVMLoad",
 		Store = "LLVMStore",
 		GetElementPtr = "LLVMGetElementPtr",
-
-		-- Cast Operators
 		Trunc = "LLVMTrunc",
 		ZExt = "LLVMZExt",
 		SExt = "LLVMSExt",
@@ -61,8 +123,6 @@ object "Opcode" {
 		IntToPtr = "LLVMIntToPtr",
 		BitCast = "LLVMBitCast",
 		AddrSpaceCast = "LLVMAddrSpaceCast",
-
-		-- Other Operators
 		ICmp = "LLVMICmp",
 		FCmp = "LLVMFCmp",
 		PHI = "LLVMPHI",
@@ -76,13 +136,9 @@ object "Opcode" {
 		ShuffleVector = "LLVMShuffleVector",
 		ExtractValue = "LLVMExtractValue",
 		InsertValue = "LLVMInsertValue",
-
-		-- Atomic operators
 		Fence = "LLVMFence",
 		AtomicCmpXchg = "LLVMAtomicCmpXchg",
 		AtomicRMW = "LLVMAtomicRMW",
-
-		-- Exception Handling Operators
 		Resume = "LLVMResume",
 		LandingPad = "LLVMLandingPad",
 		CleanupRet = "LLVMCleanupRet",
@@ -94,11 +150,32 @@ object "Opcode" {
 }
 
 object "TypeKind" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMTypeKind TypeKind;
   ]],
 
-	export_definitions {
+	c_source [[
+    #define LLVMVoidTypeKind LLVMVoidTypeKind
+    #define LLVMHalfTypeKind LLVMHalfTypeKind
+    #define LLVMFloatTypeKind LLVMFloatTypeKind
+    #define LLVMDoubleTypeKind LLVMDoubleTypeKind
+    #define LLVMX86_FP80TypeKind LLVMX86_FP80TypeKind
+    #define LLVMFP128TypeKind LLVMFP128TypeKind
+    #define LLVMPPC_FP128TypeKind LLVMPPC_FP128TypeKind
+    #define LLVMLabelTypeKind LLVMLabelTypeKind
+    #define LLVMIntegerTypeKind LLVMIntegerTypeKind
+    #define LLVMFunctionTypeKind LLVMFunctionTypeKind
+    #define LLVMStructTypeKind LLVMStructTypeKind
+    #define LLVMArrayTypeKind LLVMArrayTypeKind
+    #define LLVMPointerTypeKind LLVMPointerTypeKind
+    #define LLVMVectorTypeKind LLVMVectorTypeKind
+    #define LLVMMetadataTypeKind LLVMMetadataTypeKind
+    #define LLVMX86_MMXTypeKind LLVMX86_MMXTypeKind
+    #define LLVMTokenTypeKind LLVMTokenTypeKind
+	]],
+
+  export_definitions {
 		Void = "LLVMVoidTypeKind",
 		Half = "LLVMHalfTypeKind",
 		Float = "LLVMFloatTypeKind",
@@ -120,11 +197,32 @@ object "TypeKind" {
 }
 
 object "Linkage" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMLinkage Linkage;
   ]],
 
-	export_definitions {
+	c_source [[
+    #define LLVMExternalLinkage LLVMExternalLinkage
+    #define LLVMAvailableExternallyLinkage LLVMAvailableExternallyLinkage
+    #define LLVMLinkOnceAnyLinkage LLVMLinkOnceAnyLinkage
+    #define LLVMLinkOnceODRLinkage LLVMLinkOnceODRLinkage
+    #define LLVMLinkOnceODRAutoHideLinkage LLVMLinkOnceODRAutoHideLinkage
+    #define LLVMWeakAnyLinkage LLVMWeakAnyLinkage
+    #define LLVMWeakODRLinkage LLVMWeakODRLinkage
+    #define LLVMAppendingLinkage LLVMAppendingLinkage
+    #define LLVMInternalLinkage LLVMInternalLinkage
+    #define LLVMPrivateLinkage LLVMPrivateLinkage
+    #define LLVMDLLImportLinkage LLVMDLLImportLinkage
+    #define LLVMDLLExportLinkage LLVMDLLExportLinkage
+    #define LLVMExternalWeakLinkage LLVMExternalWeakLinkage
+    #define LLVMGhostLinkage LLVMGhostLinkage
+    #define LLVMCommonLinkage LLVMCommonLinkage
+    #define LLVMLinkerPrivateLinkage LLVMLinkerPrivateLinkage
+    #define LLVMLinkerPrivateWeakLinkag LLVMLinkerPrivateWeakLinkag
+	]],
+
+  export_definitions {
 		External = "LLVMExternalLinkage",
 		AvailableExternally = "LLVMAvailableExternallyLinkage",
 		LinkOnceAny = "LLVMLinkOnceAnyLinkage",
@@ -141,16 +239,23 @@ object "Linkage" {
 		Ghost = "LLVMGhostLinkage",
 		Common = "LLVMCommonLinkage",
 		LinkerPrivate = "LLVMLinkerPrivateLinkage",
-		LLVMLinkerPrivateWeak = "LLVMLinkerPrivateWeakLinkage"
+		LinkerPrivateWeak = "LLVMLinkerPrivateWeakLinkage"
 	}
 }
 
 object "Visibility" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMVisibility Visibility;
   ]],
 
-	export_definitions {
+	c_source [[
+    #define LLVMDefaultVisibility LLVMDefaultVisibility
+    #define LLVMHiddenVisibility LLVMHiddenVisibility
+    #define LLVMProtectedVisibility LLVMProtectedVisibility
+	]],
+
+  export_definitions {
 		Default = "LLVMDefaultVisibility",
 		Hidden = "LLVMHiddenVisibility",
 		Protected = "LLVMProtectedVisibility",
@@ -158,11 +263,18 @@ object "Visibility" {
 }
 
 object "DLLStorageClass" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMDLLStorageClass DLLStorageClass;
   ]],
 
-	export_definitions {
+	c_source [[
+    #define LLVMDefaultStorageClass LLVMDefaultStorageClass
+    #define LLVMDLLImportStorageClass LLVMDLLImportStorageClass
+    #define LLVMDLLExportStorageClass LLVMDLLExportStorageClass
+	]],
+
+  export_definitions {
 		Default = "LLVMDefaultStorageClass",
 		DLLImport = "LLVMDLLImportStorageClass",
 		DLLExport = "LLVMDLLExportStorageClass",
@@ -170,11 +282,22 @@ object "DLLStorageClass" {
 }
 
 object "CallConv" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMCallConv CallConv;
   ]],
 
-	export_definitions {
+	c_source [[
+    #define LLVMCCallConv LLVMCCallConv
+    #define LLVMFastCallConv LLVMFastCallConv
+    #define LLVMColdCallConv LLVMColdCallConv
+    #define LLVMWebKitJSCallConv LLVMWebKitJSCallConv
+    #define LLVMAnyRegCallConv LLVMAnyRegCallConv
+    #define LLVMX86StdcallCallConv LLVMX86StdcallCallConv
+    #define LLVMX86FastcallCallConv LLVMX86FastcallCallConv
+	]],
+
+  export_definitions {
 		C = "LLVMCCallConv",
 		Fast = "LLVMFastCallConv",
 		Cold = "LLVMColdCallConv",
@@ -186,45 +309,88 @@ object "CallConv" {
 }
 
 object "ValueKind" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMValueKind ValueKind;
   ]],
 
-	export_definitions {
-		ArgumentValueKind = "LLVMArgumentValueKind",
-		BasicBlockValueKind = "LLVMBasicBlockValueKind",
-		MemoryUseValueKind = "LLVMMemoryUseValueKind",
-		MemoryDefValueKind = "LLVMMemoryDefValueKind",
-		MemoryPhiValueKind = "LLVMMemoryPhiValueKind",
-		FunctionValueKind = "LLVMFunctionValueKind",
-		GlobalAliasValueKind = "LLVMGlobalAliasValueKind",
-		GlobalIFuncValueKind = "LLVMGlobalIFuncValueKind",
-		GlobalVariableValueKind = "LLVMGlobalVariableValueKind",
-		BlockAddressValueKind = "LLVMBlockAddressValueKind",
-		ConstantExprValueKind = "LLVMConstantExprValueKind",
-		ConstantArrayValueKind = "LLVMConstantArrayValueKind",
-		ConstantStructValueKind = "LLVMConstantStructValueKind",
-		ConstantVectorValueKind = "LLVMConstantVectorValueKind",
-		UndefValueValueKind = "LLVMUndefValueValueKind",
-		ConstantAggregateZeroValueKind = "LLVMConstantAggregateZeroValueKind",
-		ConstantDataArrayValueKind = "LLVMConstantDataArrayValueKind",
-		ConstantDataVectorValueKind = "LLVMConstantDataVectorValueKind",
-		ConstantIntValueKind = "LLVMConstantIntValueKind",
-		ConstantFPValueKind = "LLVMConstantFPValueKind",
-		ConstantPointerNullValueKind = "LLVMConstantPointerNullValueKind",
-		ConstantTokenNoneValueKind = "LLVMConstantTokenNoneValueKind",
-		MetadataAsValueValueKind = "LLVMMetadataAsValueValueKind",
-		InlineAsmValueKind = "LLVMInlineAsmValueKind",
-		InstructionValueKind = "LLVMInstructionValueKind",
+	c_source [[
+    #define LLVMArgumentValueKind LLVMArgumentValueKind
+    #define LLVMBasicBlockValueKind LLVMBasicBlockValueKind
+    #define LLVMMemoryUseValueKind LLVMMemoryUseValueKind
+    #define LLVMMemoryDefValueKind LLVMMemoryDefValueKind
+    #define LLVMMemoryPhiValueKind LLVMMemoryPhiValueKind
+    #define LLVMFunctionValueKind LLVMFunctionValueKind
+    #define LLVMGlobalAliasValueKind LLVMGlobalAliasValueKind
+    #define LLVMGlobalIFuncValueKind LLVMGlobalIFuncValueKind
+    #define LLVMGlobalVariableValueKind LLVMGlobalVariableValueKind
+    #define LLVMBlockAddressValueKind LLVMBlockAddressValueKind
+    #define LLVMConstantExprValueKind LLVMConstantExprValueKind
+    #define LLVMConstantArrayValueKind LLVMConstantArrayValueKind
+    #define LLVMConstantStructValueKind LLVMConstantStructValueKind
+    #define LLVMConstantVectorValueKind LLVMConstantVectorValueKind
+    #define LLVMUndefValueValueKind LLVMUndefValueValueKind
+    #define LLVMConstantAggregateZeroValueKind LLVMConstantAggregateZeroValueKind
+    #define LLVMConstantDataArrayValueKind LLVMConstantDataArrayValueKind
+    #define LLVMConstantDataVectorValueKind LLVMConstantDataVectorValueKind
+    #define LLVMConstantIntValueKind LLVMConstantIntValueKind
+    #define LLVMConstantFPValueKind LLVMConstantFPValueKind
+    #define LLVMConstantPointerNullValueKind LLVMConstantPointerNullValueKind
+    #define LLVMConstantTokenNoneValueKind LLVMConstantTokenNoneValueKind
+    #define LLVMMetadataAsValueValueKind LLVMMetadataAsValueValueKind
+    #define LLVMInlineAsmValueKind LLVMInlineAsmValueKind
+    #define LLVMInstructionValueKind LLVMInstructionValueKind
+	]],
+
+  export_definitions {
+		Argument = "LLVMArgumentValueKind",
+		BasicBlock = "LLVMBasicBlockValueKind",
+		MemoryUse = "LLVMMemoryUseValueKind",
+		MemoryDef = "LLVMMemoryDefValueKind",
+		MemoryPhi = "LLVMMemoryPhiValueKind",
+		Function = "LLVMFunctionValueKind",
+		GlobalAlias = "LLVMGlobalAliasValueKind",
+		GlobalIFunc = "LLVMGlobalIFuncValueKind",
+		GlobalVariable = "LLVMGlobalVariableValueKind",
+		BlockAddress = "LLVMBlockAddressValueKind",
+		ConstantExpr = "LLVMConstantExprValueKind",
+		ConstantArray = "LLVMConstantArrayValueKind",
+		ConstantStruct = "LLVMConstantStructValueKind",
+		ConstantVector = "LLVMConstantVectorValueKind",
+		UndefValue = "LLVMUndefValueValueKind",
+		ConstantAggregateZero = "LLVMConstantAggregateZeroValueKind",
+		ConstantDataArray = "LLVMConstantDataArrayValueKind",
+		ConstantDataVector = "LLVMConstantDataVectorValueKind",
+		ConstantInt = "LLVMConstantIntValueKind",
+		ConstantFP = "LLVMConstantFPValueKind",
+		ConstantPointerNull = "LLVMConstantPointerNullValueKind",
+		ConstantTokenNone = "LLVMConstantTokenNoneValueKind",
+		MetadataAsValue = "LLVMMetadataAsValueValueKind",
+		InlineAsm = "LLVMInlineAsmValueKind",
+		Instruction = "LLVMInstructionValueKind",
 	}
 }
 
 object "IntPredicate" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMIntPredicate IntPredicate;
   ]],
 
-	export_definitions {
+	c_source [[
+    #define LLVMIntEQ LLVMIntEQ
+    #define LLVMIntNE LLVMIntNE
+    #define LLVMIntUGT LLVMIntUGT
+    #define LLVMIntUGE LLVMIntUGE
+    #define LLVMIntULT LLVMIntULT
+    #define LLVMIntULE LLVMIntULE
+    #define LLVMIntSGT LLVMIntSGT
+    #define LLVMIntSGE LLVMIntSGE
+    #define LLVMIntSLT LLVMIntSLT
+    #define LLVMIntSLE LLVMIntSLE
+	]],
+
+  export_definitions {
 		EQ = "LLVMIntEQ",
 		NE = "LLVMIntNE",
 		UGT = "LLVMIntUGT",
@@ -239,11 +405,31 @@ object "IntPredicate" {
 }
 
 object "RealPredicate" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMRealPredicate RealPredicate;
   ]],
 
-	export_definitions {
+	c_source [[
+    #define LLVMRealPredicateFalse LLVMRealPredicateFalse
+    #define LLVMRealOEQ LLVMRealOEQ
+    #define LLVMRealOGT LLVMRealOGT
+    #define LLVMRealOGE LLVMRealOGE
+    #define LLVMRealOLT LLVMRealOLT
+    #define LLVMRealOLE LLVMRealOLE
+    #define LLVMRealONE LLVMRealONE
+    #define LLVMRealORD LLVMRealORD
+    #define LLVMRealUNO LLVMRealUNO
+    #define LLVMRealUEQ LLVMRealUEQ
+    #define LLVMRealUGT LLVMRealUGT
+    #define LLVMRealUGE LLVMRealUGE
+    #define LLVMRealULT LLVMRealULT
+    #define LLVMRealULE LLVMRealULE
+    #define LLVMRealUNE LLVMRealUNE
+    #define LLVMRealPredicateTrue LLVMRealPredicateTrue
+	]],
+
+  export_definitions {
 		False = "LLVMRealPredicateFalse",
 		OEQ = "LLVMRealOEQ",
 		OGT = "LLVMRealOGT",
@@ -264,22 +450,37 @@ object "RealPredicate" {
 }
 
 object "LandingPadClauseTy" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMLandingPadClauseTy LandingPadClauseTy;
   ]],
 
-	export_definitions {
+	c_source [[
+    #define LLVMLandingPadCatch LLVMLandingPadCatch
+    #define LLVMLandingPadFilter LLVMLandingPadFilter
+	]],
+
+  export_definitions {
 		Catch = "LLVMLandingPadCatch",
 		Filter = "LLVMLandingPadFilter",
 	}
 }
 
 object "ThreadLocalMode" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMThreadLocalMode ThreadLocalMode;
   ]],
 
-	export_definitions {
+	c_source [[
+    #define LLVMNotThreadLocal LLVMNotThreadLocal
+    #define LLVMGeneralDynamicTLSModel LLVMGeneralDynamicTLSModel
+    #define LLVMLocalDynamicTLSModel LLVMLocalDynamicTLSModel
+    #define LLVMInitialExecTLSModel LLVMInitialExecTLSModel
+    #define LLVMLocalExecTLSModel LLVMLocalExecTLSModel
+	]],
+
+  export_definitions {
 		NotThreadLocal = "LLVMNotThreadLocal",
 		GeneralDynamicTLSModel = "LLVMGeneralDynamicTLSModel",
 		LocalDynamicTLSModel = "LLVMLocalDynamicTLSModel",
@@ -289,11 +490,22 @@ object "ThreadLocalMode" {
 }
 
 object "AtomicOrdering" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMAtomicOrdering AtomicOrdering;
   ]],
 
-	export_definitions {
+	c_source [[
+    #define LLVMAtomicOrderingNotAtomic LLVMAtomicOrderingNotAtomic
+    #define LLVMAtomicOrderingUnordered LLVMAtomicOrderingUnordered
+    #define LLVMAtomicOrderingMonotonic LLVMAtomicOrderingMonotonic
+    #define LLVMAtomicOrderingAcquire LLVMAtomicOrderingAcquire
+    #define LLVMAtomicOrderingRelease LLVMAtomicOrderingRelease
+    #define LLVMAtomicOrderingAcquireRelease LLVMAtomicOrderingAcquireRelease
+    #define LLVMAtomicOrderingSequentiallyConsistent LLVMAtomicOrderingSequentiallyConsistent
+	]],
+
+  export_definitions {
 		NotAtomic = "LLVMAtomicOrderingNotAtomic",
 		Unordered = "LLVMAtomicOrderingUnordered",
 		Monotonic = "LLVMAtomicOrderingMonotonic",
@@ -305,11 +517,26 @@ object "AtomicOrdering" {
 }
 
 object "AtomicRMWBinOp" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMAtomicRMWBinOp AtomicRMWBinOp;
   ]],
 
-	export_definitions {
+  c_source [[
+    #define LLVMAtomicRMWBinOpXchg LLVMAtomicRMWBinOpXchg
+    #define LLVMAtomicRMWBinOpAdd LLVMAtomicRMWBinOpAdd
+    #define LLVMAtomicRMWBinOpSub LLVMAtomicRMWBinOpSub
+    #define LLVMAtomicRMWBinOpAnd LLVMAtomicRMWBinOpAnd
+    #define LLVMAtomicRMWBinOpNand LLVMAtomicRMWBinOpNand
+    #define LLVMAtomicRMWBinOpOr LLVMAtomicRMWBinOpOr
+    #define LLVMAtomicRMWBinOpXor LLVMAtomicRMWBinOpXor
+    #define LLVMAtomicRMWBinOpMax LLVMAtomicRMWBinOpMax
+    #define LLVMAtomicRMWBinOpMin LLVMAtomicRMWBinOpMin
+    #define LLVMAtomicRMWBinOpUMax LLVMAtomicRMWBinOpUMax
+    #define LLVMAtomicRMWBinOpUMin LLVMAtomicRMWBinOpUMin
+  ]],
+
+  export_definitions {
 		Xchg = "LLVMAtomicRMWBinOpXchg",
 		Add = "LLVMAtomicRMWBinOpAdd",
 		Sub = "LLVMAtomicRMWBinOpSub",
@@ -325,11 +552,19 @@ object "AtomicRMWBinOp" {
 }
 
 object "DiagnosticSeverity" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMDiagnosticSeverity DiagnosticSeverity;
   ]],
 
-	export_definitions {
+  c_source [[
+    #define LLVMDSError LLVMDSError
+    #define LLVMDSWarning LLVMDSWarning
+    #define LLVMDSRemark LLVMDSRemark
+    #define LLVMDSNote LLVMDSNote
+  ]],
+
+  export_definitions {
 		Error = "LLVMDSError",
 		Warning = "LLVMDSWarning",
 		Remark = "LLVMDSRemark",
@@ -338,11 +573,17 @@ object "DiagnosticSeverity" {
 }
 
 object "AttributeIndex" {
+  userdata_type = 'simple',
 	c_source [[
     typedef LLVMAttributeIndex AttributeIndex;
   ]],
 
-	export_definitions {
+  c_source [[
+    #define LLVMAttributeReturnIndex LLVMAttributeReturnIndex
+    #define LLVMAttributeFunctionIndex LLVMAttributeFunctionIndex
+  ]],
+
+  export_definitions {
    AttributeReturnIndex = "LLVMAttributeReturnIndex",
    AttributeFunctionIndex = "LLVMAttributeFunctionIndex",
 	}

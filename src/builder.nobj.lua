@@ -576,7 +576,7 @@ object "Builder" {
 
   method "build_icmp" {
     c_method_call "Value *" "LLVMBuildICmp" {
-      "IntPredicate *", "*Op",
+      "IntPredicate", "Op",
       "IntValue *", "lhs",
       "IntValue *", "rhs",
       "const char *", "name"
@@ -585,7 +585,7 @@ object "Builder" {
 
   method "build_fcmp" {
     c_method_call "Value *" "LLVMBuildFCmp" {
-      "RealPredicate *", "*Op",
+      "RealPredicate", "Op",
       "FloatValue *", "lhs",
       "FloatValue *", "rhs",
       "const char *", "name"
